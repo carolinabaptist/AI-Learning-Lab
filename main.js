@@ -11,7 +11,17 @@ const config = {
     
     width: window.innerWidth,
     height: window.innerHeight,
-    
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        },
+    autoRound: false,
+    physics: {
+        default: "arcade",
+        arcade: {
+        gravity: { y: 350 },
+        },
+    },
     scene: [ // Adiciona todas as cenas ao jogo
         IntroScene,
         LanguageScene,
@@ -21,3 +31,4 @@ const config = {
     ]
 };
 
+const game = new Phaser.Game(config)
