@@ -1,4 +1,3 @@
-/* Garante que a tela ocupa toda a viewport */
 html, body {
     margin: 0;
     padding: 0;
@@ -7,20 +6,19 @@ html, body {
     overflow: hidden;
 }
 
-/* Container do fundo com duas imagens */
 .background-container {
     position: absolute;
-    width: 200%; /* O dobro da largura para permitir a rolagem infinita */
+    width: 200%; 
     height: 100%;
     display: flex;
 }
 
-/* Duas cópias da imagem para criar o efeito contínuo */
 .background-slide {
-    width: 100%;
+    flex: 1;
     height: 100%;
-    background: url('../assets/images/background-intro-scene.jpg') no-repeat center center;
-    background-size: cover;
+    background: url('../assets/images/intro-scene-test.jpg') no-repeat center center;
+    background-size: cover; /* Aumenta levemente a altura para ajuste */
+    background-position: center; /* Mantém a base da imagem no lugar */
 }
 
 /* Animação para mover o fundo continuamente */
@@ -43,18 +41,7 @@ html, body {
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-}
-
-/* Criando um overlay escuro para destacar o texto */
-.intro-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column; /* Alinha os itens em coluna (um abaixo do outro) */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
