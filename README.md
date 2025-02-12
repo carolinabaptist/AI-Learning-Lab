@@ -22,4 +22,4 @@ Introduce generative AI through stories and images, explaining how AI generates 
 # Session 6  Interactive Music Composition
 
 Demonstrate AI’s creativity by explaining and teaching the
-process of song generation using generative AI.
+process of song generation using generative AI
