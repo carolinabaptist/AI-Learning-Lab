@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,6 @@
     
     <!-- Importando a fonte do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-    <!-- Preload da imagem para carregar mais rápido -->
-    <link rel="preload" as="image" href="../assets/images/background-intro-scene.jpg">
 </head>
 <body>
     <!-- Fundo animado -->
@@ -21,14 +18,15 @@
 
     <!-- Conteúdo do jogo -->
     <div class="intro-container">
-        <h1>Laboratório de IA</h1>
-    </div>
+        <h1 class="game-title">Laboratório de IA</h1>
 
-    <script>
-        /*setTimeout(() => {
-            window.location.href = "menu.html";
-        }, 5000);*/
-    </script>
+        <!-- Opções de navegação (parecem texto, mas são botões) -->
+        <div class="menu-options">
+            <span class="menu-button" onclick="location.href='novo-jogo.html'">Iniciar</span>
+            <span class="menu-button" onclick="location.href='continuar.html'">Continuar</span>
+        </div>
+    </div>
 </body>
 </html>
+
 
