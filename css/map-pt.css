@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../assets/images/grass.jpg);
+    overflow: hidden;
+}
+
+.mapa {
+    position: absolute;
+    width: 1000px;
+    height: 500px;
+}
+
+.arvore {
+    position: absolute;
+    width: 80px;
+    height: auto;
+}
+
+.arvore:nth-child(1) { top: 150px; left: 300px; }
+.arvore:nth-child(2) { top: 150px; left: 350px; }
+.arvore:nth-child(3) { top: 150px; left: 450px; }
+.arvore:nth-child(4) { top: 150px; left: 500px; }
+.arvore:nth-child(5) { top: 150px; left: 550px; }
+.arvore:nth-child(6) { top: 150px; left: 600px; }
+.arvore:nth-child(7) { top: 150px; left: 400px; }
+
+.caminho1 {
+    position: absolute;
+    width: 250px;
+    height: 150px;
+}
+
+.caminho1:nth-child(1) { top: 10px; left: -270px; }
+.caminho1:nth-child(2) { top: 175px; left: 60px; transform: rotate(90deg);}
+.caminho1:nth-child(3) { top: 340px; left: 475px; }
+.caminho1:nth-child(4) { top: 340px; left: 225px; }
+.caminho1:nth-child(5) { top: 175px; left: 635px; transform: rotate(90deg);}
+.caminho1:nth-child(6) { top: 10px; left: -100px; }
+.caminho1:nth-child(7) { top: 10px; left: 795px; }
+.caminho1:nth-child(8) { top: 10px; left: 1025px; }
+/*
+
+.casa {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: gray;
+    border: 3px solid black;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.casa:nth-child(1) { top: 150px; left: 80px; }
+.casa:nth-child(2) { top: 150px; left: 200px; }
+.casa:nth-child(3) { top: 150px; left: 320px; }
+.casa:nth-child(4) { top: 150px; left: 440px; }
+
+.desbloqueada {
+    background-color: #FFD700; /* Amarelo para indicar casas acessíveis 
+}
+
+.jogador {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    border-radius: 50%;
+    top: 200px;
+    left: 50px;
+}
+
+*/
