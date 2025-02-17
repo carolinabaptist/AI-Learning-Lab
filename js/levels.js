@@ -1,41 +1,25 @@
-// Seleciona elementos do jogo
-let jogador = document.querySelector(".jogador");
-let casas = document.querySelectorAll(".casa");
-let nivelAtual = 1;
-let posicaoX = 50;
+document.addEventListener("DOMContentLoaded", () => {
+    let progresso = JSON.parse(localStorage.getItem("progresso")) || { casa1: true, casa2: false, casa3: false };
 
-// Captura evento de teclado para movimentação do jogador
-document.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight" && posicaoX < 480) {
-        posicaoX += 60;
-        jogador.style.left = posicaoX + "px";
+    function atualizarCasas() {
+        Object.keys(progresso).forEach(casa => {
+            if (progresso[casa]) {
+                document.getElementById(casa).classList.remove("bloqueada");
+                document.getElementById(casa).classList.add("desbloqueada");
+            }
+        });
     }
-    if (event.key === "ArrowLeft" && posicaoX > 50) {
-        posicaoX -= 60;
-        jogador.style.left = posicaoX + "px";
+
+    function entrarNoJogo(num) {
+        alert(`Entrando no Jogo ${num}...`);
+
+        if (num === 1) progresso.casa2 = true; // Ao completar jogo 1, desbloqueia casa 2
+        if (num === 2) progresso.casa3 = true; // Ao completar jogo 2, desbloqueia casa 3
+
+        localStorage.setItem("progresso", JSON.stringify(progresso));
+        atualizarCasas();
     }
+
+    atualizarCasas();
 });
 
-// Adiciona evento de clique nas casas
-casas.forEach((casa) => {
-    casa.addEventListener("click", () => {
-        let nivel = parseInt(casa.dataset.nivel);
-        if (nivel <= nivelAtual) {
-            alert("Iniciando Jogo " + nivel);
-            nivelAtual++; 
-            desbloquearCasas();
-        } else {
-            alert("Complete o nível anterior primeiro!");
-        }
-    });
-});
-
-// Função para desbloquear as casas conforme o jogador avança
-function desbloquearCasas() {
-    casas.forEach((casa) => {
-        let nivel = parseInt(casa.dataset.nivel);
-        if (nivel <= nivelAtual) {
-            casa.classList.add("desbloqueada");
-        }
-    });
-}

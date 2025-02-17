@@ -16,7 +16,7 @@ html, body {
 .background-slide {
     flex: 1;
     height: 100%;
-    background: url('../assets/images/intro-scene-test.jpg') no-repeat center center;
+    background: url('../assets/images/intro-scene-test-2.png') no-repeat center center;
     background-size: cover; /* Aumenta levemente a altura para ajuste */
     background-position: center; /* Mantém a base da imagem no lugar */
 }

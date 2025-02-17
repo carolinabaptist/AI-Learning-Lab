@@ -8,35 +8,15 @@
 </head>
 <body>
     <div class="mapa">
-        <img src="../assets/images/tree.png" class="arvore">
-        <img src="../assets/images/tree.png" class="arvore">
-        <img src="../assets/images/tree.png" class="arvore">
-        <img src="../assets/images/tree.png" class="arvore">
-        <img src="../assets/images/tree.png" class="arvore">
-        <img src="../assets/images/tree.png" class="arvore">
-        <img src="../assets/images/tree.png" class="arvore">
     </div> 
     <div class="mapa">
-        <img src="../assets/images/path-1.JPG" class="caminho1">
-        <img src="../assets/images/path-1.JPG" class="caminho1">
-        <img src="../assets/images/path-1.JPG" class="caminho1">
-        <img src="../assets/images/path-1.JPG" class="caminho1">
-        <img src="../assets/images/path-1.JPG" class="caminho1">
-        <img src="../assets/images/path-1.JPG" class="caminho1">
-        <img src="../assets/images/path-1.JPG" class="caminho1">
-        <img src="../assets/images/path-1.JPG" class="caminho1">
     </div>   
-    <div class="mapa">
-        <div class="caminho2"></div>
-        <div class="caminho3"></div>
-        <div class="caminho4"></div>
-        <div class="caminho5"></div>
-        <div class="casa desbloqueada" data-nivel="1"></div>
-        <div class="casa" data-nivel="2"></div>
-        <div class="casa" data-nivel="3"></div>
-        <div class="casa" data-nivel="4"></div>
-        <div class="jogador"></div>
+    <div id="mapa">
+        <div class="casa desbloqueada" id="casa1" onclick="entrarNoJogo(1)">Jogo 1</div>
+        <div class="casa bloqueada" id="casa2" onclick="entrarNoJogo(2)">Jogo 2</div>
+        <div class="casa bloqueada" id="casa3" onclick="entrarNoJogo(3)">Jogo 3</div>
     </div>
+    <div class="jogador"></div>
 
     <script src="../js/levels.js"></script> <!-- Importando JavaScript -->
 </body>
