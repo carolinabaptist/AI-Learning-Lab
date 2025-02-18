@@ -8,99 +8,33 @@ html, body {
 
 .background-container {
     position: absolute;
-    width: 200%; 
+    width: 100%;
     height: 100%;
-    display: flex;
 }
 
 .background-slide {
     flex: 1;
     height: 100%;
-    background: url('../assets/images/intro-scene-test-2.png') no-repeat center center;
-    background-size: cover; /* Aumenta levemente a altura para ajuste */
-    background-position: center; /* Mantém a base da imagem no lugar */
-}
-
-/* Animação para mover o fundo continuamente */
-@keyframes moveBackground {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-/* Ativando a animação no container */
-.background-container {
-    animation: moveBackground 10s linear infinite;
-}
-
-/* Container principal do conteúdo */
-.intro-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    background: url('../assets/images/background-blur.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
     position: relative;
 }
 
-.game-title {
-    color: #FFD700; /* Dourado para parecer mais "game" */
-    font-family: 'Press Start 2P', cursive;
-    text-align: center;
-    
-    /* Criando um efeito de sombra dupla */
-    text-shadow:
-        4px 4px 0px #000, /* Camada principal (sombra preta) */
-        -2px -2px 0px #555, /* Detalhe superior (leve sombra cinza) */
-        2px -2px 0px #555, /* Detalhe superior */
-        -2px 2px 0px #555, /* Detalhe inferior */
-        2px 2px 0px #555; /* Detalhe inferior */
+.logo-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza a logo */
+    z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-h1 {
-    font-size: 4rem;
+.logo-container img {
+    width: 850px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    animation: fadeIn 1.5s ease-in-out; /* Efeito suave de aparição */
 }
 
-h6 {
-    font-size: 1.5rem;
-}
 
-/* Alinhamento do menu */
-.menu-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Espaçamento entre as opções */
-    margin-top: 20px;
-    text-align: center;
-}
 
-/* Transformando os spans em "botões invisíveis" */
-.menu-button {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.5rem; /* Um pouco menor que o título */
-    color: #FFD700; /* Dourado */
-    cursor: pointer; /* Indica que pode ser clicado */
-    text-shadow:
-        3px 3px 0px black, /* Sombra principal */
-        -2px -2px 0px #555, 
-        2px -2px 0px #555, 
-        -2px 2px 0px #555, 
-        2px 2px 0px #555;
-    transition: 0.2s ease-in-out;
-}
 
-/* Efeito ao passar o mouse */
-.menu-button:hover {
-    color: #FFEE00; /* Um amarelo mais claro */
-    transform: scale(1.1); /* Pequeno zoom */
-}
-
-/* Efeito ao clicar */
-.menu-button:active {
-    transform: scale(0.95);
-}
