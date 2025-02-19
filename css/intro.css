@@ -7,7 +7,7 @@ html, body {
 }
 
 .background-container {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
 }
@@ -23,18 +23,53 @@ html, body {
 
 .logo-container {
     position: absolute;
-    top: 40%;
+    top: 32%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centraliza a logo */
     z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
 .logo-container img {
-    width: 850px; /* Ajuste o tamanho conforme necessário */
+    width: 1050px; /* Ajuste o tamanho conforme necessário */
     height: auto;
-    animation: fadeIn 1.5s ease-in-out; /* Efeito suave de aparição */
 }
 
+.button-container {
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza a logo */
+    z-index: 10; /* Garante que a logo fique sobre o fundo */
+}
 
+.button-container img {
+    width: 200px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
 
+.continue-container {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza a logo */
+    z-index: 10; /* Garante que a logo fique sobre o fundo */
+}
+
+.continue-container img {
+    width: 295px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
+.help-container {
+    position: absolute;
+    top: 85%;
+    left: 5%;
+    transform: translate(-50%, -50%); /* Centraliza a logo */
+    z-index: 10; /* Garante que a logo fique sobre o fundo */
+}
+
+.help-container img {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
 

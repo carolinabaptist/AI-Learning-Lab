@@ -7,112 +7,55 @@ html, body {
 }
 
 .background-container {
-    position: absolute;
-    width: 300%; 
+    position: relative;
+    width: 100%;
     height: 100%;
-    display: flex;
-    align-items: flex-start;
 }
 
 .background-slide {
-    width: 100%;
+    flex: 1;
     height: 100%;
-    background: url('../assets/images/intro-scene-2.jpg') no-repeat center center;
-    background-size: auto 100%;
-    background-position: top center; 
-}
-
-/* Animação para mover o fundo continuamente */
-@keyframes moveBackground {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-/* Ativando a animação no container */
-.background-container {
-    animation: moveBackground 10s linear infinite;
-}
-
-/* Container principal do conteúdo */
-.intro-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    background: url('../assets/images/background-blur.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
     position: relative;
 }
 
-/* Criando um overlay escuro para destacar o texto */
-.intro-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column; /* Alinha os itens em coluna (um abaixo do outro) */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
+.container {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza a logo */
+    z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-.game-title {
-    color: #FFD700; /* Dourado para parecer mais "game" */
-    font-family: 'Press Start 2P', cursive;
-    text-align: center;
-    
-    /* Criando um efeito de sombra dupla */
-    text-shadow:
-        4px 4px 0px #000, /* Camada principal (sombra preta) */
-        -2px -2px 0px #555, /* Detalhe superior (leve sombra cinza) */
-        2px -2px 0px #555, /* Detalhe superior */
-        -2px 2px 0px #555, /* Detalhe inferior */
-        2px 2px 0px #555; /* Detalhe inferior */
+.container img {
+    width: 200px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
 }
 
-h1 {
-    font-size: 4rem;
+.pt-container {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza a logo */
+    z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-h6 {
-    font-size: 1.5rem;
+.pt-container img {
+    width: 295px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
 }
 
-/* Alinhamento do menu */
-.menu-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Espaçamento entre as opções */
-    margin-top: 20px;
-    text-align: center;
+.en-container {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza a logo */
+    z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-/* Transformando os spans em "botões invisíveis" */
-.menu-button {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.5rem; /* Um pouco menor que o título */
-    color: #FFD700; /* Dourado */
-    cursor: pointer; /* Indica que pode ser clicado */
-    text-shadow:
-        3px 3px 0px black, /* Sombra principal */
-        -2px -2px 0px #555, 
-        2px -2px 0px #555, 
-        -2px 2px 0px #555, 
-        2px 2px 0px #555;
-    transition: 0.2s ease-in-out;
-}
-
-/* Efeito ao passar o mouse */
-.menu-button:hover {
-    color: #FFEE00; /* Um amarelo mais claro */
-    transform: scale(1.1); /* Pequeno zoom */
-}
-
-/* Efeito ao clicar */
-.menu-button:active {
-    transform: scale(0.95);
+.en-container img {
+    width: 275px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
 }
