@@ -1,5 +1,7 @@
 # AI-Learning-Lab
-A game for teaching kids aged 6 to 7 about Artificial Inteligence.
+A game for teaching kids aged 6 to 7 about Artificial Intelligence.
+
+It can be accessed online here: [Laboratório de IA](https://carolinabaptist.github.io/AI-Learning-Lab)
 
 # Session 1 Discovering AI through Virtual Assistants and Chatbots
 
