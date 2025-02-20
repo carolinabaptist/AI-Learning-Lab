@@ -1,9 +1,15 @@
+@font-face {
+    font-family: "Shooting Star";
+    src: url('../assets/fonts/Shooting Star.ttf');
+  }
+
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    font-family: 'Shooting Star', sans-serif;
 }
 
 .background-container {
