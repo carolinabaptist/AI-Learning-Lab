@@ -23,7 +23,7 @@ html, body {
 
 .logo-container {
     position: absolute;
-    top: 32%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centraliza a logo */
     z-index: 10; /* Garante que a logo fique sobre o fundo */
@@ -42,11 +42,14 @@ html, body {
     z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-.button-container img {
+.play-button {
+    background: url('../assets/images/jogar-button.jpg') no-repeat center center;
+    background-size: cover;
     width: 200px; /* Ajuste o tamanho conforme necessário */
-    height: auto;
+    height: 95px;
+    border: none;
+    cursor: pointer;
 }
-
 .continue-container {
     position: absolute;
     top: 75%;
@@ -55,9 +58,13 @@ html, body {
     z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-.continue-container img {
+.continue-button {
+    background: url('../assets/images/continuar.png') no-repeat center center;
+    background-size: cover;
     width: 295px; /* Ajuste o tamanho conforme necessário */
-    height: auto;
+    height: 95px;
+    border: none;
+    cursor: pointer;
 }
 
 .help-container {
@@ -68,8 +75,11 @@ html, body {
     z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-.help-container img {
+.help-button {
+    background: url('../assets/images/help-button.jpg') no-repeat center center;
+    background-size: cover;
     width: 100px; /* Ajuste o tamanho conforme necessário */
-    height: auto;
+    height: 95px;
+    border: none;
+    cursor: pointer;
 }
-

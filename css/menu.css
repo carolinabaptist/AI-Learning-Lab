@@ -42,20 +42,28 @@ html, body {
     z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-.pt-container img {
+.pt-button {
+    background: url('../assets/images/pt.png') no-repeat center center;
+    background-size: cover;
     width: 295px; /* Ajuste o tamanho conforme necessário */
-    height: auto;
+    height: 95px;
+    border: none;
+    cursor: pointer;
 }
 
 .en-container {
     position: absolute;
     top: 65%;
-    left: 50%;
+    left: 49.7%;
     transform: translate(-50%, -50%); /* Centraliza a logo */
     z-index: 10; /* Garante que a logo fique sobre o fundo */
 }
 
-.en-container img {
+.en-button {
+    background: url('../assets/images/en.png') no-repeat center center;
+    background-size: cover;
     width: 275px; /* Ajuste o tamanho conforme necessário */
-    height: auto;
+    height: 95px;
+    border: none;
+    cursor: pointer;
 }
