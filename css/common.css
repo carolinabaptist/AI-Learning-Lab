@@ -7,10 +7,9 @@ html, body {
 }
 
 .background-container {
-    position: absolute;
-    width: 200%; 
+    position: relative;
+    width: 100%;
     height: 100%;
-    display: flex;
 }
 
 .background-slide {
@@ -20,4 +19,13 @@ html, body {
     background-size: cover;
     background-position: center;
     position: relative;
+}
+
+.background-blur .background-slide::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px); /* apply the blur */
+    pointer-events: none; /* make the overlay click-through */
 }
