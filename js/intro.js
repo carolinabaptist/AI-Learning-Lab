@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const messageBoard = document.getElementById("message-board");
     const closeButton = document.getElementById("close-button");
 
+    //o certo eh closeButton = document.querySelector('.close-button')
+
     // Mostrar o quadro de mensagem ao clicar no botão de ajuda
     helpButton.addEventListener("click", function() {
         messageBoard.classList.remove("hidden");
