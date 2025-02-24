@@ -32,7 +32,6 @@ h6 {
     font-size: 1.5rem;
 }
 
-/* Alinhamento do menu */
 .menu-options {
     display: flex;
     flex-direction: column;
@@ -42,7 +41,6 @@ h6 {
     z-index:2;
 }
 
-/* Transformando os spans em "botões invisíveis" */
 .menu-button {
     font-family: 'Press Start 2P', cursive;
     font-size: 1.5rem; /* Um pouco menor que o título */
