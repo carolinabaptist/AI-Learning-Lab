@@ -22,6 +22,20 @@
     z-index:2; 
 }
 
+#voice-icon {
+    width: 62px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: absolute;
+    left: 30px;
+    bottom: 38px;
+}
+
+#voice-icon:hover {
+    transform: scale(1.1);
+}
+
 .game-title {
     color: #FFD700;
     font-family: 'Press Start 2P', cursive;

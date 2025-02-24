@@ -1,17 +1,27 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const helpButton = document.querySelector(".help-container"); // Captura a DIV do botão de ajuda
-    const messageBoard = document.getElementById("message-board");
-    const closeButton = document.getElementById("close-button");
+let isSpeechUnlocked = false;
 
-    //o certo eh closeButton = document.querySelector('.close-button')
+function activateVoice() {
+    let speech = new SpeechSynthesisUtterance("Voz ativada!");
+    speech.lang = "pt-PT";
+    window.speechSynthesis.speak(speech);
+    
+    isSpeechUnlocked = true;
 
-    // Mostrar o quadro de mensagem ao clicar no botão de ajuda
-    helpButton.addEventListener("click", function() {
-        messageBoard.classList.remove("hidden");
-    });
+    document.getElementById("voice-icon").style.opacity = "0.6"; 
+}
 
-    // Esconder o quadro de mensagem ao clicar no botão OK
-    closeButton.addEventListener("click", function() {
-        messageBoard.classList.add("hidden");
-    });
-});
+function speakText(element) {
+    if (!isSpeechUnlocked) return;
+
+    let text = element.innerText;
+    let speech = new SpeechSynthesisUtterance();
+    speech.text = text;
+    speech.lang = "pt-PT";
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+}
+
+
