@@ -6,24 +6,23 @@
     <title>Laboratório de IA</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    
     <div class="background-container background-blur">
-        <div class="background-slide"></div>
+        <div class="background-slide">
+            <div class="intro-container">
+                <h1 class="title">Selecione a Língua</h1>
+                <div class="menu-options">
+                    <span class="menu-button" onclick="location.href='map-pt.html'">Português</span>
+                    <span class="menu-button" onclick="location.href='map-en.html'">English</span>
+                    <span class="menu-button" onclick="location.href='map-hindi.html'">हिंदी</span>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="container">
-            <img src="../assets/images/selecione-idioma.png" alt="Selecione Idioma">
-    </div>
+        
+    <script src="../js/menu.js"></script>
     
-    <div class="pt-container">
-        <button class="pt-button" onclick="window.location.href='map-pt.html'"></button>
-    </div>
-
-    <div class="en-container">
-        <button class="en-button" onclick="window.location.href='map-es.html'"></button>
-    </div>
-
-</body>
+    </body>
 </html>

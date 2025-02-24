@@ -6,33 +6,20 @@
     <title>Laboratório de IA</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/intro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="background-container background-blur">
-        <div class="background-slide"></div>
-    </div>
-
-
-        <div class="logo-container">
-            <img src="../assets/images/logo-no-bc.png" alt="Logo do Jogo">
-        </div>
-
-        <div class="button-container">
-            <button class="play-button" onclick="window.location.href='menu.html'"></button>
-        </div>
-
-        <div class="continue-container">
-            <button class="continue-button" onclick="window.location.href='map-pt.html'"></button>
-        </div>
-        
-        <div class="help-container" id="help-button">
-            <button class="help-button" onclick="window.location.href='help-pt.html'"></button>
-        </div>
-        
-        <div id="message-board" class="hidden">
-            <div class="message-content">
+        <div class="background-slide">
+            <div class="intro-container">
+                <h1 class="game-title">Laboratório de IA</h1>
+                <div class="menu-options">
+                    <span class="menu-button" onclick="location.href='menu.html'">Jogar</span>
+                    <span class="menu-button" onclick="location.href='continuar.html'">Continuar</span>
+                </div>
             </div>
         </div>
+    </div>
     
     <script src="../js/intro.js"></script>
 
