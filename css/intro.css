@@ -54,6 +54,7 @@ h6 {
     gap: 10px; /* Espaçamento entre as opções */
     margin-top: 20px;
     text-align: center;
+    z-index:2;
 }
 
 /* Transformando os spans em "botões invisíveis" */
@@ -71,13 +72,11 @@ h6 {
     transition: 0.2s ease-in-out;
 }
 
-/* Efeito ao passar o mouse */
 .menu-button:hover {
-    color: #FFEE00; /* Um amarelo mais claro */
-    transform: scale(1.1); /* Pequeno zoom */
+    color: #FFEE00; 
+    transform: scale(1.1); 
 }
 
-/* Efeito ao clicar */
 .menu-button:active {
     transform: scale(0.95);
 }

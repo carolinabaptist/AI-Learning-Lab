@@ -21,8 +21,7 @@ html, body {
     position: relative;
 }
 
-.background-blur .background-slide::after {
-    content: "";
+.background-blur {
     position: absolute;
     width: 100%;
     height: 100%;
