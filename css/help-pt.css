@@ -1,27 +1,54 @@
-.help-container {
-    position: absolute;
-    top: 85%;
-    left: 5%;
-    transform: translate(-50%, -50%); /* Centraliza a logo */
-    z-index: 10; /* Garante que a logo fique sobre o fundo */
-}
-
-.help-container img {
-    width: 100px; /* Ajuste o tamanho conforme necessário */
-    height: auto;
-}
-
-#message-board {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: url('../assets/images/message-board-4.png') no-repeat center center;
-    background-size: 100%;
-    padding: 450px;
-    text-align: center;
+.left-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    flex-direction: row; 
+    align-items: flex-end; 
+    justify-content: flex-start; 
+    text-align: center;
+    position: absolute; 
+    left: 20px; 
+    bottom: 20px;
+    z-index:2; 
+}
+
+.game-title {
+    color: #FFD700;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    
+    /* Criando um efeito de sombra dupla */
+    text-shadow:
+        4px 4px 0px #000, /* Camada principal (sombra preta) */
+        -2px -2px 0px #555, /* Detalhe superior (leve sombra cinza) */
+        2px -2px 0px #555, /* Detalhe superior */
+        -2px 2px 0px #555, /* Detalhe inferior */
+        2px 2px 0px #555; /* Detalhe inferior */
+}
+
+h5 {
+    font-size: 2rem;   
+}
+
+.menu-button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem; /* Um pouco menor que o título */
+    color: #FFD700; /* Dourado */
+    cursor: pointer; /* Indica que pode ser clicado */
+    text-shadow:
+        3px 3px 0px black, /* Sombra principal */
+        -2px -2px 0px #555, 
+        2px -2px 0px #555, 
+        -2px 2px 0px #555, 
+        2px 2px 0px #555;
+    transition: 0.2s ease-in-out;
+}
+
+/* Efeito ao passar o mouse */
+.menu-button:hover {
+    color: #FFEE00; /* Um amarelo mais claro */
+    transform: scale(1.1); /* Pequeno zoom */
+}
+
+/* Efeito ao clicar */
+.menu-button:active {
+    transform: scale(0.95);
 }

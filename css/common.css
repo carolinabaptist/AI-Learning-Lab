@@ -27,5 +27,6 @@ html, body {
     width: 100%;
     height: 100%;
     backdrop-filter: blur(3px); 
-    pointer-events: none; /* make the overlay click-through */
+    pointer-events: none;
+    z-index: 1;
 }
