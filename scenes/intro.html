@@ -15,13 +15,14 @@
             <div class="intro-container">
                 <h1 class="game-title">Laboratório de IA</h1>
                 <div class="menu-options">
-                    <span class="menu-button" onclick="location.href='menu.html'" onmouseover="speakText(this)">Jogar</span>
-                    <span class="menu-button" onclick="location.href='continuar.html'" onmouseover="speakText(this)">Continuar</span>
+                    <span class="menu-button" onclick="location.href='menu.html'">Jogar</span>
+                    <span class="menu-button" onclick="location.href='continuar.html'">Continuar</span>
                 </div>
             <div class="left-container">
                 <h5 class="game-title">
                     <span class="menu-button" onclick="location.href='help-pt.html'">?</span>
-                    <img id="voice-icon" src="..\assets\images\sound.png" alt="Ativar voz" onclick="activateVoice()"
+                    <img id="voice-icon" src="..\assets\images\sound.png" alt="Ativar voz" onclick="toggleSound()" style="cursor: pointer; opacity: 1;">
+                    <audio id="click-sound" src="..\assets\audio\button-sound.mp3" autostart="false"></audio>
                 </h5>
             </div>
             </div>

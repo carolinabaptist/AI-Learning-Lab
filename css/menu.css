@@ -9,6 +9,31 @@
     position: relative;
     z-index:2;
 }
+.left-container {
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-end; 
+    justify-content: flex-start; 
+    text-align: center;
+    position: absolute; 
+    left: 20px; 
+    bottom: 20px;
+    z-index:2; 
+}
+
+#voice-icon {
+    width: 62px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: absolute;
+    left: 30px;
+    bottom: 10px;
+}
+
+#voice-icon:hover {
+    transform: scale(1.1);
+}
 
 .title {
     color: #FFD700;
