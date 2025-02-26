@@ -52,6 +52,22 @@
     line-height: 1.2;
 }
 
+.flow {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px); /* Sobe um pouco */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 .sub-title {
     font-family: Courier New;
     color: black;
@@ -68,12 +84,12 @@ h6 {
     font-size: 1.5rem;
 }
 
-/* Alinhamento do menu */
+
 .menu-options {
     display: flex;
     flex-direction: column;
     gap: 10px; /* Espaçamento entre as opções */
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: center;
     z-index:2;
 }
