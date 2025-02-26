@@ -1,6 +1,6 @@
 const $ = (x) => document.querySelectorAll(x);
 
-const waitTime = 50;
+const waitTime = 5;
 
 function typewriterStep(text, element, i) {
     if (i < text.length) {
@@ -10,17 +10,37 @@ function typewriterStep(text, element, i) {
     }
 }
 
-function typewriter(element) {
-    text = element.innerHTML;
+let globalTexts;
 
-    console.log(element.offsetWidth);
+
+function typewriterContinue(element) {
+    text = globalTexts[0];
+
+    element.innerHTML = text;
 
     element.style.width = element.offsetWidth + 'px';
     element.style.height = element.offsetHeight + 'px';
 
     element.innerHTML = '';
 
+    console.log(globalTexts.length);
+
+    if (globalTexts.length == 1) {
+        console.log('aaaa');
+        $('.typewriter-continue')[0].classList.add('disabled');
+        $('.typewriter-end')[0].classList.remove('disabled');
+    }
+    else {
+        globalTexts = globalTexts.slice(1, globalTexts.length);
+    }
+
     typewriterStep(text, element, 0);
+}
+
+function typewriter(element) {
+    globalTexts = element.innerHTML.split('===');
+
+    typewriterContinue(element);
 }
 
 window.addEventListener('load', () => {
