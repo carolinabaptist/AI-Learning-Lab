@@ -27,8 +27,7 @@
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     position: absolute;
-    left: 30px;
-    bottom: 10px;
+    top: -3px;
 }
 
 #voice-icon:hover {
