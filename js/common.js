@@ -1,6 +1,6 @@
 const $ = (x) => document.querySelectorAll(x);
 
-const waitTime = 5;
+const waitTime = 50;
 
 function typewriterStep(text, element, i) {
     if (i < text.length) {
@@ -18,6 +18,7 @@ function typewriterContinue(element) {
 
     element.innerHTML = text;
 
+    //TO DO: consertar o balão para ter uma largura maior
     element.style.width = element.offsetWidth + 'px';
     element.style.height = element.offsetHeight + 'px';
 
@@ -48,3 +49,7 @@ window.addEventListener('load', () => {
         typewriter(element);
     });
 });
+
+function playSound() {
+    $('#click-sound')[0].play();
+}
