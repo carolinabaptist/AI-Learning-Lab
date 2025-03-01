@@ -15,7 +15,7 @@ html, body {
 .background-slide {
     flex: 1;
     height: 100%;
-    background: url('../assets/images/background-b.jpg') no-repeat center center;
+    background: url('../assets/images/background-n2.jpg') no-repeat center center;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -27,20 +27,16 @@ html, body {
     height: 100%;
     backdrop-filter: blur(3px); 
     pointer-events: none;
-    z-index: 1;
 }
 
 /* Texto do balão */
 pre.effect-typewriter {
     display: inline-block;
     overflow: hidden;
-    /*white-space: nowrap;*/
-    /*border-right: 3px solid black; /* Simula um cursor */
     font-family: 'Press Start 2P', cursive;
     font-size: 1.2rem;
     line-height: 1.5;
     position: relative;
-    /*animation: typing 4s steps(40, end) forwards, blink 0.5s infinite;*/
 }
 
 .disabled {
