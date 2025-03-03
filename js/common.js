@@ -2,19 +2,39 @@ const $ = (x) => document.querySelectorAll(x);
 
 const waitTime = 50;
 
-function typewriterStep(text, element, i) {
-    if (i < text.length) {
+let globalTexts;
+
+let shouldPlayNum = null;
+
+function typewriterStep(playingNum, element, i) {
+    const text = globalTexts[playingNum];
+    const cancelled = (shouldPlayNum != playingNum);
+    if (i < text.length && !cancelled) {
         element.innerHTML += text[i];
 
-        setTimeout(() => typewriterStep(text, element, i + 1), waitTime);
+        setTimeout(() => typewriterStep(playingNum, element, i + 1), waitTime);
+    }
+
+    if (i >= text.length) {
+        console.log("Terminei a animacao do", playingNum);
+    }
+
+    if (cancelled) {
+        console.log("Estou cancelando o", playingNum, "porque comeceu a tocar", shouldPlayNum);
     }
 }
 
-let globalTexts;
-
 
 function typewriterContinue(element) {
-    text = globalTexts[0];
+    if (shouldPlayNum == null) {
+        shouldPlayNum = 0;
+    }
+    else {
+        shouldPlayNum++;
+    }
+
+
+    text = globalTexts[shouldPlayNum];
 
     element.innerHTML = text;
 
@@ -24,18 +44,12 @@ function typewriterContinue(element) {
 
     element.innerHTML = '';
 
-    console.log(globalTexts.length);
-
-    if (globalTexts.length == 1) {
-        console.log('aaaa');
+    if (shouldPlayNum + 1 >= globalTexts.length) {
         $('.typewriter-continue')[0].classList.add('disabled');
         $('.typewriter-end')[0].classList.remove('disabled');
     }
-    else {
-        globalTexts = globalTexts.slice(1, globalTexts.length);
-    }
 
-    typewriterStep(text, element, 0);
+    typewriterStep(shouldPlayNum, element, 0);
 }
 
 function typewriter(element) {
