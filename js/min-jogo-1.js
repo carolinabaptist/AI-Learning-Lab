@@ -1,11 +1,35 @@
-const waitTime = 50;
+const waitTimeUsual = 50;
+const waitTimeNewline = 100;
 
 let shouldPlayNum = null;
+
+function speakText(text) {
+    let speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "pt-PT";
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 2;
+
+    console.log("aaa");
+    speechSynthesis.speak(speech);
+}
 
 function typewriterStep(playingNum, element, text, i) {
     const cancelled = (shouldPlayNum != playingNum);
     if (i < text.length && !cancelled) {
-        element.innerText += text[i];
+        const insertedChar = text[i];
+
+        element.innerText += insertedChar;
+
+        let waitTime;
+
+        if (insertedChar == '\n') {
+            waitTime = waitTimeNewline;
+        }
+        else {
+            waitTime = waitTimeUsual;
+        }
 
         setTimeout(() => typewriterStep(playingNum, element, text, i + 1), waitTime);
     }
@@ -30,6 +54,7 @@ function typewriterContinue() {
     else {
         const previousPage = pages[shouldPlayNum];
         previousPage.classList.add('disabled');
+        window.speechSynthesis.cancel();
 
         shouldPlayNum++;
     }
@@ -51,6 +76,11 @@ function typewriterContinue() {
         $('.typewriter-end')[0].classList.remove('disabled');
     }
 
+    console.log("vou tocar o texto", text);
+
+    speakText(text);
+
+    console.log("toquei");
     typewriterStep(shouldPlayNum, element, text, 0);
 }
 
