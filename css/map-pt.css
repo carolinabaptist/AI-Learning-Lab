@@ -47,7 +47,7 @@ h1 {
 
 .button {
     background-color: white;
-    width: 270px;
+    width: 280px;
     height: 260px;
     display: flex;
     flex-direction: column;
@@ -63,7 +63,7 @@ h1 {
 }
 
 .button img {
-    width: 250px;
+    width: 260px;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;

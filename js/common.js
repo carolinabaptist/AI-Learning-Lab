@@ -38,7 +38,6 @@ function typewriterContinue(element) {
 
     element.innerHTML = text;
 
-    //TO DO: consertar o balão para ter uma largura maior
     element.style.width = element.offsetWidth + 'px';
     element.style.height = element.offsetHeight + 'px';
 
