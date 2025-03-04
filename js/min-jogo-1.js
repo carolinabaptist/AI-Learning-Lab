@@ -1,7 +1,9 @@
 const waitTimeUsual = 50;
 const waitTimeNewline = 100;
 
-let shouldPlayNum = null;
+let currentPage = null;
+
+let currentParagraph = null;
 
 function speakText(text) {
     let speech = new SpeechSynthesisUtterance(text);
@@ -15,8 +17,8 @@ function speakText(text) {
     speechSynthesis.speak(speech);
 }
 
-function typewriterStep(playingNum, element, text, i) {
-    const cancelled = (shouldPlayNum != playingNum);
+function typewriterStep(playingPage, element, text, i) {
+    const cancelled = (currentPage != playingPage);
     if (i < text.length && !cancelled) {
         const insertedChar = text[i];
 
@@ -31,39 +33,43 @@ function typewriterStep(playingNum, element, text, i) {
             waitTime = waitTimeUsual;
         }
 
-        setTimeout(() => typewriterStep(playingNum, element, text, i + 1), waitTime);
+        setTimeout(() => typewriterStep(playingPage, element, text, i + 1), waitTime);
     }
     /*
     if (i >= text.length) {
-        console.log("Terminei a animacao do", playingNum);
+        console.log("Terminei a animacao do", playingPage);
     }
 
     if (cancelled) {
-        console.log("Estou cancelando o", playingNum, "porque comeceu a tocar", shouldPlayNum);
+        console.log("Estou cancelando o", playingPage, "porque comeceu a tocar", shouldPlayPage);
     }
     */
+}
+
+function typewriterStepPage(lement) {
+
 }
 
 
 function typewriterContinue() {
     const pages = $('#typewriter-screen .typewriter-page');
 
-    if (shouldPlayNum == null) {
-        shouldPlayNum = 0;
+    if (currentPage == null) {
+        currentPage = 0;
     }
     else {
-        const previousPage = pages[shouldPlayNum];
+        const previousPage = pages[currentPage];
         previousPage.classList.add('disabled');
         window.speechSynthesis.cancel();
 
-        shouldPlayNum++;
+        currentPage++;
     }
 
-    const page = pages[shouldPlayNum];
+    const page = pages[currentPage];
     page.classList.remove('disabled');
 
     const elements = $('#typewriter-screen .typewriter-page pre.effect-typewriter');
-    const element = elements[shouldPlayNum];
+    const element = elements[currentPage];
 
     text = element.innerText;
 
@@ -71,7 +77,7 @@ function typewriterContinue() {
 
     element.innerText = '';
 
-    if (shouldPlayNum + 1 >= elements.length) {
+    if (currentPage + 1 >= elements.length) {
         $('.typewriter-continue')[0].classList.add('disabled');
         $('.typewriter-end')[0].classList.remove('disabled');
     }
@@ -81,7 +87,7 @@ function typewriterContinue() {
     speakText(text);
 
     console.log("toquei");
-    typewriterStep(shouldPlayNum, element, text, 0);
+    typewriterStep(currentPage, element, text, 0);
 }
 
 window.addEventListener('load', () => {
