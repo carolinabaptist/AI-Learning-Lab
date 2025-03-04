@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacidade e AI</title>
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/mini-1.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
@@ -14,21 +15,38 @@
 <!-- TODO: criar classes para movimentar esse texto na tela -->
 <!-- TODO: consertar código para aumentar essa linha de escrita --> 
 <!-- TODO: tirar esse botão de continuar para apenas barra de espaço --> 
-<!-- TODO: adicionar imagens junto com o texto --> 
-<!-- nao pode ser identado -->
-<pre class="effect-typewriter">
-Olá, turma! 
-Que bom estarmos juntos de novo!
-Hoje, vamos continuar nossa 
-aventura no mundo da 
-Inteligência Artificial. 
-===
-Já descobrimos um pouco sobre 
-como ela funciona, e agora temos 
-um novo desafio: entender algo 
-muito importante... 
-a privacidade! 🔒
-===
+<!-- TODO: adicionar imagens junto com o texto -->
+
+            <div id="typewriter-screen">
+                <div class="typewriter-page">
+                    <pre class="effect-typewriter disabled">
+                        Olá, turma!
+                        
+                        Que bom estarmos juntos de novo!
+                        Hoje, vamos continuar nossa 
+                        aventura no mundo da 
+                        Inteligência Artificial.
+                    </pre>
+                </div>
+
+                <div class="typewriter-page disabled">
+                    <pre class="effect-typewriter">
+                        Já descobrimos um pouco sobre 
+                        como ela funciona, e agora temos 
+                        um novo desafio: entender algo 
+                        muito importante... 
+                        a privacidade! 🔒
+                    </pre>
+                </div>
+                
+                <div class="typewriter-page disabled">
+                    <pre class="effect-typewriter">
+                        sfsfgsrgdfgd
+                    </pre>
+                </div>
+            </div>
+
+<!--
 Mas, antes de seguirmos nessa 
 missão, vamos relembrar uma 
 coisa: o que é Inteligência 
@@ -49,15 +67,16 @@ A Inteligência Artificial não
 aprende sozinha! Somos nós que 
 ensinamos tudo a ela. Se ninguém 
 ensinar, ela não sabe o que fazer!
-</pre>
+-->
 
             </div>
-                <button class="pixel-button typewriter-continue" onclick="typewriterContinue($('.effect-typewriter')[0])">CONTINUAR</button>
-                <button class="pixel-button typewriter-end disabled" onclick="location.href='intro.html'">VOLTAR</button>
+                <button class="pixel-button typewriter-continue" onclick="typewriterContinue()">CONTINUAR</button>
+                <button class="pixel-button typewriter-end disabled" onclick="location.href='map-pt.html'">TERMINAR</button>
         </div>
     </div>
 
     <script src="../js/common.js"></script>
+    <script src="../js/min-jogo-1.js"></script>
 
 </body>
 </html>

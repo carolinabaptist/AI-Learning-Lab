@@ -58,3 +58,7 @@ pre.effect-typewriter {
     border-radius: 15px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+.effect-typewriter {
+    width: 615px;
+}
