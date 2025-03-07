@@ -78,3 +78,10 @@ pre.effect-typewriter {
     text-align: center;
     height: 450px;
 }
+
+
+/* Texto do balão */
+p.typewriter-effect {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
