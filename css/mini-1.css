@@ -62,12 +62,10 @@ pre.effect-typewriter {
 }
 
 .center-text {
-    display: flex;
-    flex-direction: row;
     justify-content: center; /* eixo x*/
     align-items: flex-end;
     text-align: center;
-    height: 350px;
+    padding-top: 50px;
 }
 
 .bottom-text {
