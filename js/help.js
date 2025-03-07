@@ -6,7 +6,7 @@ let shouldPlayNum = null;
 
 function typewriterStep(playingNum, element, i) {
     const text = globalTexts[playingNum];
-    const cancelled = (shouldPlayNum != playingNum);
+    const cancelled = (currentPage != playingNum);
     if (i < text.length && !cancelled) {
         element.innerHTML += text[i];
 
@@ -25,15 +25,15 @@ function typewriterStep(playingNum, element, i) {
 
 
 function typewriterContinue(element) {
-    if (shouldPlayNum == null) {
-        shouldPlayNum = 0;
+    if (currentPage == null) {
+        currentPage = 0;
     }
     else {
-        shouldPlayNum++;
+        currentPage++;
     }
 
 
-    text = globalTexts[shouldPlayNum];
+    text = globalTexts[currentPage];
 
     element.innerHTML = text;
 
@@ -42,12 +42,12 @@ function typewriterContinue(element) {
 
     element.innerHTML = '';
 
-    if (shouldPlayNum + 1 >= globalTexts.length) {
+    if (currentPage + 1 >= globalTexts.length) {
         $('.typewriter-continue')[0].classList.add('disabled');
         $('.typewriter-end')[0].classList.remove('disabled');
     }
 
-    typewriterStep(shouldPlayNum, element, 0);
+    typewriterStep(currentPage, element, 0);
 }
 
 function typewriter(element) {
