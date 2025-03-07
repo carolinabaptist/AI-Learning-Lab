@@ -8,14 +8,23 @@ let speechEnded = false;
 
 let speechFn = null;
 
-function speakText(text) {
-    console.log('aaa', text, speechEnded);
+function removeEmoji(text) {
+    return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+
+}
+
+function speakText(originalText) {
+    const text = removeEmoji(originalText);
+
+
+    console.log('aaa', originalText, text, speechEnded);
     let speech = new SpeechSynthesisUtterance(text);
 
     speech.lang = "pt-PT";
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 2;
+
 
     speech.addEventListener('end', (event) => {
         console.log('Speech ended after', event.elapsedTime, 'ms');
