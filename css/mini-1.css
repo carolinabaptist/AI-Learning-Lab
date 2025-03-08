@@ -80,3 +80,49 @@ p.typewriter-effect {
     font-size: 1.2rem;
     line-height: 1.5;
 }
+
+.pixel-button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    background-color:#FFD700;
+    color: black;
+    border: none;
+    padding: 15px 30px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    box-shadow: 
+        -4px -4px 0 #000,  
+        4px 4px 0 #000,  /* Sombra preta inferior direita */
+        -4px 4px 0 #000, /* Sombra preta inferior esquerda */
+        4px -4px 0 #000; /* Sombra preta superior direita */
+    
+    z-index:2; 
+}
+
+.pixel-button::before, 
+.pixel-button::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    background-color: #f4a500; /* Mesma cor do botão */
+    top: 0;
+}
+
+.pixel-button::before {
+    left: -10px;
+    box-shadow: -4px 0 0 #000; /* Borda preta */
+}
+
+.pixel-button::after {
+    right: -10px;
+    box-shadow: 4px 0 0 #000; /* Borda preta */
+}
+
+.pixel-button:hover {
+    background-color: #ffbf00; /* Um tom mais claro */
+    margin-top: -2px;
+}
