@@ -68,6 +68,20 @@ pre.effect-typewriter {
     padding-top: 150px;
 }
 
+.center-big-text {
+    justify-content: center; /* eixo x*/
+    align-items: flex-end;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.center-very-big-text {
+    justify-content: center; /* eixo x*/
+    align-items: flex-end;
+    text-align: center;
+    padding-top: 70px;
+}
+
 .img-text {
     justify-content: center; /* eixo x*/
     align-items: flex-end;
@@ -75,7 +89,6 @@ pre.effect-typewriter {
     padding-top: -10px;
 }
 
-/* Texto do balão */
 p.typewriter-effect {
     font-size: 1.2rem;
     line-height: 1.5;
@@ -89,7 +102,7 @@ p.typewriter-effect {
     border: none;
     padding: 15px 30px;
     position: absolute;
-    top: 70%;
+    top: 73%;
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
