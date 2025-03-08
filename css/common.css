@@ -47,7 +47,7 @@ pre.effect-typewriter {
 
 /* Balão de fala */
 .speech-bubble {
-    width: auto;
+    width: 688px;
     max-width: 75%;
     height: auto;
     background-color: #fff;

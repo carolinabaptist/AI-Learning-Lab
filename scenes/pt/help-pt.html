@@ -18,26 +18,21 @@
                     </h5>
                 </div>
                 <div class="center-container speech-bubble">
-
-<!-- nao pode ser identado -->
-<pre class="effect-typewriter">
-Instruções do Jogo
-Este jogo é indicado para crianças de 6 a 7 anos e deve ser
-jogado com o acompanhamento dos pais ou responsáveis.
-===
-O desafio é concluir todos os 4 jogos, aprendendo conceitos
-de Inteligência Artificial de forma divertida e interativa.
-===
-Cada jogo aborda um ou mais conceitos de Inteligência 
-Artificial como aprendizado supervisionado, viés,
-inteligência generativa entre outros.
-<!-- TODO: consertar esse bug -->
-===
-Os pais ou responsáveis devem auxiliar as crianças, 
-explicando os conceitos e incentivando a resolução dos 
-desafios.
-</pre>
-
+                    <div id="typewriter-screen">
+                        <div class="typewriter-page">
+                            <p class="typewriter-effect">Instruções do Jogo</p>
+                            <p class="typewriter-effect">Este jogo é indicado para crianças de 6 a 7 anos e deve ser jogado com o acompanhamento dos pais ou responsáveis.</p>
+                        </div>
+                        <div class="typewriter-page">
+                            <p class="typewriter-effect">O desafio é concluir todos os 4 jogos, aprendendo conceitos de Inteligência Artificial de forma divertida e interativa.</p>
+                        </div>
+                        <div class="typewriter-page">
+                            <p class="typewriter-effect">Cada jogo aborda um ou mais conceitos de Inteligência Artificial como aprendizado supervisionado, viés, inteligência generativa entre outros.</p>
+                        </div>
+                        <div class="typewriter-page">
+                            <p class="typewriter-effect">Os pais ou responsáveis devem auxiliar as crianças, explicando os conceitos e incentivando a resolução dos desafios.</p>
+                        </div>
+                    </div>
                 </div>
                 <button class="pixel-button typewriter-continue" onclick="typewriterContinue($('.effect-typewriter')[0])">CONTINUAR</button>
                 <button class="pixel-button typewriter-end disabled" onclick="location.href='../intro.html'">VOLTAR</button>
