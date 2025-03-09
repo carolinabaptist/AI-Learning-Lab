@@ -86,7 +86,7 @@ pre.effect-typewriter {
     justify-content: center; /* eixo x*/
     align-items: flex-end;
     text-align: center;
-    padding-top: -10px;
+    padding-top: 10px;
 }
 
 p.typewriter-effect {
