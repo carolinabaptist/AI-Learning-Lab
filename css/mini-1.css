@@ -74,7 +74,13 @@ pre.effect-typewriter {
     justify-content: center; /* eixo x*/
     align-items: flex-end;
     text-align: center;
-    padding-top: 150px;
+    padding: 10vh 10vw;
+}
+
+@media screen and (max-width: 480px) {
+    .center-text {
+        padding: 8vh 3vw;
+    }
 }
 
 .center-big-text {
@@ -91,11 +97,34 @@ pre.effect-typewriter {
     padding-top: 70px;
 }
 
+img {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+}
+
+.img-computer {
+    width: 460px;
+    max-width: 90%;
+}
+
+@media screen and (max-width: 480px) {
+    .img-computer {
+        width: 90%;
+    }
+}
+
 .img-text {
     justify-content: center; /* eixo x*/
-    align-items: flex-end;
+    align-items: center;
     text-align: center;
-    padding-top: 10px;
+    padding: 1vh 3vw;
+}
+
+@media screen and (max-width: 540px) {
+    .center-text {
+        padding: 8vh 3vw;
+    }
 }
 
 p.typewriter-effect {
