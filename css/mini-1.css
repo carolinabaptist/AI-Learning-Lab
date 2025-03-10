@@ -62,7 +62,7 @@ pre.effect-typewriter {
 @media screen and (max-width: 480px) {
     .board {
         width: 50vw;
-        height: 70vh;
+        height: 60vh;
     }
 }
 
@@ -80,8 +80,9 @@ pre.effect-typewriter {
 
 @media screen and (max-width: 480px) {
     .center-text {
-        padding-top: 8vh;
-        padding-bottom: 8vh;
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+        font-size: clamp(0.6rem, 10vh, 1.2rem);
     }
 }
 
@@ -95,17 +96,26 @@ pre.effect-typewriter {
 
 @media screen and (max-width: 480px) {
     .center-big-text {
-        padding-top: 3vh;
-        padding-bottom: 3vh;
-        font-size: clamp(0.6rem, 3vh, 1.2rem);
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        font-size: clamp(0.6rem, 2vh, 1.2rem);
     }
 }
 .center-very-big-text {
     justify-content: center; /* eixo x*/
     align-items: flex-end;
     text-align: center;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    padding-top: 8vh;
+    padding-bottom: 8vh;
+    font-size: clamp(0.6rem, 8vh, 1.2rem);
+}
+
+@media screen and (max-width: 480px) {
+    .center-very-big-text {
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        font-size: clamp(0.6rem, 2vh, 1.2rem);
+    }
 }
 
 img {
@@ -116,7 +126,7 @@ img {
 
 .img-computer {
     width: 100%;
-    max-width: 460px;
+    max-width: 260px;
 }
 
 @media screen and (max-width: 480px) {
@@ -171,7 +181,8 @@ img {
 
 .img-clock {
     width: 100%;
-    max-width: 270px;
+    max-width: 230px;
+    height: auto;
 }
 
 @media screen and (max-width: 480px) {
@@ -182,11 +193,35 @@ img {
 
 .img-heart {
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
+    height: auto
 }
 
 @media screen and (max-width: 480px) {
     .img-heart {
+        width: 90%;
+    }
+}
+
+.img-question {
+    width: 100%;
+    max-width: 170px;
+    height: auto;
+}
+
+@media screen and (max-width: 480px) {
+    .img-question {
+        width: 90%;
+    }
+}
+
+.img-lock {
+    width: 100%;
+    max-width: 155px;
+}
+
+@media screen and (max-width: 480px) {
+    .img-lock {
         width: 90%;
     }
 }
@@ -200,7 +235,9 @@ img {
 
 @media screen and (max-width: 540px) {
     .img-text {
-        padding: 0vh 0vw;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        font-size: clamp(0.6rem, 3vh, 1.2rem);
     }
 }
 
@@ -217,11 +254,11 @@ p.typewriter-effect {
 
 .pixel-button {
     font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
-    background-color:#FFD700;
+    font-size: clamp(12px, 3vw, 16px); 
+    background-color: #FFD700;
     color: black;
     border: none;
-    padding: 15px 30px;
+    padding: 10px 20px;
     position: absolute;
     top: 73%;
     left: 50%;
@@ -229,34 +266,54 @@ p.typewriter-effect {
     cursor: pointer;
     box-shadow: 
         -4px -4px 0 #000,  
-        4px 4px 0 #000,  /* Sombra preta inferior direita */
-        -4px 4px 0 #000, /* Sombra preta inferior esquerda */
-        4px -4px 0 #000; /* Sombra preta superior direita */
-    
-    z-index:2; 
+        4px 4px 0 #000, 
+        -4px 4px 0 #000, 
+        4px -4px 0 #000;
+    z-index: 2;
 }
 
 .pixel-button::before, 
 .pixel-button::after {
     content: "";
     position: absolute;
-    width: 10px;
+    width: 8px;
     height: 100%;
-    background-color: #f4a500; /* Mesma cor do botão */
+    background-color: #f4a500;
     top: 0;
 }
 
 .pixel-button::before {
-    left: -10px;
-    box-shadow: -4px 0 0 #000; /* Borda preta */
+    left: -8px;
+    box-shadow: -4px 0 0 #000;
 }
 
 .pixel-button::after {
-    right: -10px;
-    box-shadow: 4px 0 0 #000; /* Borda preta */
+    right: -8px;
+    box-shadow: 4px 0 0 #000;
 }
 
 .pixel-button:hover {
-    background-color: #ffbf00; /* Um tom mais claro */
+    background-color: #ffbf00;
     margin-top: -2px;
+}
+
+@media screen and (max-width: 768px) {
+    .pixel-button {
+        font-size: clamp(10px, 4vw, 14px);
+        padding: 8px 16px;
+        top: 75%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .pixel-button {
+        font-size: clamp(8px, 5vw, 12px);
+        padding: 6px 12px;
+        top: 80%;
+    }
+
+    .pixel-button::before, 
+    .pixel-button::after {
+        width: 6px;
+    }
 }
