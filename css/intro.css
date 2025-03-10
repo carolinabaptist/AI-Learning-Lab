@@ -40,17 +40,67 @@
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     
+    font-size: clamp(2rem, 5vw, 3.6rem);
+
     text-shadow:
-        6px 6px 0px #000, /* Camada principal (sombra preta) */
-        -2px -2px 0px #555, /* Detalhe superior (leve sombra cinza) */
-        2px -2px 0px #555, /* Detalhe superior */
-        -2px 2px 0px #555, /* Detalhe inferior */
-        2px 2px 0px #555; /* Detalhe inferior */
+        0.13em 0.13em 0 #000, /* Mantém a proporção da sombra */
+        -0.1em -0.1em 0 #555, 
+        0.1em -0.1em 0 #555, 
+        -0.1em 0.1em 0 #555, 
+        0.1em 0.1em 0 #555;
     
-    margin-top: -20px;
-    margin-bottom: -30px;
+    margin-top: clamp(-10px, -3vw, -20px);
+    margin-bottom: clamp(-25px, -4vw, -35px);
     line-height: 1.2;
 }
+
+@media screen and (max-width: 768px) {
+    .game-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+        margin-top: -10px;
+        margin-bottom: -5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .game-title {
+        font-size: clamp(1.5rem, 7vw, 2.5rem);
+        margin-top: -5px;
+        margin-bottom: -10px;
+    }
+}
+
+h1 {
+    font-size: 3.6rem;
+}
+
+.sub-title {
+    font-family: Courier New;
+    color: black;
+    font-size: clamp(0.5rem, 3.5vw, 1.5rem);
+}
+@media screen and (max-width: 768px) {
+    .sub-title {
+        font-size: clamp(0.5rem, 3.5vw, 1.1rem);
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .sub-title {
+        font-size: clamp(0.7rem, 5vw, 1rem);
+        margin-top: 10px;
+    }
+}
+
+h6 {
+    font-size: 1.3rem;
+}
+
+h5 {
+    font-size: 2.5rem;   
+}
+
+
 
 .flow {
     animation: float 3s ease-in-out infinite;
@@ -68,21 +118,6 @@
     }
 }
 
-.sub-title {
-    font-family: Courier New;
-    color: black;
-}
-
-h1 {
-    font-size: 3.6rem;
-}
-
-h5 {
-    font-size: 2.5rem;   
-}
-h6 {
-    font-size: 1.5rem;
-}
 
 
 .menu-options {
