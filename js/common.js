@@ -4,9 +4,6 @@ function playSound() {
     $('#click-sound')[0].play();
 }
 
-
-
-
 const waitTimeCharacter = 60;
 const waitTimeParagraph = 200;
 
@@ -37,13 +34,13 @@ function speakText(originalText) {
     speech.lang = "pt-PT";
 
     if (shouldSpeak()) {
-        speech.volume = 1;
+        speech.volume = 3;
     }
     else {
         speech.volume = 0;
     }
 
-    speech.rate = 1;
+    speech.rate = 0.7;
     speech.pitch = 2;
 
 
