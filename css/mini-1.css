@@ -74,27 +74,38 @@ pre.effect-typewriter {
     justify-content: center; /* eixo x*/
     align-items: flex-end;
     text-align: center;
-    padding: 10vh 10vw;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
 
 @media screen and (max-width: 480px) {
     .center-text {
-        padding: 8vh 3vw;
+        padding-top: 8vh;
+        padding-bottom: 8vh;
     }
 }
 
 .center-big-text {
     justify-content: center; /* eixo x*/
-    align-items: flex-end;
+    align-items: center;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 
+@media screen and (max-width: 480px) {
+    .center-big-text {
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+        font-size: clamp(0.6rem, 3vh, 1.2rem);
+    }
+}
 .center-very-big-text {
     justify-content: center; /* eixo x*/
     align-items: flex-end;
     text-align: center;
-    padding-top: 70px;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
 
 img {
@@ -104,8 +115,8 @@ img {
 }
 
 .img-computer {
-    width: 460px;
-    max-width: 90%;
+    width: 100%;
+    max-width: 460px;
 }
 
 @media screen and (max-width: 480px) {
@@ -114,16 +125,82 @@ img {
     }
 }
 
+.img-brain{ 
+    width: 100%;
+    max-width: 210px;
+}
+
+@media screen and (max-width: 480px) {
+    .img-brain {
+        width: 85%;
+    }
+}
+
+.img-cellphone {
+    width: 100%;
+    max-width: 235px;
+}
+
+@media screen and (max-width: 480px) {
+    .img-cellphone {
+        width: 90%;
+    }
+}
+
+.img-warn {
+    width: 100%;
+    max-width: 220px;
+}
+
+@media screen and (max-width: 480px) {
+    .img-warn {
+        width: 90%;
+    }
+}
+
+.img-book{
+    width: 100%;
+    max-width: 260px;
+}
+
+@media screen and (max-width: 480px) {
+    .img-book {
+        width: 90%;
+    }
+}
+
+.img-clock {
+    width: 100%;
+    max-width: 270px;
+}
+
+@media screen and (max-width: 480px) {
+    .img-clock {
+        width: 90%;
+    }
+}
+
+.img-heart {
+    width: 100%;
+    max-width: 200px;
+}
+
+@media screen and (max-width: 480px) {
+    .img-heart {
+        width: 90%;
+    }
+}
+
 .img-text {
     justify-content: center; /* eixo x*/
     align-items: center;
     text-align: center;
-    padding: 1vh 3vw;
+    padding: 2vh 2vw;
 }
 
 @media screen and (max-width: 540px) {
-    .center-text {
-        padding: 8vh 3vw;
+    .img-text {
+        padding: 0vh 0vw;
     }
 }
 
