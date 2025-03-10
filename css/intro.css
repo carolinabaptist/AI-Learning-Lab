@@ -123,15 +123,14 @@ h5 {
 .menu-options {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espaçamento entre as opções */
-    margin-top: 15px;
+    margin-top: clamp(10px, 3vw, 15px);
     text-align: center;
     z-index:2;
 }
 
 .menu-button {
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 4vw, 1.5rem);
     color: #FFD700;
     cursor: pointer;
     text-shadow:
@@ -145,9 +144,23 @@ h5 {
 
 .menu-button:hover {
     color: #FFEE00; 
-    transform: scale(1.1); 
+    transform: scale(1.05); 
 }
 
 .menu-button:active {
     transform: scale(0.95);
+}
+
+@media screen and (max-width: 480px) {
+    .menu-options {
+        margin-top: clamp(10px, 3vw, 15px);
+    }
+
+    .menu-button {
+        font-size: clamp(0.9rem, 5vw, 1.3rem);
+    }
+
+    .menu-button:hover {
+        transform: scale(1.02);
+    }
 }

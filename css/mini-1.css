@@ -312,7 +312,7 @@ p.typewriter-effect {
     .pixel-button {
         font-size: clamp(8px, 5vw, 12px);
         padding: 6px 12px;
-        top: 90%;
+        top: 85%;
     }
 
     .pixel-button::before, 
