@@ -99,8 +99,14 @@ pre.effect-typewriter {
 }
 
 p.typewriter-effect {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     line-height: 1.5;
+}
+
+@media screen and (max-width: 480px) {
+    p.typewriter-effect {
+        font-size: clamp(0.8rem, 2vw, 1.2rem);
+    }
 }
 
 .pixel-button {
