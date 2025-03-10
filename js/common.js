@@ -41,7 +41,7 @@ function speakText(originalText) {
     }
 
     speech.rate = 0.7;
-    speech.pitch = 2;
+    speech.pitch = 3;
 
 
     speech.addEventListener('end', (event) => {
