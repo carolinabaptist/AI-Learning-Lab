@@ -1,4 +1,3 @@
-
 const waitTimeCharacter = 60;
 const waitTimeParagraph = 200;
 
@@ -26,7 +25,7 @@ function speakText(originalText) {
     console.log('aaa', originalText, text, speechEnded);
     let speech = new SpeechSynthesisUtterance(text);
 
-    speech.lang = "pt-PT";
+    speech.lang = "EN-US"
 
     if (shouldSpeak()) {
         speech.volume = 3;
@@ -64,7 +63,7 @@ function typewriterStep(playingPage, playingParagraph, i) {
     textEnded = false;
 
     if (playingPage == 0 && playingParagraph == 0 && i == 0) {
-        $('.typewriter-continue')[0].textContent = 'CONTINUAR';
+        $('.typewriter-continue')[0].textContent = 'CONTINUE';
     }
 
     if (playingPage != currentPage) {
