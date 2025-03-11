@@ -80,21 +80,16 @@ html, body {
     }
 }
 
-.typewriter h1 {
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation: 
-      typing 3.5s steps(40, end),
-      blink-caret .75s step-end infinite;
-  }
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
-  }
+h1 {
+    font-size: clamp(16px, 5vw, 20px);;
+    margin: 0px;
+    padding: clamp(10px, 3vw, 30px);
+    color: white;
+    text-align: center;
+    text-shadow:
+    4px 4px 0px #000, /* Camada principal (sombra preta) */
+    -2px -2px 0px #000, /* Detalhe superior (leve sombra cinza) */
+    2px -2px 0px #000, /* Detalhe superior */
+    -2px 2px 0px #000, /* Detalhe inferior */
+    2px 2px 0px #000; /* Detalhe inferior */
+}
