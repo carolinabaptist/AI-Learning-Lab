@@ -28,14 +28,21 @@ document.querySelectorAll(".pixel-button").forEach((button) => {
 
 let jogador1 = "";
 let jogador2 = "";
+let jogador = "";
 let pontuacao1 = 0;
 let pontuacao2 = 0;
 
 function iniciarJogo() {
-    jogador1 = document.getElementById("nome-jogador1").value;
-    console.log("Nome do Jogador 1:", jogador1); 
-    jogador2 = document.getElementById("nome-jogador2").value || "Jogador 2"; // Se for vazio, usa um padrão
-    console.log("Nome do Jogador 2:", jogador2);
+
+    /*jogando sozinha*/
+    jogador = document.getElementById("nome-jogador").value || "Fora de jogo";
+    console.log("Jogador:", jogador);
+
+    /*jogo em dupla*/
+    jogador1 = document.getElementById("nome-jogador1").value || "Fora de jogo";
+    console.log("Jogador 1:", jogador1);
+    jogador2 = document.getElementById("nome-jogador2").value || "Fora de jogo";// Se for vazio, usa um padrão
+    console.log("Jogador 2:", jogador2);
 
     document.getElementById("tela-nomes").style.display = "none";
     document.getElementById("placar").style.display = "block";
