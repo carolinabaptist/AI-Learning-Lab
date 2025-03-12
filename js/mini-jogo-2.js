@@ -1,3 +1,5 @@
+document.getElementById("tela-nomes").style.display = "none";
+
 document.querySelectorAll(".pixel-button").forEach((button) => {
 
     button.addEventListener("click", () => {
@@ -12,5 +14,14 @@ document.querySelectorAll(".pixel-button").forEach((button) => {
         /*console.log("Modo de jogo selecionado:", modojogo);*/
 
         document.getElementById("tela-inicial").style.display = "none";
+        document.getElementById("tela-nomes").style.display = "block";
+
+        if (modojogo === 1) {
+            document.getElementById("um-jogador").style.display = "flex";
+            document.getElementById("dois-jogadores").style.display = "none"; 
+        } else {
+            document.getElementById("um-jogador").style.display = "none";
+            document.getElementById("dois-jogadores").style.display = "flex";
+        }
     });
 });
