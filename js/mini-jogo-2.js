@@ -9,6 +9,8 @@ document.querySelectorAll(".pixel-button").forEach((button) => {
             modojogo = 2;
         }
 
-        console.log("Modo de jogo selecionado:", modojogo);
+        /*console.log("Modo de jogo selecionado:", modojogo);*/
+
+        document.getElementById("tela-inicial").style.display = "none";
     });
 });
