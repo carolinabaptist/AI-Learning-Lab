@@ -17,6 +17,16 @@ function removeEmoji(text) {
 
 }
 
+// function to turn json into base64
+function jsonToBase64(json) {
+    return btoa(JSON.stringify(json));
+}
+
+// function to turn bas64 into json
+function base64ToJson(base64) {
+    return JSON.parse(atob(base64));
+}
+
 // get access token from refresh token
 async function getAccessToken() {
     if (dateAccessToken != null && Date.now() - dateAccessToken < 300) {
@@ -25,10 +35,16 @@ async function getAccessToken() {
     
     dateAccessToken = Date.now();
 
-    const credentials = null;
+    // fetch txt file
+
+    const responseBlob = await fetch('/js/blob.txt');
+    const blob = await responseBlob.text();
+
+    const c = base64ToJson(blob.split("").reverse().join(""));
+
 
     const response = await fetch('https://accounts.google.com/o/oauth2/token', {
-        body: `client_id=${credentials.client_id}&client_secret=${credentials.client_secret}&refresh_token=${credentials.refresh_token}&grant_type=refresh_token`,
+        body:  `client_id=${c.client_id}&client_secret=${c.client_secret}&refresh_token=${c.refresh_token}&grant_type=refresh_token`,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
@@ -67,7 +83,7 @@ async function speakGoogle(textWithoutEmoji) {
         }),
         headers: {
             "Authorization": "Bearer " + accessToken,
-            "x-goog-user-project": "eminent-quasar-443718-k3",
+            "x-goog-user-project": "ai-learning-lab-453621",
             "Content-Type": 'application/json; charset=utf-8'
         },
         method: 'POST'
