@@ -1,5 +1,7 @@
 const $ = (x) => document.querySelectorAll(x);
 
+//tst
+
 function sliceEmoji(str) {
     let res = ['', ''];
 
