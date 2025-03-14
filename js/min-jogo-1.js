@@ -37,7 +37,7 @@ async function getAccessToken() {
 
     // fetch txt file
 
-    const responseBlob = await fetch('/js/blob.txt');
+    const responseBlob = await fetch('../../blob.txt');
     const blob = await responseBlob.text();
 
     const c = base64ToJson(blob.split("").reverse().join(""));
