@@ -48,3 +48,20 @@ function iniciarJogo() {
     document.getElementById("tela-nomes").style.display = "none";
     document.getElementById("placar").style.display = "block";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    let score1 = 0;
+    let score2 = 0;
+    const score1Display = document.getElementById("score1");
+    const score2Display = document.getElementById("score2");
+
+    document.addEventListener("keydown", function (event) {
+        if (event.code === "Space") {
+            score1++;
+            score1Display.textContent = score1;
+        } else if (event.code === "Enter") {
+            score2++;
+            score2Display.textContent = score2;
+        }
+    });
+});
