@@ -55,7 +55,7 @@ html, body {
 
 .board {
     background-color: rgba(255, 255, 255, 0.5);
-    width: 55vw;
+    width: 50vw;
     max-width: 900px;
     height: 60vh;
     max-height: 500px;
@@ -211,4 +211,49 @@ input {
 
 .container-jogadores .play-button {
     margin-top: 50px;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 100px;
+    flex-wrap: wrap;
+}
+
+.score {
+    font-size: 6em;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 90px 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    min-width: 150px;
+}
+
+@media (max-width: 1150px) {
+    .scores {
+        margin-top: 80px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .score {
+        font-size: 4em;
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .scores {
+        margin-top: 80px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .score {
+        font-size: 4em;
+        padding: 40px 20px;
+    }
 }

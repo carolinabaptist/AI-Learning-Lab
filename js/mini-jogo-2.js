@@ -1,4 +1,5 @@
 document.getElementById("tela-nomes").style.display = "none";
+document.getElementById("placar").style.display = "none";
 
 document.querySelectorAll(".pixel-button").forEach((button) => {
 
