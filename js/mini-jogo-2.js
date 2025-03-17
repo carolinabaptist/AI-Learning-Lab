@@ -54,14 +54,25 @@ document.addEventListener("DOMContentLoaded", function () {
     let score2 = 0;
     const score1Display = document.getElementById("score1");
     const score2Display = document.getElementById("score2");
+    
+    let raceActive = true;
 
     document.addEventListener("keydown", function (event) {
-        if (event.code === "Space") {
+       
+        if (!raceActive) return;
+       
+        if ((event.key === "1")) {
             score1++;
             score1Display.textContent = score1;
-        } else if (event.code === "Enter") {
+            raceActive = false;
+        } else if ((event.key === "2")) {
             score2++;
             score2Display.textContent = score2;
+            raceActive = false;
         }
+    });
+    
+    document.addEventListener("keyup", function () {
+        firstKeyPressed = null;
     });
 });
