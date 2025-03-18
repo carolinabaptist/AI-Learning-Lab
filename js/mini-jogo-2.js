@@ -52,11 +52,12 @@ function iniciarJogo() {
 document.addEventListener("DOMContentLoaded", function () {
     let score1 = 0;
     let score2 = 0;
-    const maxRounds = 3;
+    const maxRounds = 2;
     let round = 1;
     let keyPressCount = 0;
     const score1Display = document.getElementById("score1");
     const score2Display = document.getElementById("score2");
+    const placar = document.getElementById("placar");
 
     function isPlacarVisible(){
         return document.getElementById("placar").style.display === "block";
@@ -64,17 +65,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener("keydown", function (event) {
         if (!isPlacarVisible() || round > maxRounds) return;
+
+        console.log(`Round: ${round}, Max Rounds: ${maxRounds}`);
+
         keyPressCount++;
-        if (keyPressCount === 2 || keyPressCount === 4 || keyPressCount ==6) return;
+        if (keyPressCount === 2 || keyPressCount === 4) return;
         if (event.key === "1") {
                 score1++;
                 score1Display.textContent = score1;
                 round++;
+                if (round > maxRounds) {
+                    setTimeout(() => {
+                        placar.style.display = "none";
+                    }, 3000);
+                }
                 return
         } else if (event.key === "2") {
                 score2++;
                 score2Display.textContent = score2;
                 round++;
+                if (round > maxRounds) {
+                    setTimeout(() => {
+                        placar.style.display = "none";
+                    }, 3000);
+                }
                 return
         }
     });
