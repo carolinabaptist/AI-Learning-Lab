@@ -78,7 +78,9 @@ async function speakGoogle(textWithoutEmoji) {
                 "name": "pt-PT-Standard-A",
                 "ssmlGender": "FEMALE" 
             },
-            "audioConfig" : {"audioEncoding":"MP3"}
+            "audioConfig" : {"audioEncoding":"MP3",
+                "speakingRate": 0.8
+            }
         }),
         headers: {
             "Authorization": "Bearer " + accessToken,
