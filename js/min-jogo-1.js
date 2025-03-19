@@ -1,4 +1,3 @@
-
 const waitTimeCharacter = 60;
 const waitTimeParagraph = 200;
 
