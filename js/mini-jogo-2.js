@@ -1,5 +1,6 @@
 document.getElementById("tela-nomes").style.display = "none";
 document.getElementById("placar").style.display = "none";
+document.getElementById("msg").style.display = "none";
 
 document.querySelectorAll(".pixel-button").forEach((button) => {
 
@@ -52,12 +53,13 @@ function iniciarJogo() {
 document.addEventListener("DOMContentLoaded", function () {
     let score1 = 0;
     let score2 = 0;
-    const maxRounds = 2;
+    const maxRounds = 3;
     let round = 1;
     let keyPressCount = 0;
     const score1Display = document.getElementById("score1");
     const score2Display = document.getElementById("score2");
     const placar = document.getElementById("placar");
+    const msg = document.getElementById("msg");
 
     function isPlacarVisible(){
         return document.getElementById("placar").style.display === "block";
@@ -69,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`Round: ${round}, Max Rounds: ${maxRounds}`);
 
         keyPressCount++;
-        if (keyPressCount === 2 || keyPressCount === 4) return;
+        if (keyPressCount === 2 || keyPressCount === 4 || keyPressCount ==6) return;
         if (event.key === "1") {
                 score1++;
                 score1Display.textContent = score1;
@@ -77,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (round > maxRounds) {
                     setTimeout(() => {
                         placar.style.display = "none";
+                        msg.style.display = "block";
                     }, 3000);
                 }
                 return
@@ -87,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (round > maxRounds) {
                     setTimeout(() => {
                         placar.style.display = "none";
+                        msg.style.display = "block";
                     }, 3000);
                 }
                 return
