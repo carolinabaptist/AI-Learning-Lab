@@ -1,4 +1,4 @@
-const waitTimeCharacter = 60;
+const waitTimeCharacter = 50;
 const waitTimeParagraph = 200;
 
 let currentPage = null;
