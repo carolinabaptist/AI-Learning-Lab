@@ -1,6 +1,9 @@
 const waitTimeCharacter = 50;
 const waitTimeParagraph = 200;
 
+// to fix text being cut at the end of google text to speech (wont be needed I think)
+const waitTimeBugFix = 0;
+
 let currentPage = null;
 
 let textEnded = false;
@@ -66,19 +69,24 @@ function base64toblob(string) {
     return new Blob([new Uint8Array(array)], { type: 'audio/mp3' });
 }
 
+
+
 async function speakGoogle(textWithoutEmoji) {
     await getAccessToken();
 
-    const result = await fetch('https://texttospeech.googleapis.com/v1/text:synthesize/', {
+    const url = 'https://texttospeech.googleapis.com/v1/text:synthesize/';
+
+    const request = {
         body: JSON.stringify({
             "input": { "text": textWithoutEmoji },
             "voice": {    
                 "languageCode": "pt-pt", 
                 // ver https://cloud.google.com/text-to-speech/docs/voices?hl=pt-br&cloudshell=false
-                "name": "pt-PT-Standard-A",
-                "ssmlGender": "FEMALE" 
+                "name": "pt-PT-Wavenet-A",
+                "ssmlGender": "FEMALE"
             },
-            "audioConfig" : {"audioEncoding":"MP3",
+            "audioConfig" : {
+                "audioEncoding": "MP3",
                 "speakingRate": 0.8
             }
         }),
@@ -88,7 +96,14 @@ async function speakGoogle(textWithoutEmoji) {
             "Content-Type": 'application/json; charset=utf-8'
         },
         method: 'POST'
-    });
+    };
+
+    // workaround for text being cut at the very end for short sequences (won't be needed I think)
+    //await fetch(url, request);
+    //await fetch(url, request);
+    //await fetch(url, request);
+
+    const result = await fetch(url, request);
 
     const resultJson = await result.json();
 
@@ -96,7 +111,7 @@ async function speakGoogle(textWithoutEmoji) {
 
     $('#speech')[0].src = URL.createObjectURL(blob);
 
-    $('#speech')[0].play();
+    await $('#speech')[0].play();
 }
 
 function shouldSpeak() {
@@ -115,13 +130,17 @@ async function speakText(originalText) {
 
 
     console.log('Speech ended after', begin - end, 'ms');
-        
-    speechEnded = true;
 
-    if (speechFn != null) {
-        speechFn();
-        speechFn = null;
-    }
+    setTimeout(() => {
+        speechEnded = true;
+
+        if (speechFn != null) {
+            speechFn();
+            speechFn = null;
+        }
+    }, waitTimeBugFix);
+
+    
 }
 
 function typewriterStep(playingPage, playingParagraph, i) {
