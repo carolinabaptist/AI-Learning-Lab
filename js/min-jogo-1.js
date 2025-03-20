@@ -161,7 +161,7 @@ function typewriterStep(playingPage, playingParagraph, i) {
     }
 
     if (i < text.length) {
-        paragraph.innerText = text.slice(0, i + 1);
+        paragraph.innerHTML = translateEmojis(text.slice(0, i + 1));
 
         setTimeout(() => typewriterStep(playingPage, playingParagraph, i + 1), waitTimeCharacter);
     }

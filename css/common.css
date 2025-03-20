@@ -114,3 +114,10 @@ pre.effect-typewriter {
         -10px 40px 0 #000,
         0px 40px 0 #000;
 }
+
+.emoji {
+    display: inline;
+    height: 1em;
+    width: 1em;
+
+}
