@@ -2,7 +2,7 @@ const waitTimeCharacter = 50;
 const waitTimeParagraph = 200;
 
 // to fix text being cut at the end of google text to speech (wont be needed I think)
-const waitTimeBugFix = 0;
+const waitTimeBugFix = 3000;
 
 let currentPage = null;
 
@@ -13,6 +13,9 @@ let speechFn = null;
 
 let dateAccessToken = null;
 let accessToken = null;
+
+let globalPlayingPage = null;
+let globalPlayingParagraph = null;
 
 function removeEmoji(text) {
     return text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
@@ -69,6 +72,25 @@ function base64toblob(string) {
     return new Blob([new Uint8Array(array)], { type: 'audio/mp3' });
 }
 
+function download(objectUrl) {
+    const filename = 'speech-' + globalPlayingPage + '-' + globalPlayingParagraph + '.mp3';
+
+
+    console.log("aaaa", typeof(objectUrl));
+
+    const url = objectUrl;
+
+    const a = document.createElement('a');
+
+    a.style.display = 'none';
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+
+    console.log('downloaded', filename);
+}
 
 
 async function speakGoogle(textWithoutEmoji) {
@@ -109,7 +131,11 @@ async function speakGoogle(textWithoutEmoji) {
 
     var blob = base64toblob(resultJson.audioContent);
 
-    $('#speech')[0].src = URL.createObjectURL(blob);
+    var objectUrl = URL.createObjectURL(blob);
+
+    //download(objectUrl);
+
+    $('#speech')[0].src = objectUrl;
 
     await $('#speech')[0].play();
 }
@@ -144,6 +170,10 @@ async function speakText(originalText) {
 }
 
 function typewriterStep(playingPage, playingParagraph, i) {
+    globalPlayingPage = playingPage;
+    globalPlayingParagraph = playingParagraph;
+
+
     const pages = $('#typewriter-screen .typewriter-page');
     const page = pages[playingPage];
     const paragraphs = page.querySelectorAll('.typewriter-effect');
