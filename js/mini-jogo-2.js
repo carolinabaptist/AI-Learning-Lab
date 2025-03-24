@@ -34,6 +34,11 @@ let jogador = "";
 let pontuacao1 = 0;
 let pontuacao2 = 0;
 
+function iniciarSaudacao() {
+    const saudacao = `Bem-vindos à corrida de robôs! Hoje na pista temos ${jogador1} contra ${jogador2}. Que vença quem conseguir montar o caminho mais rápido!`;
+    falar(saudacao);
+}
+
 function iniciarJogo() {
 
     /*jogando sozinha*/
@@ -46,6 +51,8 @@ function iniciarJogo() {
 
     document.getElementById("tela-nomes").style.display = "none";
     document.getElementById("placar").style.display = "block";
+
+    iniciarSaudacao();
 }
 
 function tocarSomChegada() {
