@@ -257,3 +257,12 @@ input {
         padding: 40px 20px;
     }
 }
+
+.end-container {
+    display: flex; 
+    flex-direction: column;
+    gap: clamp(10px, 4vw, 40px);
+    width: 15vw;
+    height: 10vh;
+    margin: 25vh auto 0 auto;
+}
