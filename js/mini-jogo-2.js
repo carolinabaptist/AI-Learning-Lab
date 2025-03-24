@@ -42,12 +42,16 @@ function iniciarJogo() {
 
     /*jogo em dupla*/
     jogador1 = document.getElementById("nome-jogador1").value || "Fora de jogo";
-    console.log("Jogador 1:", jogador1);
     jogador2 = document.getElementById("nome-jogador2").value || "Fora de jogo";// Se for vazio, usa um padrão
-    console.log("Jogador 2:", jogador2);
 
     document.getElementById("tela-nomes").style.display = "none";
     document.getElementById("placar").style.display = "block";
+}
+
+function falar(texto) {
+    const voz = new SpeechSynthesisUtterance(texto);
+    voz.lang = "pt-PT";
+    speechSynthesis.speak(voz);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -75,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.key === "1") {
                 score1++;
                 score1Display.textContent = score1;
+                falar(`Ponto para ${jogador1}!`);
                 round++;
                 if (round > maxRounds) {
                     setTimeout(() => {
@@ -86,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (event.key === "2") {
                 score2++;
                 score2Display.textContent = score2;
+                falar(`Ponto para ${jogador2}!`);
                 round++;
                 if (round > maxRounds) {
                     setTimeout(() => {
