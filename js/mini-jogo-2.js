@@ -48,9 +48,16 @@ function iniciarJogo() {
     document.getElementById("placar").style.display = "block";
 }
 
+function tocarSomChegada() {
+    console.log("Tentando tocar som...");
+    const audio = new Audio("../../assets/audio/winner-sound.mp3");
+    audio.play();
+}
+
 function falar(texto) {
     const voz = new SpeechSynthesisUtterance(texto);
     voz.lang = "pt-PT";
+    voz.volume = 1.1;
     speechSynthesis.speak(voz);
 }
 
@@ -79,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.key === "1") {
                 score1++;
                 score1Display.textContent = score1;
+                tocarSomChegada();
                 falar(`Ponto para ${jogador1}!`);
                 round++;
                 if (round > maxRounds) {
@@ -91,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (event.key === "2") {
                 score2++;
                 score2Display.textContent = score2;
+                tocarSomChegada();
                 falar(`Ponto para ${jogador2}!`);
                 round++;
                 if (round > maxRounds) {
