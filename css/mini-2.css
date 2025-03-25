@@ -266,3 +266,21 @@ input {
     height: 10vh;
     margin: 25vh auto 0 auto;
 }
+
+.bottom {
+    background-color: transparent;
+    margin-top: -0.5em;
+    padding: 2em;
+    position: fixed; 
+    left: 50%;
+    transform:translateX(-50%);
+    bottom: 0;
+}
+
+.center-text {
+    justify-content: center; /* eixo x*/
+    align-items: flex-end;
+    text-align: center;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}

@@ -139,17 +139,17 @@ function speakText(originalText) {
     console.log('aaa', originalText, text, speechEnded);
     let speech = new SpeechSynthesisUtterance(text);
  
-    speech.lang = "EN-US"
+    speech.lang = "PT-PT"
  
     if (shouldSpeak()) {
-        speech.volume = 3;
+        speech.volume = 1;
     }
     else {
         speech.volume = 0;
     }
  
-    speech.rate = 0.7;
-    speech.pitch = 3;
+    //speech.rate = 0.7;
+    //speech.pitch = 3;
  
  
     speech.addEventListener('end', (event) => {
@@ -173,10 +173,6 @@ function typewriterStep(playingPage, playingParagraph, i) {
     const text = paragraph.getAttribute('typewriter-text');
  
     textEnded = false;
- 
-    if (playingPage == 0 && playingParagraph == 0 && i == 0) {
-        $('.typewriter-continue')[0].textContent = 'CONTINUE';
-    }
  
     if (playingPage != currentPage) {
         return;
@@ -233,8 +229,8 @@ function typewriterContinue() {
     page.classList.remove('disabled');
  
     if (currentPage + 1 >= pages.length) {
-        $('.typewriter-continue')[0].classList.add('disabled');
-        $('.typewriter-end')[0].classList.remove('disabled');
+        $('#typewriter-continue')[0].classList.add('disabled');
+        $('#typewriter-end')[0].classList.remove('disabled');
     }
  
     const text = page.querySelector('.typewriter-effect').getAttribute('typewriter-text');
@@ -245,40 +241,16 @@ function typewriterContinue() {
     typewriterStep(currentPage, 0, 0);
 }
  
-function begin() {
-    document.addEventListener('keydown', (event) => {
-        if (event.key == ' ') {
-            $('.pixel-button:not(.disabled)')[0].click();
-        }
-    });
- 
-    if (!shouldSpeak()) {
-        typewriterContinue();
-    }
+function typewriterBegin() {
+    $('#msg')[0].style.display = 'none';
+    $('#typewriter-screen')[0].classList.remove('disabled');
+    typewriterContinue();
 }
  
 window.addEventListener('load', () => {
-    let screen = $('#typewriter-screen')[0];
-    console.log(screen);
- 
-    if (!screen) {
-        console.log("We don't have a typewriteer effect here");
-        return;
-    }
- 
     for (const paragraph of $('#typewriter-screen .typewriter-page .typewriter-effect')) {
         const text = paragraph.innerText;
         paragraph.innerText = '';
         paragraph.setAttribute('typewriter-text', text);
-    }
- 
-    if (window.speechSynthesis.getVoices().length == 0) {
-        console.log('Waiting for voices to load');
-        window.speechSynthesis.addEventListener('voiceschanged', () => {
-                begin();
-        });
-    }
-    else {
-        begin();
     }
 });

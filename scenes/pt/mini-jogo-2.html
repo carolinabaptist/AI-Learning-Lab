@@ -41,8 +41,28 @@
                 </div>
                 <div id="msg">
                     <div class="end-container">
-                        <button class="play-button">Fim</button>
+                        <button class="play-button" onclick="typewriterBegin()">Fim</button>
                     </div>
+                </div>
+                <div id="typewriter-screen" class="typewriter-speech center-text disabled">
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect">Oi oi!</p>
+                        <p class="typewriter-effect">aa  oi👋😊</p>
+                    </div>
+    
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect img-text">eu acho que sim 🤖 </p>
+                        <p class="typewriter-effect img-text">testando um dois trses</p>
+                    </div>
+
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect img-text">eu acho que talvez 🤖 </p>
+                    </div>
+
+                    <div class="bottom">
+                    <button class="play-button" id="typewriter-continue" onclick="typewriterContinue()">Continuar</button>
+                    <button class="play-button disabled" id="typewriter-end"  onclick="location.href='map-pt.html'"">Voltar</button>
+                </div>
                 </div>
                 </div>
             </div>
