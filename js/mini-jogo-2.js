@@ -139,8 +139,9 @@ function speakText(originalText) {
     console.log('aaa', originalText, text, speechEnded);
     let speech = new SpeechSynthesisUtterance(text);
  
-    speech.lang = "PT-PT"
- 
+    speech.lang = "pt-PT"
+    speech.rate = 0.7;
+    
     if (shouldSpeak()) {
         speech.volume = 1;
     }
