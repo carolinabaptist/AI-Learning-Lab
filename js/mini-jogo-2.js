@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.key === "1") {
                 score1++;
                 score1Display.textContent = score1;
-                tocarSomChegada();
+                //tocarSomChegada();
                 falar(`Ponto para ${jogador1}!`);
                 round++;
                 if (round > maxRounds) {
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (event.key === "2") {
                 score2++;
                 score2Display.textContent = score2;
-                tocarSomChegada();
+                //tocarSomChegada();
                 falar(`Ponto para ${jogador2}!`);
                 round++;
                 if (round > maxRounds) {
