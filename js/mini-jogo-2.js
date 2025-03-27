@@ -64,7 +64,7 @@ function falar(texto) {
 document.addEventListener("DOMContentLoaded", function () {
     let score1 = 0;
     let score2 = 0;
-    const maxRounds = 2;
+    const maxRounds = 3;
     let round = 1;
     let keyPressCount = 0;
     const score1Display = document.getElementById("score1");
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`Round: ${round}, Max Rounds: ${maxRounds}`);
 
         keyPressCount++;
-        if (keyPressCount === 2 || keyPressCount === 4) return;
+        if (keyPressCount === 2 || keyPressCount === 4 || keyPressCount == 6) return;
         if (event.key === "1") {
                 score1++;
                 score1Display.textContent = score1;
