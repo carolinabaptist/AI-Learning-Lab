@@ -140,7 +140,7 @@ function speakText(originalText) {
     let speech = new SpeechSynthesisUtterance(text);
  
     speech.lang = "pt-PT"
-    speech.rate = 0.7;
+    speech.rate = 0.5;
     
     if (shouldSpeak()) {
         speech.volume = 1;
