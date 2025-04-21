@@ -1,0 +1,95 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.background-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left:0;
+    overflow: hidden;
+}
+
+.background-slide {
+    width: 100%;
+    height: 100%;
+    background: url('../assets/images/background-new.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .background-slide {
+        background-size: cover;
+        background-position: center;
+    }
+    body {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .background-slide {
+        background-size: cover;
+        background-position: center;
+    }
+    body {
+        font-size: 10px;
+    }
+}
+
+.container {
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 800px;
+    margin: auto;
+    padding: 70px;
+}
+
+.board {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 65vw;
+    max-width: 900px;
+    height: 70vh;
+    max-height: 500px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex; /*se torna um Flex Container*/
+    flex-direction: column; /* itens ficam em coluna (de cima para baixo)*/
+    padding-top: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 480px) {
+    .board {
+        width: 50vw;
+        height: 60vh;
+    }
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0px;
+    padding: 30px;
+    color: white;
+    text-align: center;
+    text-shadow:
+    4px 4px 0px #000, /* Camada principal (sombra preta) */
+    -2px -2px 0px #000, /* Detalhe superior (leve sombra cinza) */
+    2px -2px 0px #000, /* Detalhe superior */
+    -2px 2px 0px #000, /* Detalhe inferior */
+    2px 2px 0px #000; /* Detalhe inferior */
+}

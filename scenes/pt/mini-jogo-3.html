@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensine o Mário!</title>
+    <link rel="stylesheet" href="../../css/mini-3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <div class="background-slide">
+            <div class="container board">
+                <h1>Carregue seu Modelo Treinado</h1>
+                <h6>Faça upload dos 3 arquivos exportados do Teachable Machine:</h6>
+                <label>model.json</label>
+                <input type="file" id="modelJson" accept=".json"><br>
+                <label>metadata.json</label>
+                <input type="file" id="metadataJson" accept=".json"><br>
+            
+                <label>weights.bin</label>
+                <input type="file" id="weightsBin" accept=".bin"><br>
+            
+                <button onclick="carregarModelo()">Carregar Modelo</button>
+            
+                <div id="status"></div>
+            
+                <video id="webcam" width="200" height="150" autoplay playsinline></video>
+            
+                <img id="mario" src="mario.png" width="50" style="position: absolute; bottom: 0; left: 50px;">
+            </div>
+</body>
+</html>
