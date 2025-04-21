@@ -63,8 +63,6 @@ html, body {
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex; /*se torna um Flex Container*/
-    flex-direction: column; /* itens ficam em coluna (de cima para baixo)*/
     padding-top: 10px;
     text-decoration: none;
     color: black;
@@ -92,4 +90,8 @@ h1 {
     2px -2px 0px #000, /* Detalhe superior */
     -2px 2px 0px #000, /* Detalhe inferior */
     2px 2px 0px #000; /* Detalhe inferior */
+}
+
+.center {
+    text-align: center;
 }

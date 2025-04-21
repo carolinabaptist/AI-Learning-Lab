@@ -12,22 +12,25 @@
         <div class="background-slide">
             <div class="container board">
                 <h1>Carregue seu Modelo Treinado</h1>
-                <h6>Faça upload dos 3 arquivos exportados do Teachable Machine:</h6>
-                <label>model.json</label>
-                <input type="file" id="modelJson" accept=".json"><br>
-                <label>metadata.json</label>
-                <input type="file" id="metadataJson" accept=".json"><br>
+                <div class="center">
+                    <h6>Faça upload dos 3 arquivos exportados do Teachable Machine:</h6>
+                    <label>model.json</label>
+                    <input type="file" id="modelJson" accept=".json"><br>
+                    
+                    <label>metadata.json</label>
+                    <input type="file" id="metadataJson" accept=".json"><br>
             
-                <label>weights.bin</label>
-                <input type="file" id="weightsBin" accept=".bin"><br>
+                    <label>weights.bin</label>
+                    <input type="file" id="weightsBin" accept=".bin"><br>
             
-                <button onclick="carregarModelo()">Carregar Modelo</button>
+                    <button onclick="carregarModelo()">Carregar Modelo</button>
             
-                <div id="status"></div>
+                    <div id="status"></div>
             
-                <video id="webcam" width="200" height="150" autoplay playsinline></video>
+                    <video id="webcam" width="200" height="150" autoplay playsinline></video>
             
-                <img id="mario" src="mario.png" width="50" style="position: absolute; bottom: 0; left: 50px;">
+                    <img id="mario" src="mario.png" width="50" style="position: absolute; bottom: 0; left: 50px;">
+                </div>
             </div>
 </body>
 </html>
