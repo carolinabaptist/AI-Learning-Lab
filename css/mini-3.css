@@ -95,3 +95,22 @@ h1 {
 .center {
     text-align: center;
 }
+
+.bg-mario {
+    background-color:#4ca3f2;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  .white-rect {
+    background-color: white;
+    width: 100%;
+    max-width: 1000px;
+    height: 550px;
+    position: absolute;
+    bottom: 40px; /* Ajuste conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }

@@ -6,36 +6,44 @@
     <title>Ensine o Mário!</title>
     <link rel="stylesheet" href="../../css/mini-3.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
 </head>
 <body>
-    <div class="background-container">
-        <div class="background-slide">
-            <div class="container board">
-                <h1>Carregue seu Modelo Treinado</h1>
-                <div class="center">
-                    <h1>1</h1>
-                    <label>model.json</label>
-                    <br>
-                    <input type="file" id="modelJson" accept=".json"><br>
-
-                    <h1>2</h1>
-                    <label>metadata.json</label>
-                    <br>
-                    <input type="file" id="metadataJson" accept=".json"><br>
-                    
-                    <h1>3</h1>
-                    <label>weights.bin</label>
-                    <br>
-                    <input type="file" id="weightsBin" accept=".bin"><br>
-                    <br>
-                    <button onclick="carregarModelo()">Carregar Modelo</button>
-            
-                    <div id="status"></div>
-            
-                    <video id="webcam" width="200" height="150" autoplay playsinline></video>
-            
-                    <img id="mario" src="mario.png" width="50" style="position: absolute; bottom: 0; left: 50px;">
+    <div id="tela-inicial">
+        <div class="background-container">
+            <div class="background-slide">
+                <div class="container board">
+                    <h1>Carregue seu Modelo Treinado</h1>
+                    <div class="center">
+                        <h1>1</h1>
+                        <label>model.json</label>
+                        <br>
+                        <input type="file" id="modelJson" accept=".json"><br>
+                        
+                        <h1>2</h1>
+                        <label>metadata.json</label>
+                        <br>
+                        <input type="file" id="metadataJson" accept=".json"><br>
+                        
+                        <h1>3</h1>
+                        <label>weights.bin</label>
+                        <br>
+                        <input type="file" id="weightsBin" accept=".bin"><br>
+                        <br>
+                        <br>
+                        <br>
+                        <button onclick="carregarModelo()">Carregar Modelo</button>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="tela-jogo">
+        <div class="bg-mario">
+            <div class="white-rect">
+            </div>
+        </div>
+    </div>
+    <script src="../../js/mini-jogo-3.js"></script>
 </body>
 </html>
