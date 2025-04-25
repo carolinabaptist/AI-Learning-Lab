@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../css/mini-3.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
     <div id="tela-inicial">
@@ -39,6 +40,11 @@
         </div>
     </div>
     <div id="tela-jogo">
+        <div class="webcam">
+            <div id="webcam-container"></div>
+            <div id="label-container"></div>
+        </div>
+        
         <div class="bg-mario">
             <div class="white-rect">
             </div>
