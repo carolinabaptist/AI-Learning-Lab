@@ -1,10 +1,45 @@
 document.getElementById("tela-jogo").style.display = "none";
 
+const canvas = document.getElementById("jogo-canvas");
+const ctx = canvas.getContext("2d");
+
+const canvasWidth = 1024;
+const canvasHeight = 768;
+
+const backgroundWidth = 3392;
+const backgroundHeight = 223;
+
+//const aspectRatio = canvasWidth / canvasHeight;
+const backgroundScale = backgroundHeight / canvasHeight;
+
+const backgroundShow = canvasWidth / backgroundScale;
+
+
+const scrollVal = 0;
+
+canvas.width = canvasWidth;
+canvas.height = canvasHeight;
+
+
+// Cria uma nova imagem
+const background = new Image();
+background.src = "../../assets/images/mario-bc.png";
+
+// carrega imagem de fundo no canvas
+async function carregarBg() {
+    await new Promise((resolve) => {
+        background.onload = function () {
+            resolve();
+        };
+    });
+}
+
 
 let model, webcam, labelContainer, maxPredictions;
 
 // Load the image model and setup the webcam
 async function carregarModelo() {
+
 
     document.getElementById("tela-inicial").style.display = "none";
     document.getElementById("tela-jogo").style.display = "block";
@@ -28,6 +63,9 @@ async function carregarModelo() {
     webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
     await webcam.play();
+
+    //await carregarBg();
+
     window.requestAnimationFrame(loop);
 
     // append elements to the DOM
@@ -36,6 +74,7 @@ async function carregarModelo() {
     for (let i = 0; i < maxPredictions; i++) { // and class labels
         labelContainer.appendChild(document.createElement("div"));
     }
+
 }
 
 async function loop() {
@@ -44,7 +83,14 @@ async function loop() {
 
     let predictedClass = getClass(prediction);
 
-    console.log(predictedClass);
+    //console.log(predictedClass);
+
+    //console.log("vou desenhar");
+
+    ctx.drawImage(background, scrollVal, 0, scrollVal, backgroundHeight);
+
+    //console.log("ok");
+
     window.requestAnimationFrame(loop);
 }
 
