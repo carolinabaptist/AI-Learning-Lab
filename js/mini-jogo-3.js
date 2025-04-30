@@ -1,4 +1,6 @@
-document.getElementById("tela-jogo").style.display = "none";
+//document.getElementById("tela-jogo").style.display = "none";
+
+document.getElementById("tela-inicial").style.display = "none";
 document.getElementById("tela-final").style.display = "none";
 
 // the idea is to be able to change those values in the browser console
@@ -19,6 +21,20 @@ let startTime = undefined;
 
 const canvas = document.getElementById("jogo-canvas");
 const ctx = canvas.getContext("2d");
+
+const canvasBitmap = document.getElementById("background-debug"); // document.createElement("canvas");
+canvasBitmap.width = 3392;
+canvasBitmap.height = 223;
+const ctxBitmap = canvasBitmap.getContext("2d", { willReadFrequently: true });
+
+
+const bitmap = new Image();
+bitmap.src = "../../assets/images/mario-collision-mask.png";
+bitmap.onload = function () {
+    ctxBitmap.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasBitmap.width, canvasBitmap.height);
+}
+// draw bitmap in ctxBitmap
+
 
 const canvasWidth = 1024;
 const canvasHeight = 768;
@@ -114,15 +130,17 @@ async function loop(timestamp) {
 
     //console.log(scrollVal);
 
+    let movex;
+
     if (leftPressed) {
-        move(-marioSpeed);
+        movex = -marioSpeed;
         if (!marioWalking) {
             marioWalking = true;
             marioWalkingTime = elapsedTime;
         }
     }
     else if (rightPressed) {
-        move(marioSpeed);
+        movex = marioSpeed;
 
         if (!marioWalking) {
             marioWalking = true;
@@ -130,7 +148,17 @@ async function loop(timestamp) {
         }
     }
     else {
+        movex = 0;
         marioWalking = false;
+    }
+
+    if (marioWalking) {
+        move(movex);
+
+        if (collision()) {
+            marioPos += -movex;
+            console.log("colidiu", movex);	
+        }
     }
 
 
@@ -162,8 +190,6 @@ async function loop(timestamp) {
         console.log("marioCycle is not integer", marioCycle);
     }
 
-    console.log(marioCycle);
-
 
     ctx.drawImage(background, scrollVal * backgroundScale, 0, canvasWidth * backgroundScale, backgroundHeight, 0, 0, canvasWidth, canvasHeight);
 
@@ -182,8 +208,6 @@ async function loop(timestamp) {
 
     let selectSprite = 16 * marioCycle;
 
-    selectSprite = 0;
-
 
     ctx.drawImage(spriteMario, 80 + selectSprite, 32, 16, 16, marioPosScreen, canvasHeight - 40 / backgroundScale, 16 / backgroundScale, 16 / backgroundScale);
 
@@ -195,6 +219,29 @@ async function loop(timestamp) {
     }
 
     window.requestAnimationFrame(loop);
+}
+
+function collision() {
+    const posx = marioPos * backgroundScale;
+    const posy = (canvasHeight - 40 / backgroundScale) * backgroundScale;
+
+    const side = 14; // square is 16x16 but there is transparency around mario
+
+    const imageData = ctxBitmap.getImageData(posx, posy, side, side);
+
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        const r = imageData.data[i];
+        const g = imageData.data[i + 1];
+        const b = imageData.data[i + 2];
+        if (r === 0 && g === 0 && b === 0) {
+            return true;
+        }
+        else if (!(r === 255 && g === 255 && b === 255)) {
+            console.log("nem preto nem branco", r, g, b);
+        }
+    }
+
+    return false;
 }
 
 function scroll(amount) {
@@ -243,6 +290,11 @@ document.addEventListener("keydown", function (event) {
     } else if (event.key === "ArrowUp") {
         upPressed = true;
     }
+    else {
+        return;
+    }
+
+    event.preventDefault();
 });
 
 document.addEventListener("keyup", function (event) {
@@ -253,6 +305,11 @@ document.addEventListener("keyup", function (event) {
     } else if (event.key === "ArrowUp") {
         upPressed = false;
     }
+    else {
+        return;
+    }
+
+    event.preventDefault();
 });
 
 function getClass(prediction) {
