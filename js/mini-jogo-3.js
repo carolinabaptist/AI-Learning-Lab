@@ -6,10 +6,16 @@ document.getElementById("tela-final").style.display = "none";
 var scrollVal = 0;
 var marioPos = 200;
 var marioSpeed = 10;
+var marioFacingRight = true;
+var marioWalking = false;
+var marioWalkingTime = undefined;
+var marioCycle = 0;
 
 var leftPressed = false;
 var rightPressed = false;
 var upPressed = false;
+
+let startTime = undefined;
 
 const canvas = document.getElementById("jogo-canvas");
 const ctx = canvas.getContext("2d");
@@ -90,7 +96,13 @@ document.getElementById("tela-inicial").style.display = "none";
 document.getElementById("tela-jogo").style.display = "block";
 window.requestAnimationFrame(loop);
 
-async function loop() {
+async function loop(timestamp) {
+    if (startTime === undefined) {
+        startTime = timestamp;
+        marioWalkingTime = timestamp;
+    }
+    const elapsedTime = (timestamp - startTime) / 1000;
+
     //webcam.update(); // update the webcam frame
     //let prediction = await predict();
 
@@ -104,15 +116,79 @@ async function loop() {
 
     if (leftPressed) {
         move(-marioSpeed);
+        if (!marioWalking) {
+            marioWalking = true;
+            marioWalkingTime = elapsedTime;
+        }
     }
     else if (rightPressed) {
         move(marioSpeed);
+
+        if (!marioWalking) {
+            marioWalking = true;
+            marioWalkingTime = elapsedTime;
+        }
     }
+    else {
+        marioWalking = false;
+    }
+
+
+    let walkingElapsed = (timestamp - marioWalkingTime) / 1000;
+
+
+    let formula = walkingElapsed * 5;
+
+
+    if (marioWalking) {
+        marioCycle = 1 + Math.floor(formula) % 3;
+
+    }
+    else {  
+        marioCycle = 0;
+    }
+
+    if (formula < 0) {
+        console.log("formula < 0", formula);
+    }
+
+    if (marioCycle > 3) {
+        console.log("marioCycle > 3", marioCycle);
+    }
+    if (marioCycle < 0) {
+        console.log("marioCycle < 0", marioCycle);
+    }
+    if (!Number.isInteger(marioCycle)) {
+        console.log("marioCycle is not integer", marioCycle);
+    }
+
+    console.log(marioCycle);
+
 
     ctx.drawImage(background, scrollVal * backgroundScale, 0, canvasWidth * backgroundScale, backgroundHeight, 0, 0, canvasWidth, canvasHeight);
 
-    ctx.drawImage(spriteMario, 80, 32, 16, 16, marioPos - scrollVal, canvasHeight - 40 / backgroundScale, 16 / backgroundScale, 16 / backgroundScale);
-    //console.log("ok");
+    let oldTrans = ctx.getTransform();
+
+    let marioPosScreen;
+
+    if (marioFacingRight) {
+        marioPosScreen = marioPos - scrollVal;
+    }
+    else {
+        ctx.scale(-1, 1);
+        marioPosScreen = -marioPos + scrollVal - 16 / backgroundScale; //canvasWidth - (marioPos - scrollVal) - 16 / backgroundScale;
+    }
+    
+
+    let selectSprite = 16 * marioCycle;
+
+    selectSprite = 0;
+
+
+    ctx.drawImage(spriteMario, 80 + selectSprite, 32, 16, 16, marioPosScreen, canvasHeight - 40 / backgroundScale, 16 / backgroundScale, 16 / backgroundScale);
+
+
+    ctx.setTransform(oldTrans);
 
     if (marioPos >= 10920) {
         console.log("ganhou");
@@ -134,6 +210,13 @@ function scroll(amount) {
 }
 
 function move(amount) {
+    if (amount < 0) {
+        marioFacingRight = false;
+    }
+    else if (amount > 0) {
+        marioFacingRight = true;
+    }
+
     const scrollBorder = 150;
     const scrollAmount = scrollBorder + 100;
     const screenMario = marioPos - scrollVal;
