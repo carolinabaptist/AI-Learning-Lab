@@ -30,11 +30,17 @@ document.getElementById("tela-final").style.display = "none";
 // the idea is to be able to change those values in the browser console
 
 var scrollVal = 0;
-var marioPos = 200;
-var marioSpeed = 10;
+var marioPosx = 200;
+var marioPosy = 0;
+var marioSpeed = 600;
+var marioJumpSpeed = 1000;
+var marioJumpTime = 0.3; // seconds
 var marioFacingRight = true;
 var marioWalking = false;
 var marioWalkingTime = undefined;
+var marioJumping = false;
+var marioJumpingUp = true;
+var marioJumpingTime = undefined;
 var marioCycle = 0;
 
 var leftPressed = false;
@@ -176,33 +182,40 @@ async function handleWebcam() {
     }
 }
 
+let previousTimestamp = undefined;
 
 async function loop(timestamp) {
-    console.log("a");
     if (startTime === undefined) {
         startTime = timestamp;
+        previousTimestamp = timestamp;
         marioWalkingTime = timestamp;
     }
     const elapsedTime = (timestamp - startTime) / 1000;
+    const dt = (timestamp - previousTimestamp) / 1000;
+    previousTimestamp = timestamp;
 
     if (!debug) {
         await handleWebcam();
+    }
+    else {
+        collisionDebug();
     }
 
     const notPressing = !leftPressed && !rightPressed & !upPressed;
 
 
-    let movex;
+    let movex = 0;
+    let movey = 0;
 
     if (leftPressed || (notPressing && webcamLeft)) {
-        movex = -marioSpeed;
+        movex = -marioSpeed * dt;
         if (!marioWalking) {
             marioWalking = true;
             marioWalkingTime = elapsedTime;
         }
     }
     else if (rightPressed || (notPressing && webcamRight)) {
-        movex = marioSpeed;
+        movex = marioSpeed * dt;
 
         if (!marioWalking) {
             marioWalking = true;
@@ -210,17 +223,56 @@ async function loop(timestamp) {
         }
     }
     else {
-        movex = 0;
         marioWalking = false;
     }
+    
+    if (upPressed || (notPressing && webcamUp)) {
+        if (!marioJumping) {
+            marioJumping = true;
+            marioJumpingUp = true;
+            marioJumpingTime = timestamp;
+        }
+    }
 
-    if (marioWalking) {
+    let jumpingElapsed = (timestamp - marioJumpingTime) / 1000;
+
+    if (marioJumping) {
+        if (marioJumpingUp) {
+            movey = marioJumpSpeed * dt;
+            //console.log("marioJumpingUp", movey);
+            if (jumpingElapsed > marioJumpTime) {
+                marioJumpingUp = false;
+            }
+        }
+        else {
+            movey = -marioJumpSpeed * dt;
+            //console.log("marioJumpingDown", movey);
+        }
+    }
+
+    if (marioWalking || marioJumping) {
         move(movex);
 
         if (collision()) {
-            marioPos += -movex;
-            console.log("colidiu", movex);	
+            marioPosx += -movex;
+            console.log("colidiu horizontal", movex);	
         }
+
+        marioPosy += movey;
+
+        if (collision()) {
+            marioPosy += -movey;
+
+            if (marioJumpingUp) {
+                console.log("colidiu vertical pra cima", movey);
+                marioJumpingUp = false;
+            }
+            else {
+                console.log("colidiu vertical pra baixo", movey);
+                marioJumping = false;
+            }
+        }
+
     }
 
 
@@ -230,9 +282,11 @@ async function loop(timestamp) {
     let formula = walkingElapsed * 5;
 
 
-    if (marioWalking) {
+    if (marioJumping) {
+        marioCycle = 5;
+    }
+    else if (marioWalking) {
         marioCycle = 1 + Math.floor(formula) % 3;
-
     }
     else {  
         marioCycle = 0;
@@ -242,12 +296,13 @@ async function loop(timestamp) {
         console.log("formula < 0", formula);
     }
 
-    if (marioCycle > 3) {
-        console.log("marioCycle > 3", marioCycle);
+    if (marioCycle > 5) {
+        console.log("marioCycle > 5", marioCycle);
     }
     if (marioCycle < 0) {
         console.log("marioCycle < 0", marioCycle);
     }
+
     if (!Number.isInteger(marioCycle)) {
         console.log("marioCycle is not integer", marioCycle);
     }
@@ -260,23 +315,25 @@ async function loop(timestamp) {
     let marioPosScreen;
 
     if (marioFacingRight) {
-        marioPosScreen = marioPos - scrollVal;
+        marioPosScreen = marioPosx - scrollVal;
     }
     else {
         ctx.scale(-1, 1);
-        marioPosScreen = -marioPos + scrollVal - 16 / backgroundScale; //canvasWidth - (marioPos - scrollVal) - 16 / backgroundScale;
+        marioPosScreen = -marioPosx + scrollVal - 16 / backgroundScale; //canvasWidth - (marioPos - scrollVal) - 16 / backgroundScale;
     }
     
 
     let selectSprite = 16 * marioCycle;
 
+    const marioPosVertical = (canvasHeight - 40 / backgroundScale) - marioPosy;
 
-    ctx.drawImage(spriteMario, 80 + selectSprite, 32, 16, 16, marioPosScreen, canvasHeight - 40 / backgroundScale, 16 / backgroundScale, 16 / backgroundScale);
+
+    ctx.drawImage(spriteMario, 80 + selectSprite, 32, 16, 16, marioPosScreen, marioPosVertical, 16 / backgroundScale, 16 / backgroundScale);
 
 
     ctx.setTransform(oldTrans);
 
-    if (marioPos >= 10920) {
+    if (marioPosx >= 10920) {
         console.log("ganhou");
     }
 
@@ -284,7 +341,60 @@ async function loop(timestamp) {
 }
 
 function collision() {
-    const posx = marioPos * backgroundScale;
+    //console.log("collision()");
+    if (debug) {
+        return collisionDebug();
+    }
+    else {
+        return collisionNormal();
+    }
+}
+
+
+function collisionDebug() {
+    ctxBitmap.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasBitmap.width, canvasBitmap.height);
+
+    const posx = marioPosx * backgroundScale;
+    const posy = (canvasHeight - 40 / backgroundScale) * backgroundScale - marioPosy * backgroundScale;
+
+    const side = 14;
+
+    const imageData = ctxBitmap.getImageData(posx, posy, side, side);
+
+    let collided = false;
+
+    // change color (white to yellow, black to red)
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        const r = imageData.data[i];
+        const g = imageData.data[i + 1];
+        const b = imageData.data[i + 2];
+        const a = imageData.data[i + 3];
+
+        if (r === 255 && g === 255 && b === 255) {
+            imageData.data[i] = 255;
+            imageData.data[i + 1] = 255;
+            imageData.data[i + 2] = 0;
+            //console.log("branco");
+        } else if (r === 0 && g === 0 && b === 0) {
+            imageData.data[i] = 255;
+            imageData.data[i + 1] = 0;
+            imageData.data[i + 2] = 0;
+            //console.log("preto");
+            collided = true;
+        }
+        else {
+            console.log(r, g, b);
+        }
+    }
+
+    ctxBitmap.putImageData(imageData, posx, posy);
+
+    return collided;
+
+}
+
+function collisionNormal() {
+    const posx = marioPosx * backgroundScale;
     const posy = (canvasHeight - 40 / backgroundScale) * backgroundScale;
 
     const side = 14; // square is 16x16 but there is transparency around mario
@@ -328,12 +438,12 @@ function move(amount) {
 
     const scrollBorder = 150;
     const scrollAmount = scrollBorder + 100;
-    const screenMario = marioPos - scrollVal;
+    const screenMario = marioPosx - scrollVal;
 
-    marioPos += amount;
+    marioPosx += amount;
 
-    if (marioPos < 0) {
-        marioPos = 0;
+    if (marioPosx < 0) {
+        marioPosx = 0;
     }
 
     if (screenMario < scrollBorder) { 
