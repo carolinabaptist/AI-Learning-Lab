@@ -1,7 +1,31 @@
-//document.getElementById("tela-jogo").style.display = "none";
+const DIREITA = "direita";
 
-document.getElementById("tela-inicial").style.display = "none";
+const ESQUERDA = "esquerda";
+
+const CIMA = "cima";
+
+const CIMA_DIREITA = "cima direita";
+
+const NADA = "nada";
+
+
+var debug = (new URL(window.location)).searchParams.get('debug') !== null;
+if (debug) {
+    document.getElementById("tela-inicial").style.display = "none";
+
+    var css = document.getElementsByTagName("link")[0];
+    css.parentNode.removeChild(css);
+
+    window.requestAnimationFrame(loop);
+}
+else {
+    document.getElementById("tela-jogo").style.display = "none";
+    document.getElementById("background-debug").style.display = "none";
+}
+
 document.getElementById("tela-final").style.display = "none";
+
+
 
 // the idea is to be able to change those values in the browser console
 
@@ -16,6 +40,12 @@ var marioCycle = 0;
 var leftPressed = false;
 var rightPressed = false;
 var upPressed = false;
+
+
+var webcamLeft = false;
+var webcamRight = false;
+var webcamUp = false;
+
 
 let startTime = undefined;
 
@@ -73,9 +103,6 @@ let model, webcam, labelContainer, maxPredictions;
 async function carregarModelo() {
 
 
-    document.getElementById("tela-inicial").style.display = "none";
-    document.getElementById("tela-jogo").style.display = "block";
-
     const modelJson = document.getElementById("modelJson").files[0];
     const weightsBin = document.getElementById("weightsBin").files[0];
     const metadataJson = document.getElementById("metadataJson").files[0];
@@ -105,41 +132,76 @@ async function carregarModelo() {
 
     
     window.requestAnimationFrame(loop);
+
+    
+    document.getElementById("tela-inicial").style.display = "none";
+    document.getElementById("tela-jogo").style.display = "block";
+}
+
+async function handleWebcam() {
+    webcam.update(); // update the webcam frame
+    let prediction = await predict();
+
+    let predictedClass = getClass(prediction);
+
+    console.log(predictedClass);
+
+    if (predictedClass === DIREITA) {
+        webcamLeft = false;
+        webcamRight = true;
+        webcamUp = false;
+    }
+    else if (predictedClass === ESQUERDA) {
+        webcamLeft = true;
+        webcamRight = false;
+        webcamUp = false;
+    }
+    else if (predictedClass === CIMA) {
+        webcamLeft = false;
+        webcamRight = false;
+        webcamUp = true;
+    }
+    else if (predictedClass === CIMA_DIREITA) {
+        webcamLeft = false;
+        webcamRight = true;
+        webcamUp = true;
+    }
+    else if (predictedClass === NADA) {
+        webcamLeft = false;
+        webcamRight = false;
+        webcamUp = false;
+    }
+    else {
+        console.log("predictedClass não reconhecido", predictedClass);
+    }
 }
 
 
-document.getElementById("tela-inicial").style.display = "none";
-document.getElementById("tela-jogo").style.display = "block";
-window.requestAnimationFrame(loop);
-
 async function loop(timestamp) {
+    console.log("a");
     if (startTime === undefined) {
         startTime = timestamp;
         marioWalkingTime = timestamp;
     }
     const elapsedTime = (timestamp - startTime) / 1000;
 
-    //webcam.update(); // update the webcam frame
-    //let prediction = await predict();
+    if (!debug) {
+        await handleWebcam();
+    }
 
-    //let predictedClass = getClass(prediction);
+    const notPressing = !leftPressed && !rightPressed & !upPressed;
 
-    //console.log(predictedClass);
-
-    //console.log("vou desenhar");´
-
-    //console.log(scrollVal);
 
     let movex;
 
-    if (leftPressed) {
+    if (leftPressed || (notPressing && webcamLeft)) {
         movex = -marioSpeed;
         if (!marioWalking) {
             marioWalking = true;
             marioWalkingTime = elapsedTime;
         }
     }
-    else if (rightPressed) {
+    else if (rightPressed || (notPressing && webcamRight)) {
         movex = marioSpeed;
 
         if (!marioWalking) {
