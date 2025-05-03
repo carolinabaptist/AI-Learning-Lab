@@ -31,7 +31,7 @@ document.getElementById("tela-final").style.display = "none";
 
 var scrollVal = 0;
 var marioPosx = 200;
-var marioPosy = 0;
+var marioPosy = -13; //0;
 var marioSpeed = 600;
 var marioJumpSpeed = 1000;
 var marioJumpTime = 0.3; // seconds
@@ -41,6 +41,7 @@ var marioWalkingTime = undefined;
 var marioJumping = false;
 var marioJumpingUp = true;
 var marioJumpingTime = undefined;
+var marioOnGround = true;
 var marioCycle = 0;
 
 var leftPressed = false;
@@ -184,6 +185,21 @@ async function handleWebcam() {
 
 let previousTimestamp = undefined;
 
+function checkMarioGround() {
+    marioPosy -= 1;
+
+    if (collision()) {
+        marioOnGround = true;
+        console.log("mario esta no chao", marioPosy);
+    }
+    else {
+        marioOnGround = false;
+        console.log("mario esta no ar", marioPosy);
+    }
+
+    marioPosy -= -1;
+}
+
 async function loop(timestamp) {
     if (startTime === undefined) {
         startTime = timestamp;
@@ -201,8 +217,11 @@ async function loop(timestamp) {
         collisionDebug();
     }
 
-    const notPressing = !leftPressed && !rightPressed & !upPressed;
+    if (collision()) {
+        console.log("mario ficou preso na parede ou chao");
+    }
 
+    const notPressing = !leftPressed && !rightPressed & !upPressed;
 
     let movex = 0;
     let movey = 0;
@@ -226,15 +245,37 @@ async function loop(timestamp) {
         marioWalking = false;
     }
     
-    if (upPressed || (notPressing && webcamUp)) {
+    if (upPressed || (notPressing && webcamUp)) {   
         if (!marioJumping) {
             marioJumping = true;
+            marioGround = false;
             marioJumpingUp = true;
             marioJumpingTime = timestamp;
         }
     }
 
     let jumpingElapsed = (timestamp - marioJumpingTime) / 1000;
+
+    if (marioWalking) {
+        move(movex);
+
+        if (collision()) {
+            marioPosx += -movex;
+            console.log("colidiu horizontal", movex);
+        }
+
+        else {
+            checkMarioGround();
+    
+            if (!marioOnGround  && !marioJumping) {
+                marioJumping = true;
+                marioJumpingUp = false;
+            }
+            else {
+                marioGround = false;
+            }
+        }
+    }
 
     if (marioJumping) {
         if (marioJumpingUp) {
@@ -248,21 +289,19 @@ async function loop(timestamp) {
             movey = -marioJumpSpeed * dt;
             //console.log("marioJumpingDown", movey);
         }
-    }
-
-    if (marioWalking || marioJumping) {
-        move(movex);
-
-        if (collision()) {
-            marioPosx += -movex;
-            console.log("colidiu horizontal", movex);	
-        }
 
         marioPosy += movey;
 
-        if (collision()) {
-            marioPosy += -movey;
+        let collided = false;
 
+        while (collision()) {
+            collided = true;
+            marioPosy += -movey / Math.abs(movey);
+
+            console.log("movi",  -movey / Math.abs(movey))
+        }
+
+        if (collided) {
             if (marioJumpingUp) {
                 console.log("colidiu vertical pra cima", movey);
                 marioJumpingUp = false;
@@ -270,6 +309,7 @@ async function loop(timestamp) {
             else {
                 console.log("colidiu vertical pra baixo", movey);
                 marioJumping = false;
+                marioGround = true;
             }
         }
 
@@ -325,7 +365,7 @@ async function loop(timestamp) {
 
     let selectSprite = 16 * marioCycle;
 
-    const marioPosVertical = (canvasHeight - 40 / backgroundScale) - marioPosy;
+    const marioPosVertical = (canvasHeight - 40 / backgroundScale) - marioPosy - 5;
 
 
     ctx.drawImage(spriteMario, 80 + selectSprite, 32, 16, 16, marioPosScreen, marioPosVertical, 16 / backgroundScale, 16 / backgroundScale);
