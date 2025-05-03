@@ -8,6 +8,58 @@ const CIMA_DIREITA = "cima direita";
 
 const NADA = "nada";
 
+// the idea is to be able to change those values in the browser console
+
+var scrollVal;
+var marioPosx;
+var marioPosy;
+var marioSpeed;
+var marioJumpSpeed;
+var marioJumpTime;
+var marioFacingRight;
+var marioWalking;
+var marioWalkingTime;
+var marioJumping;
+var marioJumpingUp;
+var marioJumpingTime;
+var marioGround;
+var marioCycle;
+var marioDying;
+var marioDyingTime;
+
+function init() {
+    scrollVal = 0;
+    marioPosx = 200;
+    marioPosy = -13; // was 0;
+    marioSpeed = 600;
+    marioJumpSpeed = 1000;
+    marioJumpTime = 0.3; // seconds
+    marioFacingRight = true;
+    marioWalking = false;
+    marioWalkingTime = undefined;
+    marioJumping = false;
+    marioJumpingUp = true;
+    marioJumpingTime = undefined;
+    marioGround = true;
+    marioCycle = 0;
+    marioDying = false;
+    marioDyingTime = undefined;
+}
+
+init();
+
+var leftPressed = false;
+var rightPressed = false;
+var upPressed = false;
+
+
+var webcamLeft = false;
+var webcamRight = false;
+var webcamUp = false;
+
+
+let startTime = undefined;
+
 
 var debug = (new URL(window.location)).searchParams.get('debug') !== null;
 if (debug) {
@@ -24,37 +76,6 @@ else {
 }
 
 document.getElementById("tela-final").style.display = "none";
-
-
-
-// the idea is to be able to change those values in the browser console
-
-var scrollVal = 0;
-var marioPosx = 200;
-var marioPosy = -13; //0;
-var marioSpeed = 600;
-var marioJumpSpeed = 1000;
-var marioJumpTime = 0.3; // seconds
-var marioFacingRight = true;
-var marioWalking = false;
-var marioWalkingTime = undefined;
-var marioJumping = false;
-var marioJumpingUp = true;
-var marioJumpingTime = undefined;
-var marioOnGround = true;
-var marioCycle = 0;
-
-var leftPressed = false;
-var rightPressed = false;
-var upPressed = false;
-
-
-var webcamLeft = false;
-var webcamRight = false;
-var webcamUp = false;
-
-
-let startTime = undefined;
 
 const canvas = document.getElementById("jogo-canvas");
 const ctx = canvas.getContext("2d");
@@ -179,7 +200,7 @@ async function handleWebcam() {
         webcamUp = false;
     }
     else {
-        console.log("predictedClass não reconhecido", predictedClass);
+        console.log("bug predictedClass não reconhecido", predictedClass);
     }
 }
 
@@ -189,15 +210,19 @@ function checkMarioGround() {
     marioPosy -= 1;
 
     if (collision()) {
-        marioOnGround = true;
-        console.log("mario esta no chao", marioPosy);
+        marioGround = true;
+        //console.log("mario esta no chao", marioPosy);
     }
     else {
-        marioOnGround = false;
-        console.log("mario esta no ar", marioPosy);
+        marioGround = false;
+        //console.log("mario esta no ar", marioPosy);
     }
 
     marioPosy -= -1;
+}
+
+if (debug) {
+    collisionDebug();
 }
 
 async function loop(timestamp) {
@@ -210,16 +235,32 @@ async function loop(timestamp) {
     const dt = (timestamp - previousTimestamp) / 1000;
     previousTimestamp = timestamp;
 
-    if (!debug) {
-        await handleWebcam();
+    if (marioPosy < -90 && !marioDying) {
+        console.log("tou morrendo, mario caiu do mapa", marioPosy);
+        marioDying = true;
+        marioDyingTime = timestamp;
     }
-    else {
-        collisionDebug();
+
+    if (marioDying) {
+        if (timestamp - marioDyingTime > 1000) {
+            console.log("mario morreu, vai voltar pra posicao inicial");
+            init();
+        }
+        window.requestAnimationFrame(loop);
+
+        return;
     }
 
     if (collision()) {
-        console.log("mario ficou preso na parede ou chao");
+        console.log("mario ficou preso na parede ou chao, vai voltar pra posicao inicial");
+
+        init();
     }
+
+    if (!debug) {
+        await handleWebcam();
+    }
+    
 
     const notPressing = !leftPressed && !rightPressed & !upPressed;
 
@@ -261,19 +302,14 @@ async function loop(timestamp) {
 
         if (collision()) {
             marioPosx += -movex;
-            console.log("colidiu horizontal", movex);
+            //console.log("colidiu horizontal", movex);
         }
 
-        else {
-            checkMarioGround();
+        checkMarioGround();
     
-            if (!marioOnGround  && !marioJumping) {
-                marioJumping = true;
-                marioJumpingUp = false;
-            }
-            else {
-                marioGround = false;
-            }
+        if (!marioGround  && !marioJumping) {
+            marioJumping = true;
+            marioJumpingUp = false;
         }
     }
 
@@ -298,16 +334,16 @@ async function loop(timestamp) {
             collided = true;
             marioPosy += -movey / Math.abs(movey);
 
-            console.log("movi",  -movey / Math.abs(movey))
+            //console.log("movi",  -movey / Math.abs(movey))
         }
 
         if (collided) {
             if (marioJumpingUp) {
-                console.log("colidiu vertical pra cima", movey);
+                //console.log("colidiu vertical pra cima", movey);
                 marioJumpingUp = false;
             }
             else {
-                console.log("colidiu vertical pra baixo", movey);
+                //console.log("colidiu vertical pra baixo", movey);
                 marioJumping = false;
                 marioGround = true;
             }
@@ -333,18 +369,18 @@ async function loop(timestamp) {
     }
 
     if (formula < 0) {
-        console.log("formula < 0", formula);
+        console.log("bug formula < 0", formula);
     }
 
     if (marioCycle > 5) {
-        console.log("marioCycle > 5", marioCycle);
+        console.log("bug marioCycle > 5", marioCycle);
     }
     if (marioCycle < 0) {
-        console.log("marioCycle < 0", marioCycle);
+        console.log("bug marioCycle < 0", marioCycle);
     }
 
     if (!Number.isInteger(marioCycle)) {
-        console.log("marioCycle is not integer", marioCycle);
+        console.log("bug marioCycle is not integer", marioCycle);
     }
 
 
