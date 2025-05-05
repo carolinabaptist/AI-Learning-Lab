@@ -290,6 +290,10 @@ async function loop(timestamp) {
         console.log("ganhou");
         marioWinning = true;
         marioWinningTime = timestamp;
+
+        audioBackground.pause();
+
+        // play audio win
     }
 
     if (marioWinning) {
