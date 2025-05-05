@@ -64,7 +64,7 @@ var webcamUp = false;
 
 let startTime = undefined;
 
-const endPos = 10880;
+const endPos = 10879;
 
 
 var debug = (new URL(window.location)).searchParams.get('debug') !== null;
