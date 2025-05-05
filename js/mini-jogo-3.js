@@ -456,7 +456,7 @@ function collision() {
         return collisionDebug();
     }
     else {
-        return collisionNormal();
+        return collisionDebug(); // collisionNormal() has a bug
     }
 }
 
