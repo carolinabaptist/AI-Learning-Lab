@@ -29,6 +29,8 @@ var marioDyingTime;
 var marioWinning;
 var marioWinningTime;
 
+var audioPlaying;
+
 function init() {
     scrollVal = 0;
     marioPosx = 200;
@@ -47,7 +49,8 @@ function init() {
     marioDying = false;
     marioDyingTime = undefined;
     marioWinning = false;
-    marioWinningTime;
+    marioWinningTime = undefined;
+    audioPlaying = false;
 }
 
 init();
@@ -123,6 +126,7 @@ spriteMario.src = "../../assets/images/sprite-sheet-mario.png";
 
 const audioDie = new Audio("../../assets/audio/sounds_mariodie.wav");
 const audioJump = new Audio("../../assets/audio/sounds_jump-small.wav");
+const audioBackground = new Audio("../../assets/audio/sounds_aboveground_bgm.ogg");
 
 // carrega imagem de fundo no canvas
 async function carregarBg() {
@@ -237,21 +241,36 @@ if (debug) {
     //collisionDebug();
 }
 
+
 async function loop(timestamp) {
     if (startTime === undefined) {
         startTime = timestamp;
         previousTimestamp = timestamp;
         marioWalkingTime = timestamp;
+
     }
     const elapsedTime = (timestamp - startTime) / 1000;
     const dt = (timestamp - previousTimestamp) / 1000;
     previousTimestamp = timestamp;
+
+    if (!audioPlaying) {
+        try {
+            audioBackground.volume = 0.05;
+            await audioBackground.play();
+            audioBackground.loop = true;
+            audioPlaying = true;
+        }
+        catch (error) {
+        }
+    }
+
 
     if (marioPosy < -90 && !marioDying) {
         console.log("tou morrendo, mario caiu do mapa", marioPosy);
         marioDying = true;
         marioDyingTime = timestamp;
 
+        audioBackground.pause();
         audioDie.play();
     }
 
