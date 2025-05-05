@@ -26,11 +26,13 @@ var marioGround;
 var marioCycle;
 var marioDying;
 var marioDyingTime;
+var marioWinning;
+var marioWinningTime;
 
 function init() {
     scrollVal = 0;
     marioPosx = 200;
-    marioPosy = -13; // was 0;
+    marioPosy = -12.8; // was 0;
     marioSpeed = 600;
     marioJumpSpeed = 1000;
     marioJumpTime = 0.3; // seconds
@@ -44,6 +46,8 @@ function init() {
     marioCycle = 0;
     marioDying = false;
     marioDyingTime = undefined;
+    marioWinning = false;
+    marioWinningTime;
 }
 
 init();
@@ -59,6 +63,8 @@ var webcamUp = false;
 
 
 let startTime = undefined;
+
+const endPos = 10880;
 
 
 var debug = (new URL(window.location)).searchParams.get('debug') !== null;
@@ -222,7 +228,10 @@ function checkMarioGround() {
 }
 
 if (debug) {
+    //console.log(marioPosx, marioPosy, scrollVal, backgroundWidth / backgroundScale, backgroundHeight, canvasWidth, canvasHeight);
     collisionDebug();
+    //console.log("foi");
+    //collisionDebug();
 }
 
 async function loop(timestamp) {
@@ -246,6 +255,29 @@ async function loop(timestamp) {
             console.log("mario morreu, vai voltar pra posicao inicial");
             init();
         }
+        window.requestAnimationFrame(loop);
+
+        return;
+    }
+
+    if (marioWinning) {
+        const winningElapsed = (timestamp - marioWinningTime) / 1000;
+
+        const poleDownSpeed = 300;
+
+        marioPosx = endPos + 16 / backgroundScale;
+
+
+        marioPosy += poleDownSpeed * dt;
+
+        if (marioPosy > -12.8 + 50) {
+            console.log("ganhou, vou pra tela final");
+            document.getElementById("tela-jogo").style.display = "none";
+            document.getElementById("tela-final").style.display = "block";
+
+            return;
+        }
+
         window.requestAnimationFrame(loop);
 
         return;
@@ -409,8 +441,10 @@ async function loop(timestamp) {
 
     ctx.setTransform(oldTrans);
 
-    if (marioPosx >= 10920) {
+    if (marioPosx >= endPos) {
         console.log("ganhou");
+        marioWinning = true;
+        marioWinningTime = timestamp;
     }
 
     window.requestAnimationFrame(loop);
@@ -457,6 +491,8 @@ function collisionDebug() {
             imageData.data[i + 2] = 0;
             //console.log("preto");
             collided = true;
+            break;
+            //console.log("colidiu", posx, posy, side, side);
         }
         else {
             console.log(r, g, b);
@@ -504,6 +540,40 @@ function scroll(amount) {
     }
 }
 
+function end() {
+    teleport(10860);
+}
+
+function teleport(x) {
+    if (x < marioPosx) {
+        marioFacingRight = false;
+    }
+    else if (x > marioPosx) {
+        marioFacingRight = true;
+    }
+
+    const scrollBorder = 150;
+    const scrollAmount = scrollBorder + 100;
+
+    marioPosx = x;
+
+    if (marioPosx < 0) {
+        marioPosx = 0;
+    }
+
+    let screenMario = marioPosx - scrollVal;
+
+    while (screenMario < scrollBorder) { 
+        scroll(-scrollAmount);
+        screenMario = marioPosx - scrollVal;
+    }
+
+    while (screenMario > canvasWidth - scrollBorder - 16 / backgroundScale) {
+        scroll(scrollAmount);
+        screenMario = marioPosx - scrollVal;
+    }
+}
+
 function move(amount) {
     if (amount < 0) {
         marioFacingRight = false;
@@ -514,13 +584,14 @@ function move(amount) {
 
     const scrollBorder = 150;
     const scrollAmount = scrollBorder + 100;
-    const screenMario = marioPosx - scrollVal;
 
     marioPosx += amount;
 
     if (marioPosx < 0) {
         marioPosx = 0;
     }
+
+    const screenMario = marioPosx - scrollVal;
 
     if (screenMario < scrollBorder) { 
         scroll(-scrollAmount);
