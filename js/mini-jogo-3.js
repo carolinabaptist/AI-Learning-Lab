@@ -121,6 +121,8 @@ background.src = "../../assets/images/mario-bc.png";
 const spriteMario = new Image();
 spriteMario.src = "../../assets/images/sprite-sheet-mario.png";
 
+const audioDie = new Audio("../../assets/audio/sounds_mariodie.wav");
+
 // carrega imagem de fundo no canvas
 async function carregarBg() {
     await new Promise((resolve) => {
@@ -248,16 +250,26 @@ async function loop(timestamp) {
         console.log("tou morrendo, mario caiu do mapa", marioPosy);
         marioDying = true;
         marioDyingTime = timestamp;
+
+        audioDie.play();
     }
 
     if (marioDying) {
-        if (timestamp - marioDyingTime > 1000) {
+        const dyingElapsed = (timestamp - marioDyingTime) / 1000;
+        if (dyingElapsed > 2.5) {
             console.log("mario morreu, vai voltar pra posicao inicial");
             init();
         }
         window.requestAnimationFrame(loop);
 
         return;
+    }
+
+    
+    if (marioPosx >= endPos) {
+        console.log("ganhou");
+        marioWinning = true;
+        marioWinningTime = timestamp;
     }
 
     if (marioWinning) {
@@ -421,12 +433,6 @@ async function loop(timestamp) {
 
 
     draw();
-
-    if (marioPosx >= endPos) {
-        console.log("ganhou");
-        marioWinning = true;
-        marioWinningTime = timestamp;
-    }
 
     window.requestAnimationFrame(loop);
 }
