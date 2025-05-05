@@ -263,14 +263,18 @@ async function loop(timestamp) {
     if (marioWinning) {
         const winningElapsed = (timestamp - marioWinningTime) / 1000;
 
-        const poleDownSpeed = 300;
+        const poleDownSpeed = 90;
 
         marioPosx = endPos + 16 / backgroundScale;
 
+        marioPosy -= poleDownSpeed * dt;
 
-        marioPosy += poleDownSpeed * dt;
+        marioFacingRight = false;
 
-        if (marioPosy > -12.8 + 50) {
+        draw();
+
+
+        if (marioPosy < 50) {
             console.log("ganhou, vou pra tela final");
             document.getElementById("tela-jogo").style.display = "none";
             document.getElementById("tela-final").style.display = "block";
@@ -416,6 +420,18 @@ async function loop(timestamp) {
     }
 
 
+    draw();
+
+    if (marioPosx >= endPos) {
+        console.log("ganhou");
+        marioWinning = true;
+        marioWinningTime = timestamp;
+    }
+
+    window.requestAnimationFrame(loop);
+}
+
+function draw() {
     ctx.drawImage(background, scrollVal * backgroundScale, 0, canvasWidth * backgroundScale, backgroundHeight, 0, 0, canvasWidth, canvasHeight);
 
     let oldTrans = ctx.getTransform();
@@ -440,14 +456,6 @@ async function loop(timestamp) {
 
 
     ctx.setTransform(oldTrans);
-
-    if (marioPosx >= endPos) {
-        console.log("ganhou");
-        marioWinning = true;
-        marioWinningTime = timestamp;
-    }
-
-    window.requestAnimationFrame(loop);
 }
 
 function collision() {
