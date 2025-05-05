@@ -122,6 +122,7 @@ const spriteMario = new Image();
 spriteMario.src = "../../assets/images/sprite-sheet-mario.png";
 
 const audioDie = new Audio("../../assets/audio/sounds_mariodie.wav");
+const audioJump = new Audio("../../assets/audio/sounds_jump-small.wav");
 
 // carrega imagem de fundo no canvas
 async function carregarBg() {
@@ -340,6 +341,11 @@ async function loop(timestamp) {
             marioGround = false;
             marioJumpingUp = true;
             marioJumpingTime = timestamp;
+
+            // play sound even if another sound is playing
+
+            audioJump.currentTime = 0; // reset the audio to the beginning
+            audioJump.play();
         }
     }
 
