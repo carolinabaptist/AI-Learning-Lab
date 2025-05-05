@@ -127,6 +127,7 @@ spriteMario.src = "../../assets/images/sprite-sheet-mario.png";
 const audioDie = new Audio("../../assets/audio/sounds_mariodie.wav");
 const audioJump = new Audio("../../assets/audio/sounds_jump-small.wav");
 const audioBackground = new Audio("../../assets/audio/sounds_aboveground_bgm.ogg");
+const audioFlagpole = new Audio("../../assets/audio/sounds_flagpole.wav");
 
 // carrega imagem de fundo no canvas
 async function carregarBg() {
@@ -292,6 +293,8 @@ async function loop(timestamp) {
         marioWinningTime = timestamp;
 
         audioBackground.pause();
+        audioFlagpole.currentTime = 0;
+        audioFlagpole.play();
 
         // play audio win
     }
@@ -312,6 +315,7 @@ async function loop(timestamp) {
 
         if (marioPosy < 50) {
             console.log("ganhou, vou pra tela final");
+            audioFlagpole.pause();
             document.getElementById("tela-jogo").style.display = "none";
             document.getElementById("tela-final").style.display = "block";
 
