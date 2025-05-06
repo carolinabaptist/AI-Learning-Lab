@@ -129,6 +129,13 @@ const audioJump = new Audio("../../assets/audio/sounds_jump-small.wav");
 const audioBackground = new Audio("../../assets/audio/sounds_aboveground_bgm.ogg");
 const audioFlagpole = new Audio("../../assets/audio/sounds_flagpole.wav");
 
+let playAudioBackground = true;
+audioBackground.volume = 0.05;
+
+function mute(flag) {
+    playAudioBackground = !playAudioBackground;
+}
+
 // carrega imagem de fundo no canvas
 async function carregarBg() {
     await new Promise((resolve) => {
@@ -143,8 +150,6 @@ let model, webcam, labelContainer, maxPredictions;
 
 // Load the image model and setup the webcam
 async function carregarModelo() {
-
-
     const modelJson = document.getElementById("modelJson").files[0];
     const weightsBin = document.getElementById("weightsBin").files[0];
     const metadataJson = document.getElementById("metadataJson").files[0];
@@ -244,6 +249,13 @@ if (debug) {
 
 
 async function loop(timestamp) {
+    if (playAudioBackground) {
+        audioBackground.volume = 0.05;
+    }
+    else {
+        audioBackground.volume = 0.0;
+    }
+
     if (startTime === undefined) {
         startTime = timestamp;
         previousTimestamp = timestamp;
@@ -256,7 +268,7 @@ async function loop(timestamp) {
 
     if (!audioPlaying) {
         try {
-            audioBackground.volume = 0.05;
+            
             await audioBackground.play();
             audioBackground.loop = true;
             audioPlaying = true;
