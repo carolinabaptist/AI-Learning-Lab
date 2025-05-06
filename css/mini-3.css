@@ -53,6 +53,12 @@ html, body {
     padding: 70px;
 }
 
+#modal-final {
+    width: auto;
+    height: auto;
+    padding: 20px;
+}
+
 .board {
     background-color: rgba(255, 255, 255, 0.5);
     width: 65vw;

@@ -8,6 +8,9 @@ const CIMA_DIREITA = "cima direita";
 
 const NADA = "nada";
 
+let maxGameDuration = 4*60; // 4 minutes
+//maxGameDuration = 5;
+
 // the idea is to be able to change those values in the browser console
 
 var scrollVal;
@@ -30,6 +33,7 @@ var marioWinning;
 var marioWinningTime;
 
 var audioPlaying;
+var elapsedTime;
 
 function init() {
     scrollVal = 0;
@@ -51,6 +55,7 @@ function init() {
     marioWinning = false;
     marioWinningTime = undefined;
     audioPlaying = false;
+    elapsedTime = 0;
 }
 
 init();
@@ -84,7 +89,7 @@ else {
     document.getElementById("background-debug").style.display = "none";
 }
 
-document.getElementById("tela-final").style.display = "none";
+document.getElementById("modal-final").style.display = "none";
 
 const canvas = document.getElementById("jogo-canvas");
 const ctx = canvas.getContext("2d");
@@ -134,6 +139,10 @@ audioBackground.volume = 0.05;
 
 function mute(flag) {
     playAudioBackground = !playAudioBackground;
+}
+
+if (debug) {
+    mute();
 }
 
 // carrega imagem de fundo no canvas
@@ -247,6 +256,13 @@ if (debug) {
     //collisionDebug();
 }
 
+function endGame() {
+    console.log("fim de jogo, vai pra tela inicial");
+    audioFlagpole.pause();
+    audioBackground.pause();
+    document.getElementById("modal-final").style.display = "block";
+}
+
 
 async function loop(timestamp) {
     if (playAudioBackground) {
@@ -262,9 +278,16 @@ async function loop(timestamp) {
         marioWalkingTime = timestamp;
 
     }
-    const elapsedTime = (timestamp - startTime) / 1000;
+    elapsedTime = (timestamp - startTime) / 1000;
     const dt = (timestamp - previousTimestamp) / 1000;
     previousTimestamp = timestamp;
+
+    if ((maxGameDuration - elapsedTime) < 0) {
+        console.log("tempo esgotado, vai pra tela de fim como se tivesse ganhado");
+        endGame();
+
+        return;
+    }
 
     if (!audioPlaying) {
         try {
@@ -293,13 +316,14 @@ async function loop(timestamp) {
             console.log("mario morreu, vai voltar pra posicao inicial");
             init();
         }
+        draw(elapsedTime);
         window.requestAnimationFrame(loop);
 
         return;
     }
 
     
-    if (marioPosx >= endPos) {
+    if (!marioWinning && marioPosx >= endPos) {
         console.log("ganhou");
         marioWinning = true;
         marioWinningTime = timestamp;
@@ -322,14 +346,12 @@ async function loop(timestamp) {
 
         marioFacingRight = false;
 
-        draw();
+        draw(elapsedTime);
 
 
         if (marioPosy < 50) {
-            console.log("ganhou, vou pra tela final");
-            audioFlagpole.pause();
-            document.getElementById("tela-jogo").style.display = "none";
-            document.getElementById("tela-final").style.display = "block";
+            console.log("ganhou, vai pra tela de fim");
+            endGame();
 
             return;
         }
@@ -477,13 +499,30 @@ async function loop(timestamp) {
     }
 
 
-    draw();
+    draw(elapsedTime);
 
     window.requestAnimationFrame(loop);
 }
 
-function draw() {
+
+function text(x, y, text) {
+    ctx.font = "24px 'Press Start 2P'";
+    ctx.fillStyle = "white";
+    ctx.fillText(text, x, y);
+}
+
+function tempo(elapsedTime) {
+    const minutes = Math.floor(elapsedTime / 60);
+    const seconds = Math.floor(elapsedTime % 60);
+    const timeString = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    return timeString;
+}
+
+function draw(elapsedTime) {
     ctx.drawImage(background, scrollVal * backgroundScale, 0, canvasWidth * backgroundScale, backgroundHeight, 0, 0, canvasWidth, canvasHeight);
+
+    text(canvasWidth - 200, 50, "TEMPO");
+    text(canvasWidth - 200 + 24, 80, tempo(maxGameDuration - elapsedTime));
 
     let oldTrans = ctx.getTransform();
 
