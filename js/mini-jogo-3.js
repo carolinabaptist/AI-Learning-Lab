@@ -60,6 +60,8 @@ function init() {
     marioWinningTime = undefined;
     audioPlaying = false;
     elapsedTime = 0;
+
+    goombaInit();
 }
 
 init();
@@ -244,8 +246,6 @@ let previousTimestamp = undefined;
 function checkMarioGround() {
     marioPosy -= 1;
 
-    console.log("a");
-
     if (collision(marioPosx, marioPosy, 14)) {
         marioGround = true;
         //console.log("mario esta no chao", marioPosy);
@@ -256,7 +256,6 @@ function checkMarioGround() {
     }
 
     
-    console.log("b");
 
     marioPosy -= -1;
 }
@@ -275,7 +274,6 @@ function endGame() {
     document.getElementById("modal-final").style.display = "block";
 }
 
-goombaInit();
 
 
 async function loop(timestamp) {
@@ -517,7 +515,7 @@ async function loop(timestamp) {
         console.log("bug marioCycle is not integer", marioCycle);
     }
 
-    goombaUpdate(dt);
+    goombaUpdate(dt, timestamp);
 
 
     draw(elapsedTime);
@@ -586,11 +584,38 @@ function goombaDraw(elapsedTime) {
 }
 
 function goombaInit() {
-    goomba(100);
+    enemy = { goomba: [] };
+    goomba(1000);
 
 }
 
-function goombaUpdate(dt) {
+function goombaCollidePlayer(timestamp) {
+    for (let i = 0; i < enemy.goomba.length; i++) {
+        const meuGoomba = enemy.goomba[i];
+
+        const goombax = meuGoomba.x;
+        const goombay = meuGoomba.y;
+
+        //collision between two squares, one whose corner is (goombax, goombay) and the other whose corner is (marioPosx, marioPosy)
+        // the squares are 16x16, so the corners are (goombax, goombay) and (marioPosx, marioPosy)
+        
+
+        const colliding = !(goombax > marioPosx - scrollVal + 14 || goombax + 14 < marioPosx - scrollVal || goombay > marioPosy - scrollVal + 14 || goombay + 14 < marioPosy - scrollVal);
+        
+        if (colliding) {
+            console.log("colidiu goomba com mario", goombax, goombay, marioPosx, marioPosy);
+            marioDying = true;
+            marioDyingTime = timestamp;
+            audioDie.play();
+            return true;
+        }
+
+        
+    }
+    return false;
+}
+
+function goombaUpdate(dt, timestamp) {
     for (let i = 0; i < enemy.goomba.length; i++) {
         const meuGoomba = enemy.goomba[i];
 
@@ -607,7 +632,9 @@ function goombaUpdate(dt) {
             meuGoomba.facingRight = !meuGoomba.facingRight;
         }
 
-        
+        if (goombaCollidePlayer(timestamp)) {
+            return;
+        }
     }
 }
 
