@@ -585,7 +585,7 @@ function goombaDraw(elapsedTime) {
 
 function goombaInit() {
     enemy = { goomba: [] };
-    goomba(1000);
+    goomba(1200);
 
 }
 
@@ -594,13 +594,10 @@ function goombaCollidePlayer(timestamp) {
         const meuGoomba = enemy.goomba[i];
 
         const goombax = meuGoomba.x;
-        const goombay = meuGoomba.y;
-
-        //collision between two squares, one whose corner is (goombax, goombay) and the other whose corner is (marioPosx, marioPosy)
-        // the squares are 16x16, so the corners are (goombax, goombay) and (marioPosx, marioPosy)
+        const goombay = meuGoomba.y
         
 
-        const colliding = !(goombax > marioPosx - scrollVal + 14 || goombax + 14 < marioPosx - scrollVal || goombay > marioPosy - scrollVal + 14 || goombay + 14 < marioPosy - scrollVal);
+        const colliding = !(goombax > marioPosx + 14 || goombax + 14 < marioPosx  || goombay > marioPosy + 14 || goombay + 14 < marioPosy);
         
         if (colliding) {
             console.log("colidiu goomba com mario", goombax, goombay, marioPosx, marioPosy);
