@@ -13,6 +13,10 @@ let maxGameDuration = 4*60; // 4 minutes
 
 // the idea is to be able to change those values in the browser console
 
+let enemy = {
+    goomba: []
+};
+
 var scrollVal;
 var marioPosx;
 var marioPosy;
@@ -128,6 +132,9 @@ const background = new Image();
 background.src = "../../assets/images/mario-bc.png";
 const spriteMario = new Image();
 spriteMario.src = "../../assets/images/sprite-sheet-mario.png";
+
+const spriteEnemy = new Image();
+spriteEnemy.src = "../../assets/images/enemy.png";
 
 const audioDie = new Audio("../../assets/audio/sounds_mariodie.wav");
 const audioJump = new Audio("../../assets/audio/sounds_jump-small.wav");
@@ -262,6 +269,8 @@ function endGame() {
     audioBackground.pause();
     document.getElementById("modal-final").style.display = "block";
 }
+
+goombaInit();
 
 
 async function loop(timestamp) {
@@ -535,7 +544,6 @@ function draw(elapsedTime) {
         ctx.scale(-1, 1);
         marioPosScreen = -marioPosx + scrollVal - 16 / backgroundScale; //canvasWidth - (marioPos - scrollVal) - 16 / backgroundScale;
     }
-    
 
     let selectSprite = 16 * marioCycle;
 
@@ -546,6 +554,41 @@ function draw(elapsedTime) {
 
 
     ctx.setTransform(oldTrans);
+
+    goombaDraw(elapsedTime);
+}
+
+function goombaDraw(elapsedTime) {
+    let formula = elapsedTime * 5;
+
+    goombaCycle = Math.floor(formula) % 2;
+
+    const goombaWidth = 16 / backgroundScale;
+    const goombaHeight = 16 / backgroundScale;
+
+    for (let i = 0; i < enemy.goomba.length; i++) {
+        const meuGoomba = enemy.goomba[i];
+
+        ctx.drawImage(spriteEnemy, goombaCycle * 16, 16, 16, 16, meuGoomba.x - scrollVal, (canvasHeight - 40 / backgroundScale) - meuGoomba.y - 5, goombaWidth, goombaHeight);
+    }
+}
+
+function goombaInit() {
+    goomba(100);
+
+}
+
+function goombaUpdate() {
+}
+
+function goomba(x) {
+    let meuGoomba = {};
+
+    meuGoomba.x = x;
+    meuGoomba.y = -12.8;
+    meuGoomba.facingRight = false;
+    
+    enemy.goomba.push(meuGoomba);
 }
 
 function collision() {
