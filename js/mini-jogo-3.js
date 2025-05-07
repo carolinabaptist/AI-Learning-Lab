@@ -244,7 +244,9 @@ let previousTimestamp = undefined;
 function checkMarioGround() {
     marioPosy -= 1;
 
-    if (collision()) {
+    console.log("a");
+
+    if (collision(marioPosx, marioPosy, 14)) {
         marioGround = true;
         //console.log("mario esta no chao", marioPosy);
     }
@@ -253,12 +255,15 @@ function checkMarioGround() {
         //console.log("mario esta no ar", marioPosy);
     }
 
+    
+    console.log("b");
+
     marioPosy -= -1;
 }
 
 if (debug) {
     //console.log(marioPosx, marioPosy, scrollVal, backgroundWidth / backgroundScale, backgroundHeight, canvasWidth, canvasHeight);
-    collisionDebug();
+    collisionDebug(marioPosx, marioPosy, 14);
     //console.log("foi");
     //collisionDebug();
 }
@@ -370,11 +375,15 @@ async function loop(timestamp) {
         return;
     }
 
-    if (collision()) {
+
+    if (collision(marioPosx, marioPosy, 14)) {
         console.log("mario ficou preso na parede ou chao, vai voltar pra posicao inicial");
+
 
         init();
     }
+
+
 
     if (!debug) {
         await handleWebcam();
@@ -424,8 +433,9 @@ async function loop(timestamp) {
     if (marioWalking) {
         move(movex);
 
-        if (collision()) {
+        if (collision(marioPosx, marioPosy, 14)) {
             marioPosx += -movex;
+
             //console.log("colidiu horizontal", movex);
         }
 
@@ -454,7 +464,7 @@ async function loop(timestamp) {
 
         let collided = false;
 
-        while (collision()) {
+        while (collision(marioPosx, marioPosy, 14)) {
             collided = true;
             marioPosy += -movey / Math.abs(movey);
 
@@ -506,6 +516,8 @@ async function loop(timestamp) {
     if (!Number.isInteger(marioCycle)) {
         console.log("bug marioCycle is not integer", marioCycle);
     }
+
+    goombaUpdate(dt);
 
 
     draw(elapsedTime);
@@ -578,7 +590,25 @@ function goombaInit() {
 
 }
 
-function goombaUpdate() {
+function goombaUpdate(dt) {
+    for (let i = 0; i < enemy.goomba.length; i++) {
+        const meuGoomba = enemy.goomba[i];
+
+        let amount = 200 * dt;
+
+        if (meuGoomba.facingRight) {
+            meuGoomba.x += amount;
+        }
+        else {
+            meuGoomba.x -= amount;
+        }
+
+        if (collision(meuGoomba.x, meuGoomba.y, 14)) {
+            meuGoomba.facingRight = !meuGoomba.facingRight;
+        }
+
+        
+    }
 }
 
 function goomba(x) {
@@ -591,26 +621,25 @@ function goomba(x) {
     enemy.goomba.push(meuGoomba);
 }
 
-function collision() {
+function collision(charPosx, charPosy, charSide) {
     //console.log("collision()");
     if (debug) {
-        return collisionDebug();
+        return collisionDebug(charPosx, charPosy, charSide);
     }
     else {
-        return collisionDebug(); // collisionNormal() has a bug
+        return collisionDebug(charPosx, charPosy, charSide); // collisionNormal() has a bug
     }
 }
 
 
-function collisionDebug() {
+function collisionDebug(charPosx, charPosy, charSide) {
     ctxBitmap.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasBitmap.width, canvasBitmap.height);
 
-    const posx = marioPosx * backgroundScale;
-    const posy = (canvasHeight - 40 / backgroundScale) * backgroundScale - marioPosy * backgroundScale;
+    const posx = charPosx * backgroundScale;
+    const posy = (canvasHeight - 40 / backgroundScale) * backgroundScale - charPosy * backgroundScale;
 
-    const side = 14;
 
-    const imageData = ctxBitmap.getImageData(posx, posy, side, side);
+    const imageData = ctxBitmap.getImageData(posx, posy, charSide, charSide);
 
     let collided = false;
 
