@@ -274,6 +274,15 @@ function endGame() {
     document.getElementById("modal-final").style.display = "block";
 }
 
+function killMario(timestamp) {
+    marioDying = true;
+    marioDyingTime = timestamp;
+    marioCycle = 6;
+
+    audioBackground.pause();
+    audioDie.play();
+}
+
 
 
 async function loop(timestamp) {
@@ -315,11 +324,7 @@ async function loop(timestamp) {
 
     if (marioPosy < -90 && !marioDying) {
         console.log("tou morrendo, mario caiu do mapa", marioPosy);
-        marioDying = true;
-        marioDyingTime = timestamp;
-
-        audioBackground.pause();
-        audioDie.play();
+        killMario(timestamp);
     }
 
     if (marioDying) {
@@ -537,11 +542,15 @@ function tempo(elapsedTime) {
     return timeString;
 }
 
+myMarioCycle = undefined;
+
 function draw(elapsedTime) {
     ctx.drawImage(background, scrollVal * backgroundScale, 0, canvasWidth * backgroundScale, backgroundHeight, 0, 0, canvasWidth, canvasHeight);
 
     text(canvasWidth - 200, 50, "TEMPO");
     text(canvasWidth - 200 + 24, 80, tempo(maxGameDuration - elapsedTime));
+
+    goombaDraw(elapsedTime);
 
     let oldTrans = ctx.getTransform();
 
@@ -555,6 +564,10 @@ function draw(elapsedTime) {
         marioPosScreen = -marioPosx + scrollVal - 16 / backgroundScale; //canvasWidth - (marioPos - scrollVal) - 16 / backgroundScale;
     }
 
+    if (myMarioCycle !== undefined) {
+        marioCycle = myMarioCycle;
+    }
+
     let selectSprite = 16 * marioCycle;
 
     const marioPosVertical = (canvasHeight - 40 / backgroundScale) - marioPosy - 5;
@@ -564,8 +577,6 @@ function draw(elapsedTime) {
 
 
     ctx.setTransform(oldTrans);
-
-    goombaDraw(elapsedTime);
 }
 
 function goombaDraw(elapsedTime) {
@@ -598,12 +609,10 @@ function goombaCollidePlayer(timestamp) {
         
 
         const colliding = !(goombax > marioPosx + 14 || goombax + 14 < marioPosx  || goombay > marioPosy + 14 || goombay + 14 < marioPosy);
-        
+
         if (colliding) {
             console.log("colidiu goomba com mario", goombax, goombay, marioPosx, marioPosy);
-            marioDying = true;
-            marioDyingTime = timestamp;
-            audioDie.play();
+            killMario(timestamp);
             return true;
         }
 
