@@ -142,6 +142,7 @@ const audioDie = new Audio("../../assets/audio/sounds_mariodie.wav");
 const audioJump = new Audio("../../assets/audio/sounds_jump-small.wav");
 const audioBackground = new Audio("../../assets/audio/sounds_aboveground_bgm.ogg");
 const audioFlagpole = new Audio("../../assets/audio/sounds_flagpole.wav");
+const audioBump = new Audio("../../assets/audio/sounds_bump.wav");
 
 let playAudioBackground = true;
 audioBackground.volume = 0.05;
@@ -608,6 +609,13 @@ function goombaInit() {
 
 }
 
+function collidingEnemy(goombax, goombay, hitbox_size) {
+    return !(goombax > marioPosx + hitbox_size ||
+        goombax + hitbox_size < marioPosx  ||
+        goombay > marioPosy + hitbox_size ||
+        goombay + hitbox_size < marioPosy);
+}
+
 function goombaCollidePlayer(timestamp) {
     let killed = [];
 
@@ -615,15 +623,14 @@ function goombaCollidePlayer(timestamp) {
         const meuGoomba = enemy.goomba[i];
 
         const goombax = meuGoomba.x;
-        const goombay = meuGoomba.y
+        const goombay = meuGoomba.y;
 
-        const colliding = !(goombax > marioPosx + 14 || goombax + 14 < marioPosx  || goombay > marioPosy + 14 || goombay + 14 < marioPosy);
-
-        if (colliding && marioJumping && !marioJumpingUp) {
+        if (marioJumping && !marioJumpingUp && collidingEnemy(goombax, goombay, 50)) {
             console.log("mario estava pulando e portando matou o goomba");
+            audioBump.play();
             killed.push(i);
         }
-        else if (colliding) {
+        else if (collidingEnemy(goombax, goombay, 14)) {
             console.log("colidiu goomba com mario", goombax, goombay, marioPosx, marioPosy, "jumping?", marioJumping);
             killMario(timestamp);
             return true;
