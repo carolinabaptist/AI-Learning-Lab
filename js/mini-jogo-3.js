@@ -277,7 +277,6 @@ function endGame() {
 function killMario(timestamp) {
     marioDying = true;
     marioDyingTime = timestamp;
-    marioCycle = 6;
 
     audioBackground.pause();
     audioDie.play();
@@ -330,9 +329,11 @@ async function loop(timestamp) {
     if (marioDying) {
         const dyingElapsed = (timestamp - marioDyingTime) / 1000;
         if (dyingElapsed > 2.5) {
-            console.log("mario morreu, vai voltar pra posicao inicial");
+            console.log("mario terminou de morrer, vai voltar pra posicao inicial");
             init();
         }
+        
+        marioCycle = 6;
         draw(elapsedTime);
         window.requestAnimationFrame(loop);
 
@@ -419,6 +420,7 @@ async function loop(timestamp) {
     
     if (upPressed || (notPressing && webcamUp)) {   
         if (!marioJumping) {
+            console.log("pulando");
             marioJumping = true;
             marioGround = false;
             marioJumpingUp = true;
@@ -445,10 +447,17 @@ async function loop(timestamp) {
         checkMarioGround();
     
         if (!marioGround  && !marioJumping) {
+            console.log("pulando");
             marioJumping = true;
             marioJumpingUp = false;
         }
     }
+
+    if (goombaCollidePlayer(timestamp)) {
+        console.log("colidiu");
+    }
+
+    goombaUpdate(dt, timestamp);
 
     if (marioJumping) {
         if (marioJumpingUp) {
@@ -481,7 +490,9 @@ async function loop(timestamp) {
             }
             else {
                 //console.log("colidiu vertical pra baixo", movey);
+                console.log("nao esta mais pulando");
                 marioJumping = false;
+                marioJumpingUp = false;
                 marioGround = true;
             }
         }
@@ -519,9 +530,6 @@ async function loop(timestamp) {
     if (!Number.isInteger(marioCycle)) {
         console.log("bug marioCycle is not integer", marioCycle);
     }
-
-    goombaUpdate(dt, timestamp);
-
 
     draw(elapsedTime);
 
@@ -601,24 +609,38 @@ function goombaInit() {
 }
 
 function goombaCollidePlayer(timestamp) {
+    let killed = [];
+
     for (let i = 0; i < enemy.goomba.length; i++) {
         const meuGoomba = enemy.goomba[i];
 
         const goombax = meuGoomba.x;
         const goombay = meuGoomba.y
-        
 
         const colliding = !(goombax > marioPosx + 14 || goombax + 14 < marioPosx  || goombay > marioPosy + 14 || goombay + 14 < marioPosy);
 
-        if (colliding) {
-            console.log("colidiu goomba com mario", goombax, goombay, marioPosx, marioPosy);
+        if (colliding && marioJumping && !marioJumpingUp) {
+            console.log("mario estava pulando e portando matou o goomba");
+            killed.push(i);
+        }
+        else if (colliding) {
+            console.log("colidiu goomba com mario", goombax, goombay, marioPosx, marioPosy, "jumping?", marioJumping);
             killMario(timestamp);
             return true;
         }
-
-        
     }
-    return false;
+
+    for (let i = 0; i < killed.length; i++) {
+        console.log("removendo goomba", i);
+        enemy.goomba.splice(i, 1);
+    }
+
+    if (killed.length > 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 function goombaUpdate(dt, timestamp) {
@@ -636,10 +658,6 @@ function goombaUpdate(dt, timestamp) {
 
         if (collision(meuGoomba.x, meuGoomba.y, 14)) {
             meuGoomba.facingRight = !meuGoomba.facingRight;
-        }
-
-        if (goombaCollidePlayer(timestamp)) {
-            return;
         }
     }
 }
