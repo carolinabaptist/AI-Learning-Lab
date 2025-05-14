@@ -98,6 +98,8 @@ else {
 document.getElementById("modal-final").style.display = "none";
 
 const canvas = document.getElementById("jogo-canvas");
+canvas.width = 1024;
+canvas.height = 768;
 const ctx = canvas.getContext("2d");
 
 const canvasBitmap = document.getElementById("background-debug"); // document.createElement("canvas");
@@ -500,12 +502,8 @@ async function loop(timestamp) {
 
     }
 
-
     let walkingElapsed = (timestamp - marioWalkingTime) / 1000;
-
-
     let formula = walkingElapsed * 5;
-
 
     if (marioJumping) {
         marioCycle = 5;
@@ -536,7 +534,6 @@ async function loop(timestamp) {
 
     window.requestAnimationFrame(loop);
 }
-
 
 function text(x, y, text) {
     ctx.font = "24px 'Press Start 2P'";
@@ -650,11 +647,27 @@ function goombaCollidePlayer(timestamp) {
     }
 }
 
+function goombaInScreen(goomba) {
+    let slack = scrollAmount * 2;
+    let screenPos = goomba.x - scrollVal;
+    if (screenPos >= -slack && (screenPos - slack) <= canvasWidth) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function goombaUpdate(dt, timestamp) {
     for (let i = 0; i < enemy.goomba.length; i++) {
         const meuGoomba = enemy.goomba[i];
 
         let amount = 200 * dt;
+
+        if (!goombaInScreen(meuGoomba)) {
+            console.log("nao ta na tela o goomba", i);
+            continue;
+        }
 
         if (meuGoomba.facingRight) {
             meuGoomba.x += amount;
@@ -772,6 +785,9 @@ function end() {
     teleport(10860);
 }
 
+const scrollBorder = 150;
+const scrollAmount = scrollBorder + 100;
+
 function teleport(x) {
     if (x < marioPosx) {
         marioFacingRight = false;
@@ -779,9 +795,6 @@ function teleport(x) {
     else if (x > marioPosx) {
         marioFacingRight = true;
     }
-
-    const scrollBorder = 150;
-    const scrollAmount = scrollBorder + 100;
 
     marioPosx = x;
 
