@@ -105,7 +105,14 @@ const ctx = canvas.getContext("2d");
 const canvasBitmap = document.getElementById("background-debug"); // document.createElement("canvas");
 canvasBitmap.width = 3392;
 canvasBitmap.height = 223;
-const ctxBitmap = canvasBitmap.getContext("2d", { willReadFrequently: true });
+const ctxBitmap = canvasBitmap.getContext("2d");
+
+const collisionBitmap = document.createElement("canvas");
+canvasBitmap.width = 3392;
+canvasBitmap.height = 223;
+const ctxCollision = collisionBitmap.getContext("2d", { willReadFrequently: true });
+
+
 
 
 const bitmap = new Image();
@@ -249,7 +256,7 @@ let previousTimestamp = undefined;
 function checkMarioGround() {
     marioPosy -= 1;
 
-    if (collision(marioPosx, marioPosy, 14)) {
+    if (collision(marioPosx, marioPosy, 14, [0, 255, 0])) {
         marioGround = true;
         //console.log("mario esta no chao", marioPosy);
     }
@@ -285,9 +292,11 @@ function killMario(timestamp) {
     audioDie.play();
 }
 
-
+ctxCollision.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasBitmap.width, canvasBitmap.height);
 
 async function loop(timestamp) {
+    ctxBitmap.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasBitmap.width, canvasBitmap.height);
+
     if (playAudioBackground) {
         audioBackground.volume = 0.05;
     }
@@ -311,6 +320,8 @@ async function loop(timestamp) {
 
         return;
     }
+
+    
 
     if (!audioPlaying) {
         try {
@@ -383,12 +394,12 @@ async function loop(timestamp) {
     }
 
 
-    if (collision(marioPosx, marioPosy, 14)) {
-        console.log("mario ficou preso na parede ou chao, vai voltar pra posicao inicial");
+    /*if (collision(marioPosx, marioPosy, 14, [255, 255, 255])) {
+        console.log("mario ficou preso na parede ou chao, vai voltar pra posicao inicial", marioPosx, marioPosy);
 
 
         init();
-    }
+    }*/
 
 
 
@@ -441,7 +452,7 @@ async function loop(timestamp) {
     if (marioWalking) {
         move(movex);
 
-        if (collision(marioPosx, marioPosy, 14)) {
+        if (collision(marioPosx, marioPosy, 14, [0, 255, 0])) {
             marioPosx += -movex;
 
             //console.log("colidiu horizontal", movex);
@@ -479,7 +490,7 @@ async function loop(timestamp) {
 
         let collided = false;
 
-        while (collision(marioPosx, marioPosy, 14)) {
+        while (collision(marioPosx, marioPosy, 14, [0, 255, 0])) {
             collided = true;
             marioPosy += -movey / Math.abs(movey);
 
@@ -665,7 +676,7 @@ function goombaUpdate(dt, timestamp) {
         let amount = 200 * dt;
 
         if (!goombaInScreen(meuGoomba)) {
-            console.log("nao ta na tela o goomba", i);
+            //console.log("nao ta na tela o goomba", i);
             continue;
         }
 
@@ -676,7 +687,7 @@ function goombaUpdate(dt, timestamp) {
             meuGoomba.x -= amount;
         }
 
-        if (collision(meuGoomba.x, meuGoomba.y, 14)) {
+        if (collision(meuGoomba.x, meuGoomba.y, 14, [150, 75, 0])) {
             meuGoomba.facingRight = !meuGoomba.facingRight;
         }
     }
@@ -692,25 +703,24 @@ function goomba(x) {
     enemy.goomba.push(meuGoomba);
 }
 
-function collision(charPosx, charPosy, charSide) {
+function collision(charPosx, charPosy, charSide, color) {
     //console.log("collision()");
     if (debug) {
-        return collisionDebug(charPosx, charPosy, charSide);
+        return collisionDebug(charPosx, charPosy, charSide, color);
     }
     else {
-        return collisionDebug(charPosx, charPosy, charSide); // collisionNormal() has a bug
+        return collisionDebug(charPosx, charPosy, charSide, color); // collisionNormal() has a bug
     }
 }
 
 
-function collisionDebug(charPosx, charPosy, charSide) {
-    ctxBitmap.drawImage(bitmap, 0, 0, bitmap.width, bitmap.height, 0, 0, canvasBitmap.width, canvasBitmap.height);
+function collisionDebug(charPosx, charPosy, charSide, color) {
 
     const posx = charPosx * backgroundScale;
     const posy = (canvasHeight - 40 / backgroundScale) * backgroundScale - charPosy * backgroundScale;
 
 
-    const imageData = ctxBitmap.getImageData(posx, posy, charSide, charSide);
+    const imageData = ctxCollision.getImageData(posx, posy, charSide, charSide);
 
     let collided = false;
 
@@ -722,21 +732,21 @@ function collisionDebug(charPosx, charPosy, charSide) {
         const a = imageData.data[i + 3];
 
         if (r === 255 && g === 255 && b === 255) {
-            imageData.data[i] = 255;
-            imageData.data[i + 1] = 255;
-            imageData.data[i + 2] = 0;
-            //console.log("branco");
+            imageData.data[i] = color[0];
+            imageData.data[i + 1] = color[1];
+            imageData.data[i + 2] = color[2];
+            console.log("branco");
         } else if (r === 0 && g === 0 && b === 0) {
             imageData.data[i] = 255;
             imageData.data[i + 1] = 0;
             imageData.data[i + 2] = 0;
-            //console.log("preto");
+            console.log("preto");
             collided = true;
             break;
             //console.log("colidiu", posx, posy, side, side);
         }
         else {
-            console.log(r, g, b);
+            console.log("pixel inesperado", r, g, b);
         }
     }
 
