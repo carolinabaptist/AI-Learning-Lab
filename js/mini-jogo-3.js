@@ -685,21 +685,23 @@ function goombaUpdate(dt, timestamp) {
             continue;
         }
 
-        if (meuGoomba.facingRight) {
-            meuGoomba.x += amount;
+        if (!meuGoomba.facingRight) {
+            amount = -amount;
         }
-        else {
+        
+        meuGoomba.x += amount;
+
+        if (collision(meuGoomba.x, meuGoomba.y, 14)) {
+            console.log("goomba bateu na parede, numero", i)
+            meuGoomba.facingRight = !meuGoomba.facingRight;
             meuGoomba.x -= amount;
         }
 
-        if (collision(meuGoomba.x, meuGoomba.y, 14)) {
-            meuGoomba.facingRight = !meuGoomba.facingRight;
-        }
-
         else if (goombaWillFall(meuGoomba.x, meuGoomba.y, 14)) {
-            console.log("para nao cair, o goomba vai dar meia volta");
+            console.log("para nao cair, o goomba vai dar meia volta, numero", i);
 
             meuGoomba.facingRight = !meuGoomba.facingRight;
+            meuGoomba.x -= amount;
         }
     }
 }
