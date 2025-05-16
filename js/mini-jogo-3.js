@@ -602,8 +602,18 @@ function goombaDraw(elapsedTime) {
 
 function goombaInit() {
     enemy = { goomba: [] };
-    goomba(1200);
 
+    //goomba(500);
+
+    goomba(3500);
+
+    return;
+
+    goomba(1840);
+    goomba(2420);
+    goomba(2860);
+
+    //goomba(5070);
 }
 
 function collidingEnemy(goombax, goombay, hitbox_size) {
@@ -665,7 +675,7 @@ function goombaUpdate(dt, timestamp) {
         let amount = 200 * dt;
 
         if (!goombaInScreen(meuGoomba)) {
-            console.log("nao ta na tela o goomba", i);
+            //console.log("nao ta na tela o goomba", i);
             continue;
         }
 
@@ -677,6 +687,12 @@ function goombaUpdate(dt, timestamp) {
         }
 
         if (collision(meuGoomba.x, meuGoomba.y, 14)) {
+            meuGoomba.facingRight = !meuGoomba.facingRight;
+        }
+
+        else if (goombaWillFall(meuGoomba.x, meuGoomba.y, 14)) {
+            console.log("para nao cair, o goomba vai dar meia volta");
+
             meuGoomba.facingRight = !meuGoomba.facingRight;
         }
     }
@@ -700,6 +716,64 @@ function collision(charPosx, charPosy, charSide) {
     else {
         return collisionDebug(charPosx, charPosy, charSide); // collisionNormal() has a bug
     }
+}
+
+function goombaWillFall(charPosx, charPosy, charSide) {
+    let f1 = !collision(charPosx, charPosy - 1, charSide);
+    let f2 = !collision(charPosx + charSide, charPosy - 1, charSide);
+    let f3 = !collision(charPosx + 2 * charSide, charPosy - 1, charSide);
+    let f4 = !collision(charPosx - charSide, charPosy - 1, charSide);
+    let f5 = !collision(charPosx -  2 * charSide, charPosy - 1, charSide);
+    let f6 = !collision(charPosx + 3 * charSide, charPosy - 1, charSide);
+    let f7 = !collision(charPosx - 3 * charSide, charPosy - 1, charSide);
+
+    return f1 || f2 || f3 || f4 || f5 | f6 || f7;
+}
+
+function _goombaWillFall(charPosx, charPosy, charSide) {
+    let slack = 0;// 50 / backgroundScale;
+    const posx = charPosx * backgroundScale;
+
+    const belowCharPosy = charPosy - (charSide * backgroundScale) - 1;
+    const posy = (canvasHeight - 40 / backgroundScale) * backgroundScale - belowCharPosy * backgroundScale;
+
+    const posxSlack = posx - slack;
+    const charSideSlack = charSide + 2* slack;
+
+    const imageData = ctxBitmap.getImageData(posxSlack, posy, charSideSlack, 2);
+
+    let willFall = false;
+
+    
+    for (let i = 0; i < imageData.data.length; i += 4) {
+        const r = imageData.data[i];
+        const g = imageData.data[i + 1];
+        const b = imageData.data[i + 2];
+        const a = imageData.data[i + 3];
+
+        if (r === 255 && g === 255 && b === 255) {
+            //console.log("branco");
+
+            willFall = true;
+            break;
+        }
+        /*
+        else if (r === 0 && g === 0 && b === 0) {
+            //console.log("preto");
+            //console.log("colidiu", posx, posy, side, side);
+        }
+                    else if (r === 255 && g === 255 && b === 0) {
+            console.log(r, g, b);
+        }
+        else if (r === 255 && g === 0 && b === 0) {
+            console.log(r, g, b);
+        }
+            else {
+            }
+         */
+    }
+
+    return willFall;
 }
 
 
