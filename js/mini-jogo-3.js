@@ -456,9 +456,7 @@ async function loop(timestamp) {
         }
     }
 
-    if (goombaCollidePlayer(timestamp)) {
-        console.log("colidiu");
-    }
+    goombaCollidePlayer(timestamp);
 
     goombaUpdate(dt, timestamp);
 
@@ -596,6 +594,10 @@ function goombaDraw(elapsedTime) {
     for (let i = 0; i < enemy.goomba.length; i++) {
         const meuGoomba = enemy.goomba[i];
 
+        if (meuGoomba == null) {
+            continue;
+        }
+
         ctx.drawImage(spriteEnemy, goombaCycle * 16, 16, 16, 16, meuGoomba.x - scrollVal, (canvasHeight - 40 / backgroundScale) - meuGoomba.y - 5, goombaWidth, goombaHeight);
     }
 }
@@ -603,17 +605,12 @@ function goombaDraw(elapsedTime) {
 function goombaInit() {
     enemy = { goomba: [] };
 
-    //goomba(500);
-
-    goomba(3500);
-
-    return;
-
     goomba(1840);
     goomba(2420);
     goomba(2860);
+    goomba(3500);
 
-    //goomba(5070);
+    goomba(5000);
 }
 
 function collidingEnemy(goombax, goombay, hitbox_size) {
@@ -629,31 +626,30 @@ function goombaCollidePlayer(timestamp) {
     for (let i = 0; i < enemy.goomba.length; i++) {
         const meuGoomba = enemy.goomba[i];
 
+        if (meuGoomba == null) {
+            continue;
+        }
+
         const goombax = meuGoomba.x;
         const goombay = meuGoomba.y;
 
         if (marioJumping && !marioJumpingUp && collidingEnemy(goombax, goombay, 50)) {
-            console.log("mario estava pulando e portando matou o goomba");
+            console.log("mario estava pulando e portando matou o goomba", i);
             audioBump.play();
             killed.push(i);
         }
         else if (collidingEnemy(goombax, goombay, 14)) {
             console.log("colidiu goomba com mario", goombax, goombay, marioPosx, marioPosy, "jumping?", marioJumping);
             killMario(timestamp);
-            return true;
+            return;
         }
     }
 
     for (let i = 0; i < killed.length; i++) {
-        console.log("removendo goomba", i);
-        enemy.goomba.splice(i, 1);
-    }
+        console.log("removendo goomba", killed[i]);
 
-    if (killed.length > 0) {
-        return true;
-    }
-    else {
-        return false;
+        enemy.goomba[killed[i]] = null;
+        //enemy.goomba.splice(killed[1], 1);
     }
 }
 
@@ -671,6 +667,10 @@ function goombaInScreen(goomba) {
 function goombaUpdate(dt, timestamp) {
     for (let i = 0; i < enemy.goomba.length; i++) {
         const meuGoomba = enemy.goomba[i];
+
+        if (meuGoomba == null) {
+            continue;
+        }
 
         let amount = 200 * dt;
 
