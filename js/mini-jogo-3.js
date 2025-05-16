@@ -17,6 +17,21 @@ let enemy = {
     goomba: []
 };
 
+function goombaInit() {
+    enemy = { goomba: [] };
+
+    goomba(1840);
+    //goomba(2420);
+    goomba(2860);
+    //goomba(3500);
+
+    goomba(5000);
+
+    goomba(6000);
+
+    goomba(7000);
+}
+
 var scrollVal;
 var marioPosx;
 var marioPosy;
@@ -145,6 +160,7 @@ const audioJump = new Audio("../../assets/audio/sounds_jump-small.wav");
 const audioBackground = new Audio("../../assets/audio/sounds_aboveground_bgm.ogg");
 const audioFlagpole = new Audio("../../assets/audio/sounds_flagpole.wav");
 const audioBump = new Audio("../../assets/audio/sounds_bump.wav");
+const audioEnd = new Audio("../../assets/audio/sounds_stage_clear.wav");
 
 let playAudioBackground = true;
 audioBackground.volume = 0.05;
@@ -274,6 +290,7 @@ function endGame() {
     console.log("fim de jogo, vai pra tela inicial");
     audioFlagpole.pause();
     audioBackground.pause();
+    audioEnd.play();
     document.getElementById("modal-final").style.display = "block";
 }
 
@@ -600,17 +617,6 @@ function goombaDraw(elapsedTime) {
 
         ctx.drawImage(spriteEnemy, goombaCycle * 16, 16, 16, 16, meuGoomba.x - scrollVal, (canvasHeight - 40 / backgroundScale) - meuGoomba.y - 5, goombaWidth, goombaHeight);
     }
-}
-
-function goombaInit() {
-    enemy = { goomba: [] };
-
-    goomba(1840);
-    goomba(2420);
-    goomba(2860);
-    goomba(3500);
-
-    goomba(5000);
 }
 
 function collidingEnemy(goombax, goombay, hitbox_size) {
