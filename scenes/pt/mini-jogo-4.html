@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório de IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/mini-4.css">
+</head>
+<body>
+    <div class="container">
+        <div class="spinBtn"></div>
+        <div class="wheel">
+            <div class="number label" style="--i:1;--clr:#db7093;">
+                <span>Alimentação</span></div>
+            <div class="number label" style="--i:2;--clr:#20b2aa;">
+                <span>Locomoção</span></div>
+            <div class="number label" style="--i:3;--clr:#daa520;">
+                <span>Patas</span></div>
+            <div class="number label" style="--i:4;--clr:#ff340f;">
+                <span>0</span></div>
+            <div class="number label" style="--i:5;--clr:#4169e1;">
+                <span>1000</span></div>
+        </div>
+    </div>
+    <script>
+
+        let wheel = document.querySelector('.wheel');
+        let spinBtn = document.querySelector('.spinBtn');
+        let value = Math.ceil(Math.random() * 3600);
+
+        spinBtn.onclick = function(){
+
+            wheel.style.transform = "rotate(" + value + "deg)"
+            value += Math.ceil(Math.random() * 3600);
+
+        }
+
+    </script>
+</body>
+</html>
