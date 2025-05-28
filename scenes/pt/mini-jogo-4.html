@@ -18,23 +18,25 @@
             <div class="number label" style="--i:3;--clr:#daa520;">
                 <span>Patas</span></div>
             <div class="number label" style="--i:4;--clr:#ff340f;">
-                <span>0</span></div>
+                <span>Morada</span></div>
             <div class="number label" style="--i:5;--clr:#4169e1;">
-                <span>1000</span></div>
+                <span>Saída</span></div>
         </div>
     </div>
     <script>
+        
+    let wheel = document.querySelector('.wheel');
+    let value = Math.ceil(Math.random() * 3600);
 
-        let wheel = document.querySelector('.wheel');
-        let spinBtn = document.querySelector('.spinBtn');
-        let value = Math.ceil(Math.random() * 3600);
-
-        spinBtn.onclick = function(){
-
-            wheel.style.transform = "rotate(" + value + "deg)"
+    document.addEventListener('keydown', function(event) {
+        // Verifica se a tecla pressionada é a barra de espaço
+        if (event.code === 'Space') {
+            event.preventDefault(); // Impede a rolagem da página ao pressionar espaço
+            wheel.style.transform = "rotate(" + value + "deg)";
             value += Math.ceil(Math.random() * 3600);
-
         }
+    });
+
 
     </script>
 </body>
