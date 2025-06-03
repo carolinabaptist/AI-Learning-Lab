@@ -17,7 +17,7 @@ This activity is designed to help children identify different spheres of privacy
 Key concepts: Privacy, AI in daily life, Supervised learning <br>
 Material: Paper, Coloured pencils, Glue, Scissors, Computer with Internet, AI Learning Lab platform
 
-# Activity 2 Robot Race
+# Activity 3 Robot Race
 
 In this activity, children are given a race track and small robots. Their challenge is to build the fastest path to win the race using puzzle pieces. The robot acts as an agent that makes decisions and interacts with its environment — the race track. The puzzle pieces form a set of predefined instructions that guide the robot's behavior.
 
@@ -26,7 +26,7 @@ As children place different puzzle pieces on the track, the robot responds with 
 Key concepts: Reinforcement Learning, Feedback, Reward, Penalty, Agent, Ambient, Algorithm <br>
 Material: Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
 
-# Activity 3 Teach, Mário!
+# Activity 4 Teach, Mário!
 
 In this activity, children teach a machine learning model to control a Mario character by creating custom input classes such as "right" and "up". Using a webcam, they take multiple photos to represent each class. Each hand gesture and glove color corresponds to a different movement in the game.
 
@@ -35,7 +35,14 @@ With the collected data, the children train a classification model and then test
 Key concepts: Classification, Training data, Labels, Training, Supervised learning, AI models, Evaluation <br>
 Materials: pairs of gloves of different colours, google teachable machine, ai learning lab
 
-# Activity 4 Creating Stories with Cards
+# Activity 5 Sort It Out
 
-Introduce generative AI through stories and images, explaining how AI generates these elements and how it recognizes and interprets images
+The goal of this game is to correctly group animals based on shared characteristics. On the table, there is a board with three circles on each side and a set of cards featuring animal images.
 
+The game begins when a participant presses a button to randomly select a grouping criterion, which is displayed on the computer screen. Example criteria include type of diet, main mode of locomotion, and number of legs.
+
+The children are then given time to organize the cards into clusters according to the selected criterion. Through this activity, they explore how to identify patterns and group data without being told the exact rules — an intuitive introduction to unsupervised learning and clustering.
+
+Key concepts: Unsupervised learning, Clustering, Pattern recognition <br>
+Materials: 1 game board, set of animal image cards and category cards to name clusters,
+computer with internet, ai learning lab, button
