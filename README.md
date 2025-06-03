@@ -3,19 +3,34 @@ A game for teaching kids aged 6 to 7 about Artificial Intelligence.
 
 It can be accessed online here: [Laboratório de IA](https://carolinabaptist.github.io/AI-Learning-Lab)
 
-# Mini Game 1 Privacy and AI
+# Activity 1 Talking to Machines
 
-This activity is designed so that children identify spheres of privacy and reflect on the information they share with AI tools and the world.
+The goal of this session is to introduce children to generative AI through virtual assistants and chatbots. In this activity, children interact with tools like Siri and ChatGPT by asking questions and creating stories, discovering that AI can generate meaningful and sometimes surprising responses. At the same time, they observe that AI is not perfect — it can misunderstand input or produce inaccurate information. This experience helps them reflect on both the capabilities and the limitations of generative AI.
 
-# Mini Game 2 Programming with Robots
+Key concepts: Generative AI, AI limitations
+Material: Computer with Internet 
 
-Introduce the concepts of algorithm, agent and reeinforcement learning. 
+# Activity 2 Privacy and AI
 
-# Mini Game 3 Teaching AI to Recognize and Classify Professions
+This activity is designed to help children identify different spheres of privacy and reflect on the type of information they share with AI tools and the world. At the beginning of the session, we revisit the concept of AI and give examples of how it appears in everyday life. We also briefly introduce the idea of supervised learning. The main focus of this session is privacy — encouraging children to think critically about personal data, consent, and the implications of sharing information with intelligent systems.
+
+Key concepts: Privacy, AI in daily life, Supervised learning
+Material: Paper, Coloured pencils, Glue, Scissors, Computer with Internet, AI Learning Lab platform
+
+# Activity 2 Robot Race
+
+In this activity, children are given a race track and small robots. Their challenge is to build the fastest path to win the race using puzzle pieces. The robot acts as an agent that makes decisions and interacts with its environment — the race track. The puzzle pieces form a set of predefined instructions that guide the robot's behavior.
+
+As children place different puzzle pieces on the track, the robot responds with immediate feedback. For example, blue pieces make the robot move faster, while red pieces slow it down. Through trial and error, children learn how to improve their strategy by observing outcomes and adjusting their choices. They discover that to create the fastest path, they must maximize rewards, introducing them to the basic logic behind reinforcement learning.
+
+Key concepts: Reinforcement Learning, Feedback, Reward, Penalty, Agent, Ambient, Algorithm
+Material: Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
+
+# Activity 3 Teach, Mário!
 
 Teach classification, bias, and supervised learning through the training of a simple model and observation of its results.
 
-# Mini Game 4 Creating Stories with Cards
+# Activity 4 Creating Stories with Cards
 
 Introduce generative AI through stories and images, explaining how AI generates these elements and how it recognizes and interprets images
 
