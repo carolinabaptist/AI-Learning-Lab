@@ -58,7 +58,7 @@ function init() {
     scrollVal = 0;
     marioPosx = 200;
     marioPosy = -12.8; // was 0;
-    marioSpeed = 600;
+    marioSpeed = 400;
     marioJumpSpeed = 800;
     marioJumpTime = 0.3; // seconds
     marioFacingRight = true;
