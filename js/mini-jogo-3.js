@@ -59,7 +59,7 @@ function init() {
     marioPosx = 200;
     marioPosy = -12.8; // was 0;
     marioSpeed = 400;
-    marioJumpSpeed = 950;
+    marioJumpSpeed = 1100;
     marioJumpTime = 0.3; // seconds
     marioFacingRight = true;
     marioWalking = false;
