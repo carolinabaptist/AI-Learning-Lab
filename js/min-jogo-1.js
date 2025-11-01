@@ -255,7 +255,7 @@ function begin() {
             $('.pixel-button:not(.disabled)')[0].click();
         }
     });
-
+    /*pode ser removido no futuro*/
     if (!shouldSpeak()) {
         typewriterContinue();
     }
