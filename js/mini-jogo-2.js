@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`Round: ${round}, Max Rounds: ${maxRounds}`);
 
         keyPressCount++;
-        if (keyPressCount === 2 || keyPressCount === 4 || keyPressCount == 6) return;
         if (event.key === "1") {
                 score1++;
                 score1Display.textContent = score1;
