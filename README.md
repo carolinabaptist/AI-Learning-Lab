@@ -17,7 +17,7 @@ This activity is designed to help children identify different spheres of privacy
 Key concepts: Data privacy, AI in daily life, Supervised learning <br>
 Material: Paper, Coloured pencils, Glue, Scissors, Computer with Internet, AI Learning Lab platform
 
-The activity is available in Portuguese, English, and Hindi.
+The activity is available in Portuguese, English and Hindi.
 
 ⚠️ Voice Disclaimer: The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system. As an alternative, the teacher can read the text aloud. This approach was chosen so that the activity can also be carried out offline, without depending on an internet connection.
 
