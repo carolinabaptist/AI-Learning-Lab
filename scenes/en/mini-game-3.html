@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teach Mário!</title>
+    <link rel="stylesheet" href="../../css/mini-3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+    <div id="tela-inicial">
+        <div class="background-container">
+            <div class="background-slide">
+                <div class="container board">
+                    <h1>Upload Your Trained Model</h1>
+                    <div class="center">
+                        <h1>1</h1>
+                        <label>model.json</label>
+                        <br>
+                        <input type="file" id="modelJson" accept=".json"><br>
+                        
+                        <h1>2</h1>
+                        <label>metadata.json</label>
+                        <br>
+                        <input type="file" id="metadataJson" accept=".json"><br>
+                        
+                        <h1>3</h1>
+                        <label>weights.bin</label>
+                        <br>
+                        <input type="file" id="weightsBin" accept=".bin"><br>
+                        <br>
+                        <br>
+                        <br>
+                        <button onclick="carregarModelo()">Load Model</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tela-jogo">
+        <div class="webcam">
+            <div id="webcam-container"></div>
+            <div id="label-container"></div>
+        </div>
+        
+        <div class="bg-mario">
+            <div class="white-rect">
+                <canvas id="jogo-canvas"></canvas>
+            </div>
+            
+            <canvas id="background-debug"></canvas>
+        </div>
+
+        <div id="modal-final" class="board">
+            <h1>END</h1>
+            <div class="center">
+                <button onclick="location.href='map-en.html'">Back</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../../js/mini-jogo-3.js"></script>
+</body>
+</html>
