@@ -5,7 +5,7 @@
 </div>
 <br>
 <div align="justify">
-A game for teaching first year students aged 6 to 7 about Artificial Intelligence. <br> 
+A series of activities for teaching first year students aged 6 to 7 about Artificial Intelligence. <br> 
 
 It consists of a digital activity, <i>Talking to Machines</i>, and four tangible activities in the lab: <i>Privacy and AI</i>, <i>Robot Race</i>, <i>Teach Mário</i> and <i>Sort It Out</i>.
 </div>
@@ -14,7 +14,7 @@ It consists of a digital activity, <i>Talking to Machines</i>, and four tangible
 <div align="justify">
 The goal of this session is to introduce children to generative AI through virtual assistants and chatbots. In this activity, children interact with tools like Siri and ChatGPT by asking questions and creating stories, discovering that AI can generate meaningful and sometimes surprising responses. At the same time, they observe that AI is not perfect. It can misunderstand input or produce inaccurate information. This experience helps them reflect on both the capabilities and the limitations of generative AI.
 </div>
-
+<br>
 <div align="justify">
 <strong>Key concepts:</strong> Generative AI, AI limitations<br>
 <strong>Material:</strong> Computer with Internet
@@ -24,25 +24,24 @@ The goal of this session is to introduce children to generative AI through virtu
 <div align="justify">
 This activity is designed to help children identify different spheres of privacy and reflect on the type of information they share with AI tools and the world. At the beginning of the session, we revisit the concept of AI and give examples of how it appears in everyday life. We also briefly introduce the idea of supervised learning. The main focus of this session is privacy, encouraging children to think critically about personal data, consent, and the implications of sharing information with intelligent systems.
 </div>
-
+<br>
 <div align="justify">
 <strong>Key concepts:</strong> Data privacy, AI in daily life, Supervised learning<br>
 <strong>Material:</strong> Paper, Coloured pencils, Glue, Scissors, Computer with Internet, AI Learning Lab platform
 </div>
-
+<div align="justify">
+All materials used and full alternative script are available in the folder <code>Materials\Privacy-and-AI</code>.
+</div>
+<br>
 <div align="justify">
 The activity is available in Portuguese, English and Hindi.
 </div>
-
+<br>
 <div align="justify">
 <strong>⚠️ Voice Disclaimer:</strong> The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system. As an alternative, the teacher can read the text aloud. This approach was chosen so that the activity can also be carried out offline, without depending on an internet connection.
 </div>
 
-<div align="justify">
-All materials used and full alternative script are available in the folder <code>Materials\Privacy-and-AI</code>.
-</div>
-
-# Activity 3 Robot Race
+# Activity 3: Robot Race
 <div align="justify">
 In this activity, children are given a race track and small robots. Their challenge is to build the fastest path to win the race using puzzle pieces. The robot acts as an agent that makes decisions and interacts with its environment (the race track). The puzzle pieces form a set of predefined instructions that guide the robot's behavior.
 </div>
@@ -68,7 +67,7 @@ The activity is available in Portuguese and English.
 <strong>⚠️ Voice Disclaimer:</strong> The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system.
 </div>
 
-# Activity 4 Teach, Mário!
+# Activity 4: Teach, Mário!
 <div align="justify">
 In this activity, children teach a machine learning model to control a Mario character by creating custom input classes such as "right" and "up". Using a webcam, they take multiple photos to represent each class. Each hand gesture and glove color corresponds to a different movement in the game.
 </div>
@@ -82,7 +81,7 @@ With the collected data, the children train a classification model and then test
 <strong>Materials:</strong> pairs of gloves of different colours, google teachable machine, ai learning lab
 </div>
 
-# Activity 5 Sort It Out
+# Activity 5: Sort It Out
 <div align="justify">
 The goal of this game is to correctly group animals based on shared characteristics. On the table, there is a board with three circles on each side and a set of cards featuring animal images.
 </div>
