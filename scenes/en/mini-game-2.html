@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Race</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/mini-2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <div class="background-slide">
+            <div class="container board">
+                <div id="tela-nomes">
+                    <div class="container-jogadores" id="dois-jogadores">
+                        <h1>Enter the team names</h1>
+                            <input type="text" id="nome-jogador1" placeholder="Player 1 or Team 1 name">
+                            <input type="text" id="nome-jogador2" placeholder="Player 2 or Team 2 name">
+                            <button class="play-button-1" onclick="iniciarJogo()">PLAY</button>
+                    </div>
+                </div>
+                <div id="placar">
+                    <div class="scores">
+                        <div class="score" id="score1">0</div>
+                        <div class="score" id="score2">0</div>
+                    </div>
+                </div>
+                        <div id="msg">
+                    <div class="end-container">
+                        <button class="play-button" onclick="typewriterBegin()">Fim</button>
+                    </div>
+                </div>
+                <div id="typewriter-screen" class="typewriter-speech center-text disabled">
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect">Oi, amiguinhos... 👋😊</p>
+                        <p class="typewriter-effect">Hoje vamos lembrar o que já aprendemos sobre a Inteligência Artificial!👋😊</p>
+                        <p class="typewriter-effect img-text">👾 A Inteligência Artificial é quando uma máquina parece que tem uma cabecinha que pensa.</p>
+                        <p class="typewriter-effect img-text">Mas atenção: A Inteligência Artificial não é uma pessoa!</p>
+                        <p class="typewriter-effect img-text">Ela não tem sentimentos como nós temos!</p>
+                    </div>
+
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect img-text">🤫 Na última vez que estivemos juntos, vocês aprenderam que não devemos contar tudo para a Inteligência Artificial.</p>
+                        <p class="typewriter-effect img-text">Segredos e coisas importantes, nós guardamos connosco!</p>
+                        <p class="typewriter-effect img-text">👩‍🏫 Também aprendemos que quem ensina o computador somos nós!</p>
+                        <p class="typewriter-effect img-text">Somos nós que mostramos pra Inteligência Artificial o que está certo e o que está errado.</p>
+                        <p class="typewriter-effect img-text">Ela aprende com os exemplos que a gente dá!</p>
+                    </div>
+
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect img-text">🎲 Mas essa não é a única forma dela aprender... Ela pode aprender com jogos como o que jogamos hoje!</p>
+                        <p class="typewriter-effect img-text">Foi divertido, né?</p>
+                        <p class="typewriter-effect img-text">Nesse jogo vocês tinham que encontrar o caminho mais rápido.</p>
+                        <p class="typewriter-effect img-text">Mas não foi de primeira...</p>
+                        <p class="typewriter-effect img-text">E também ninguém descobriu sozinho!</p>
+                        <p class="typewriter-effect img-text">Nós colocamos as regras e vocês foram percebendo que algumas peças eram melhores que outras para formar o caminho.</p>
+                    </div>
+
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect img-text">Depois de testar e tentar de novo vocês conseguiram encontrar o melhor caminho!</p>
+                        <p class="typewriter-effect img-text">🟢 Quando vocês escolhiam a peça certa, o robô andava bem rápido!</p>
+                        <p class="typewriter-effect img-text">🔴 Mas quando escolhiam uma peça errada, o robô ficava bem devagar...</p>
+                        <p class="typewriter-effect img-text">É como se o robô ganhasse uma estrelinha ✨ quando escolhe certo... e ficasse sem estrelinha quando erra. Assim, ele vai entendendo o que é melhor!</p>
+                    </div>
+
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect img-text">🧠 No começo, vocês erraram um pouquinho. </p>
+                        <p class="typewriter-effect img-text">Mas depois de experimentar várias combinações, vocês aprenderam!</p>
+                        <p class="typewriter-effect img-text">E encontraram o melhor caminho!</p>
+                        <p class="typewriter-effect img-text">A Inteligência Artificial faz a mesma coisa! </p>
+                        <p class="typewriter-effect img-text">Ela testa... Ela erra... Ela tenta de novo... E quando encontra o melhor caminho... Ela aprende! E segue esse caminho... sempre que precisa!</p>
+                    </div>
+
+                    <div class="typewriter-page disabled">
+                        <p class="typewriter-effect img-text">👏 Ufa... vocês aprenderam muuuita coisa hoje!</p>
+                        <p class="typewriter-effect img-text">Agora já sabem...</p>
+                        <p class="typewriter-effect img-text">a Inteligência Artificial aprende testando, errando e tentando de novo... Até melhorar! </p>
+                        <p class="typewriter-effect img-text">Ela vai lembrando do que deu certo… como se estivesse juntando dicas para fazer cada vez melhor! </p>
+                        <p class="typewriter-effect img-text">E quem ajuda ela a começar... Somos nós! Criando as regras do jogo! 🎲</p>
+                        <p class="typewriter-effect img-text">🌟 Parabéns, pequenos cientistas! Até a próxima aventura!</p>
+                        <p class="typewriter-effect img-text">Adeus! 👋😄</p>
+                    </div>
+
+                    <div class="bottom">
+                    <button class="play-button" id="typewriter-continue" onclick="typewriterContinue()">CONTINUE</button>
+                    <button class="play-button disabled" id="typewriter-end"  onclick="location.href='map-en.html'"">BACK</button>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>         
+    </div>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/mini-jogo-2.js"></script>
+
+</body>
+</html>

@@ -17,7 +17,9 @@ This activity is designed to help children identify different spheres of privacy
 Key concepts: Data privacy, AI in daily life, Supervised learning <br>
 Material: Paper, Coloured pencils, Glue, Scissors, Computer with Internet, AI Learning Lab platform
 
-⚠️ Voice Disclaimer: The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system.
+The activity is available in Portuguese, English, and Hindi.
+
+⚠️ Voice Disclaimer: The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system. As an alternative, the teacher can read the text aloud. All materials used and full alternative script are available in the folder Materials\Privacy-and-AI.
 
 # Activity 3 Robot Race
 
