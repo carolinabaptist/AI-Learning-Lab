@@ -77,11 +77,17 @@ All materials used, track configuration and full alternative script are availabl
 
 # Activity 4: Teach, Mário!
 <div align="justify">
-In this activity, children teach a machine learning model to control a Mario character by creating custom input classes such as "right" and "up". Using a webcam, they take multiple photos to represent each class. Each hand gesture and glove color corresponds to a different movement in the game. With the collected data, the children train a classification model and then test it using the webcam to see if it correctly recognizes the gestures. Once the model is validated, it is exported and integrated into a Mario game, allowing the children to play by moving Mario with colored gloves, using their own trained model.
+In this activity, children teach a machine learning model to control a Mario character by creating custom input classes such as "right" and "up". Using a webcam, they take multiple photos to represent each class. Each hand gesture and glove color corresponds to a different movement in the game. With the collected data, the children train a classification model and then test it using the webcam to see if it correctly recognizes the gestures. Once the model is validated, it is exported and integrated into a Mario game, allowing the children to play by moving Mario with colored gloves, using their own trained model. The activity is available in Portuguese, Hindi and English.
+</div>
+<br>
+<div align="justify">
+<strong>Key concepts:</strong> Classification, Training data, Labels, Training, Supervised learning, AI models, Evaluation<br>
+<strong>Materials:</strong> pairs of gloves of different colours, google teachable machine, ai learning lab
 </div>
 <br>
 <div align="justify">
 To play the game, use <a href="https://teachablemachine.withgoogle.com/train/image">Google Teachable Machine</a> to take the photos, create the labels right, up right and still, test the model and download the files. 
+<br>
 For the photos:<br>
 • For “right”, the child should raise their right hand.<br>
 • For “up right”, the child should raise their left hand.<br>
@@ -92,11 +98,6 @@ In portuguese, the labels must be direita (right), cima direita (up right) and n
 <br>
 After exporting the model, Google Teachable Machine provides a ZIP file containing all necessary files. You must unzip this file before uploading the model to the Lab, otherwise the platform will not recognize it correctly. This activity is the only one
 that relies on internet.
-<br>
-<div align="justify">
-<strong>Key concepts:</strong> Classification, Training data, Labels, Training, Supervised learning, AI models, Evaluation<br>
-<strong>Materials:</strong> pairs of gloves of different colours, google teachable machine, ai learning lab
-</div>
 
 # Activity 5: Sort It Out
 <div align="justify">
