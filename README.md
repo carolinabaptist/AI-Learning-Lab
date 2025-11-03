@@ -19,11 +19,13 @@ Material: Paper, Coloured pencils, Glue, Scissors, Computer with Internet, AI Le
 
 The activity is available in Portuguese, English, and Hindi.
 
-⚠️ Voice Disclaimer: The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system. As an alternative, the teacher can read the text aloud. All materials used and full alternative script are available in the folder Materials\Privacy-and-AI.
+⚠️ Voice Disclaimer: The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system. As an alternative, the teacher can read the text aloud. This approach was chosen so that the activity can also be carried out offline, without depending on an internet connection.
+
+All materials used and full alternative script are available in the folder Materials\Privacy-and-AI.
 
 # Activity 3 Robot Race
 
-In this activity, children are given a race track and small robots. Their challenge is to build the fastest path to win the race using puzzle pieces. The robot acts as an agent that makes decisions and interacts with its environment — the race track. The puzzle pieces form a set of predefined instructions that guide the robot's behavior.
+In this activity, children are given a race track and small robots. Their challenge is to build the fastest path to win the race using puzzle pieces. The robot acts as an agent that makes decisions and interacts with its environment (the race track). The puzzle pieces form a set of predefined instructions that guide the robot's behavior.
 
 As children place different puzzle pieces on the track, the robot responds with immediate feedback. For example, blue pieces make the robot move faster, while red pieces slow it down. Through trial and error, children learn how to improve their strategy by observing outcomes and adjusting their choices. They discover that to create the fastest path, they must maximize rewards, introducing them to the basic logic behind reinforcement learning.
 
