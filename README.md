@@ -1,7 +1,7 @@
 # AI-Learning-Lab
 <br>
 <div align="center">
-🔗 <a href="https://carolinabaptist.github.io/AI-Learning-Lab">Laboratório de Inteligênica Artificial</a>
+    <a href="https://carolinabaptist.github.io/AI-Learning-Lab">Laboratório de Inteligênica Artificial</a>
 </div>
 <br>
 <div align="justify">
@@ -56,16 +56,16 @@ To play, you should prepare the tracks in advance and place the question marks i
 </div>
 <br>
 <div align="justify">
+The activity is available in Portuguese, Hindi and English.
+</div>
+<br>
+<div align="justify">
 <strong>Key concepts:</strong> Reinforcement Learning, Feedback, Reward, Penalty, Agent, Ambient, Algorithm<br>
 <strong>Material:</strong> Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
 </div>
 <br>
 <div align="justify">
 <strong>🧩 Alternative Version:</strong> Replace the programmable puzzles or Ozobots with colored cards and simple pawns on a paper track. Each color represents a specific number of spaces the pawn can move, but children don’t know this at the start. In each round, the children choose a combination of cards and move their pawn according to the total number of spaces those colors represent. After each test, they discuss and infer how each color might affect the movement, gradually discovering the hidden rule. The pawn that reaches the farthest position in a round is the winner.
-</div>
-<br>
-<div align="justify">
-The activity is available in Portuguese, Hindi and English.
 </div>
 <br>
 <div align="justify">
@@ -78,13 +78,13 @@ All materials used, track configuration and full alternative script are availabl
 
 # Activity 4: Teach, Mário!
 <div align="justify">
-In this activity, children teach a machine learning model to control a Mario character by creating custom input classes such as "right" and "up". Using a webcam, they take multiple photos to represent each class. Each hand gesture and glove color corresponds to a different movement in the game.
+In this activity, children teach a machine learning model to control a Mario character by creating custom input classes such as "right" and "up". Using a webcam, they take multiple photos to represent each class. Each hand gesture and glove color corresponds to a different movement in the game. With the collected data, the children train a classification model and then test it using the webcam to see if it correctly recognizes the gestures. Once the model is validated, it is exported and integrated into a Mario game, allowing the children to play by moving Mario with colored gloves, using their own trained model.
 </div>
-
+<br>
 <div align="justify">
-With the collected data, the children train a classification model and then test it using the webcam to see if it correctly recognizes the gestures. Once the model is validated, it is exported and integrated into a Mario game, allowing the children to play by moving Mario with colored gloves — using their own trained AI.
+To play the game, use <a href="https://teachablemachine.withgoogle.com/train/image">Google Teachable Machine</a> to take the photos, create the labels “direita”, “cima direita” and “nada”, test the model and download the files.
 </div>
-
+<br>
 <div align="justify">
 <strong>Key concepts:</strong> Classification, Training data, Labels, Training, Supervised learning, AI models, Evaluation<br>
 <strong>Materials:</strong> pairs of gloves of different colours, google teachable machine, ai learning lab
@@ -92,17 +92,9 @@ With the collected data, the children train a classification model and then test
 
 # Activity 5: Sort It Out
 <div align="justify">
-The goal of this game is to correctly group animals based on shared characteristics. On the table, there is a board with three circles on each side and a set of cards featuring animal images.
+The goal of this game is to correctly group animals based on shared characteristics. On the table, there is a board with three circles on each side and a set of cards featuring animal images. The game begins when a participant presses a button to randomly select a grouping criterion, which is displayed on the computer screen. Example criteria include type of diet, main mode of locomotion, and number of legs. The children are then given time to organize the cards into clusters according to the selected criterion. Through this activity, they explore how to identify patterns and group data without being told the exact rules, an intuitive introduction to unsupervised learning and clustering.
 </div>
-
-<div align="justify">
-The game begins when a participant presses a button to randomly select a grouping criterion, which is displayed on the computer screen. Example criteria include type of diet, main mode of locomotion, and number of legs.
-</div>
-
-<div align="justify">
-The children are then given time to organize the cards into clusters according to the selected criterion. Through this activity, they explore how to identify patterns and group data without being told the exact rules — an intuitive introduction to unsupervised learning and clustering.
-</div>
-
+<br>
 <div align="justify">
 <strong>Key concepts:</strong> Unsupervised learning, Clustering, Pattern recognition<br>
 <strong>Materials:</strong> 1 game board, set of animal image cards and category cards to name clusters, computer with internet, ai learning lab, button
