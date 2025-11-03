@@ -1,10 +1,9 @@
 # AI-Learning-Lab
 <br>
-<br>
 <div align="center">
 🔗 <a href="https://carolinabaptist.github.io/AI-Learning-Lab">Laboratório de Inteligênica Artificial</a>
 </div>
-
+<br>
 <div align="justify">
 A game for teaching first year students aged 6 to 7 about Artificial Intelligence. <br> 
 
