@@ -94,7 +94,7 @@ For the photos:<br>
 • For “up right”, the child should raise their left hand.<br>
 • For “still”, the child should keep both hands down.
 <br>
-In portuguese, the labels must be direita (right), cima direita (up right) and nada (still). When creating the Hindi version, use the following labels: दायाँ (right), ऊपर दायाँ (up right), and स्थिर (still).
+In portuguese, the labels must be direita (right), cima direita (up right) and nada (still).
 </div>
 <br>
 After exporting the model, Google Teachable Machine provides a ZIP file containing all necessary files. You must unzip this file before uploading the model to the Lab, otherwise the platform will not recognize it correctly. This activity is the only one
