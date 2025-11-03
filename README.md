@@ -52,7 +52,7 @@ As children place different puzzle pieces on the track, the robot responds with 
 </div>
 <br>
 <div align="justify">
-To update the scoreboard, press 1 to give a point to team/player 1 and press 2 to give a point to player 2. There are currently 3 rounds.
+To update the scoreboard, press 1 to give a point to team/player 1 and press 2 to give a point to player 2. There are currently 3 rounds. In addition, to proceed to the final explanation, press the End button and then click Continue until you reach the end.
 </div>
 <br>
 <div align="justify">
@@ -61,6 +61,10 @@ To update the scoreboard, press 1 to give a point to team/player 1 and press 2 t
 </div>
 <div align="justify">
 All materials used and full alternative script are available in the folder <code>materials\robot-race</code>.
+</div>
+<br>
+<div align="justify">
+<strong>🧩 Alternative Version:</strong> Replace the programmable puzzles or Ozobots with colored cards and simple pawns on a paper track. Each color represents a specific number of spaces the pawn can move, but children don’t know this at the start. In each round, the children choose a combination of cards and move their pawn according to the total number of spaces those colors represent. After each test, they discuss and infer how each color might affect the movement, gradually discovering the hidden rule. The pawn that reaches the farthest position in a round is the winner.
 </div>
 <br>
 <div align="justify">
