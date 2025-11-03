@@ -60,7 +60,8 @@ To update the scoreboard, press 1 to give a point to team/player 1 and press 2 t
 <strong>Material:</strong> Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
 </div>
 <div align="justify">
-All materials used and full alternative script are available in the folder <code>materials\robot-race</code>.
+All materials used, track configuration and full alternative script are available in the folder <code>materials\robot-race</code>. To play, you should prepare the tracks in advance and place the question marks in empty spaces between two puzzle pieces, so that the children can fit the pieces and discover which one is the fastest.
+A photo showing an example of the track setup can be found in the <code>materials\robot-race</code> folder.
 </div>
 <br>
 <div align="justify">
