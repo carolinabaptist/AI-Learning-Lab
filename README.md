@@ -1,6 +1,8 @@
 # AI-Learning-Lab
 <div align="justify">
-A game for teaching first year students aged 6 to 7 about Artificial Intelligence. It consists of one digital activity and four tangible activities in the lab.
+A game for teaching first year students aged 6 to 7 about Artificial Intelligence. <br> 
+
+It consists of one digital activity and four tangible activities in the lab: Privacy and AI, Robot Race, Teach Mário and Sort It Out.
 </div>
 
 <div align="center">
