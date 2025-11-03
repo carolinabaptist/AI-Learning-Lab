@@ -81,16 +81,17 @@ In this activity, children teach a machine learning model to control a Mario cha
 </div>
 <br>
 <div align="justify">
-To play the game, use <a href="https://teachablemachine.withgoogle.com/train/image">Google Teachable Machine</a> to take the photos, create the labels “right,” “up right,” and “still,” test the model, and download the files. 
+To play the game, use <a href="https://teachablemachine.withgoogle.com/train/image">Google Teachable Machine</a> to take the photos, create the labels right, up right and still, test the model and download the files. 
 For the photos:<br>
 • For “right”, the child should raise their right hand.<br>
 • For “up right”, the child should raise their left hand.<br>
 • For “still”, the child should keep both hands down.
 <br>
-In portuguese, the labels must be "direita", "cima direita" e "nada".
+In portuguese, the labels must be direita (right), cima direita (up right) and nada (still). When creating the Hindi version, use the following labels: दायाँ (right), ऊपर दायाँ (up right), and स्थिर (still).
 </div>
 <br>
-After exporting the model, Google Teachable Machine provides a ZIP file containing all necessary files. You must unzip this file before uploading the model to the Lab, otherwise the platform will not recognize it correctly.
+After exporting the model, Google Teachable Machine provides a ZIP file containing all necessary files. You must unzip this file before uploading the model to the Lab, otherwise the platform will not recognize it correctly. This activity is the only one
+that relies on internet.
 <br>
 <div align="justify">
 <strong>Key concepts:</strong> Classification, Training data, Labels, Training, Supervised learning, AI models, Evaluation<br>
