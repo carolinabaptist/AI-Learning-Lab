@@ -88,6 +88,7 @@ In this activity, children teach a machine learning model to control a Mario cha
 <div align="justify">
 To play the game, use <a href="https://teachablemachine.withgoogle.com/train/image">Google Teachable Machine</a> to take the photos, create the labels right, up right and still, test the model and download the files. 
 <br>
+<br>
 For the photos:<br>
 • For “right”, the child should raise their right hand.<br>
 • For “up right”, the child should raise their left hand.<br>
