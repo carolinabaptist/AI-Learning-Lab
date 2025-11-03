@@ -18,7 +18,8 @@ The goal of this session is to introduce children to generative AI through virtu
 <strong>Key concepts:</strong> Generative AI, AI limitations<br>
 <strong>Material:</strong> Computer with Internet
 </div>
-You can talk directly to ChatGPT using the voice version available at  [https://chat.openai.com](https://chat.openai.com)  
+You can talk directly to ChatGPT using the voice version available at  (https://chat.openai.com)
+
 # Activity 2: Privacy and AI
 <div align="justify">
 This activity is designed to help children identify different spheres of privacy and reflect on the type of information they share with AI tools and the world. At the beginning of the session, we revisit the concept of AI and give examples of how it appears in everyday life. We also briefly introduce the idea of supervised learning. The main focus of this session is privacy, encouraging children to think critically about personal data, consent, and the implications of sharing information with intelligent systems.
