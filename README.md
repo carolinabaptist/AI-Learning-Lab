@@ -5,17 +5,19 @@ It can be accessed online here: [Laboratório de IA](https://carolinabaptist.git
 
 # Activity 1 Talking to Machines
 
-The goal of this session is to introduce children to generative AI through virtual assistants and chatbots. In this activity, children interact with tools like Siri and ChatGPT by asking questions and creating stories, discovering that AI can generate meaningful and sometimes surprising responses. At the same time, they observe that AI is not perfect — it can misunderstand input or produce inaccurate information. This experience helps them reflect on both the capabilities and the limitations of generative AI.
+The goal of this session is to introduce children to generative AI through virtual assistants and chatbots. In this activity, children interact with tools like Siri and ChatGPT by asking questions and creating stories, discovering that AI can generate meaningful and sometimes surprising responses. At the same time, they observe that AI is not perfect. It can misunderstand input or produce inaccurate information. This experience helps them reflect on both the capabilities and the limitations of generative AI.
 
 Key concepts: Generative AI, AI limitations <br>
 Material: Computer with Internet 
 
 # Activity 2 Privacy and AI
 
-This activity is designed to help children identify different spheres of privacy and reflect on the type of information they share with AI tools and the world. At the beginning of the session, we revisit the concept of AI and give examples of how it appears in everyday life. We also briefly introduce the idea of supervised learning. The main focus of this session is privacy — encouraging children to think critically about personal data, consent, and the implications of sharing information with intelligent systems.
+This activity is designed to help children identify different spheres of privacy and reflect on the type of information they share with AI tools and the world. At the beginning of the session, we revisit the concept of AI and give examples of how it appears in everyday life. We also briefly introduce the idea of supervised learning. The main focus of this session is privacy, encouraging children to think critically about personal data, consent, and the implications of sharing information with intelligent systems.
 
-Key concepts: Privacy, AI in daily life, Supervised learning <br>
+Key concepts: Data privacy, AI in daily life, Supervised learning <br>
 Material: Paper, Coloured pencils, Glue, Scissors, Computer with Internet, AI Learning Lab platform
+
+⚠️ Voice Disclaimer: The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system.
 
 # Activity 3 Robot Race
 
@@ -25,6 +27,8 @@ As children place different puzzle pieces on the track, the robot responds with 
 
 Key concepts: Reinforcement Learning, Feedback, Reward, Penalty, Agent, Ambient, Algorithm <br>
 Material: Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
+
+⚠️ Voice Disclaimer: The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system.
 
 # Activity 4 Teach, Mário!
 
