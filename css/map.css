@@ -40,6 +40,45 @@ h1 {
     2px 2px 0px #000; /* Detalhe inferior */
 }
 
+h4 {
+  font-size: 24px;
+  margin: 0px;
+  padding: 30px;
+  color: white;
+  text-align: center;
+  text-shadow:
+    4px 4px 0px #000, /* Camada principal (sombra preta) */
+    -2px -2px 0px #000, /* Detalhe superior (leve sombra cinza) */
+    2px -2px 0px #000, /* Detalhe superior */
+    -2px 2px 0px #000, /* Detalhe inferior */
+    2px 2px 0px #000; /* Detalhe inferior */
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+h4 a {
+  color: inherit;          /* herda o branco do h4 */
+  text-decoration: none;   /* remove o sublinhado */
+  display: inline-block;   /* necessário para aplicar transform */
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+h4 a:visited {
+  color: inherit;          /* evita o roxo quando o link já foi visitado */
+}
+
+/* Efeito ao passar o mouse */
+h4 a:hover {
+  transform: translateY(-2px); /* move um pouco para cima */
+  text-shadow:
+    6px 6px 0px #000, /* sombra mais forte e deslocada */
+    -3px -3px 0px #000,
+    3px -3px 0px #000,
+    -3px 3px 0px #000,
+    3px 3px 0px #000;
+  cursor: pointer;
+}
+
+
 .container {
     display: flex;
     flex-wrap: wrap;
