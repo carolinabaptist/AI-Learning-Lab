@@ -29,6 +29,8 @@ In this activity, children are given a race track and small robots. Their challe
 
 As children place different puzzle pieces on the track, the robot responds with immediate feedback. For example, blue pieces make the robot move faster, while red pieces slow it down. Through trial and error, children learn how to improve their strategy by observing outcomes and adjusting their choices. They discover that to create the fastest path, they must maximize rewards, introducing them to the basic logic behind reinforcement learning.
 
+To update the scoreboard, press 1 to give a point to team/player 1 and press 2 to give a point to player 2. There are currently 3 rounds.
+
 Key concepts: Reinforcement Learning, Feedback, Reward, Penalty, Agent, Ambient, Algorithm <br>
 Material: Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
 
