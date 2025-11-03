@@ -102,7 +102,7 @@ that relies on internet.
 
 # Activity 5: Sort It Out
 <div align="justify">
-The goal of this game is to correctly group animals based on shared characteristics. On the table, there is a board with three circles on each side and a set of cards featuring animal images. The game begins when a participant presses a button to randomly select a grouping criterion, which is displayed on the computer screen. Example criteria include type of diet, main mode of locomotion and number of legs. The children are then given time to organize the cards into clusters according to the selected criterion. Through this activity, they explore how to identify patterns and group data without being told the exact rules, an intuitive introduction to unsupervised learning and clustering.
+The goal of this game is to correctly group animals based on shared characteristics. On the table, there is a board with three circles on each side and a set of cards featuring animal images. The game begins when a participant presses a button to randomly select a grouping criterion, which is displayed on the computer screen. Example criteria include type of diet, main mode of locomotion and number of legs. The children are then given time to organize the cards into clusters according to the selected criterion. Through this activity, they explore how to identify patterns and group data without being told the exact rules, an intuitive introduction to unsupervised learning and clustering. The activity is available in Portuguese, Hindi and English.
 </div>
 <br>
 <div align="justify">

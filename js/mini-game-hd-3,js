@@ -1,12 +1,12 @@
-const DIREITA = "दायाँ";
+const DIREITA = "right";
 
 const ESQUERDA = "esquerda";
 
 const CIMA = "cima";
 
-const CIMA_DIREITA = "ऊपर दायाँ";
+const CIMA_DIREITA = "up right";
 
-const NADA = "स्थिर";
+const NADA = "still";
 
 let maxGameDuration = 4*60; // 4 minutes
 //maxGameDuration = 5;
@@ -568,7 +568,7 @@ myMarioCycle = undefined;
 function draw(elapsedTime) {
     ctx.drawImage(background, scrollVal * backgroundScale, 0, canvasWidth * backgroundScale, backgroundHeight, 0, 0, canvasWidth, canvasHeight);
 
-    text(canvasWidth - 200, 50, "समय");
+    text(canvasWidth - 200, 50, "TIME");
     text(canvasWidth - 200 + 24, 80, tempo(maxGameDuration - elapsedTime));
 
     goombaDraw(elapsedTime);
