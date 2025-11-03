@@ -6,7 +6,7 @@
 <br>
 <div align="justify">
 A series of activities for teaching first year students aged 6 to 7 about Artificial Intelligence. <br> 
-
+<br>
 It consists of a digital activity, <i>Talking to Machines</i>, and four tangible activities in the lab: <i>Privacy and AI</i>, <i>Robot Race</i>, <i>Teach Mário</i> and <i>Sort It Out</i>.
 </div>
 
@@ -49,20 +49,23 @@ In this activity, children are given a race track and small robots. Their challe
 <div align="justify">
 As children place different puzzle pieces on the track, the robot responds with immediate feedback. For example, blue pieces make the robot move faster, while red pieces slow it down. Through trial and error, children learn how to improve their strategy by observing outcomes and adjusting their choices. They discover that to create the fastest path, they must maximize rewards, introducing them to the basic logic behind reinforcement learning.
 </div>
-
+<br>
 <div align="justify">
 To update the scoreboard, press 1 to give a point to team/player 1 and press 2 to give a point to player 2. There are currently 3 rounds.
 </div>
-
+<br>
 <div align="justify">
 <strong>Key concepts:</strong> Reinforcement Learning, Feedback, Reward, Penalty, Agent, Ambient, Algorithm<br>
 <strong>Material:</strong> Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
 </div>
-
+<div align="justify">
+All materials used and full alternative script are available in the folder <code>Materials\robot-race</code>.
+</div>
+<br>
 <div align="justify">
 The activity is available in Portuguese and English.
 </div>
-
+<br>
 <div align="justify">
 <strong>⚠️ Voice Disclaimer:</strong> The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system.
 </div>
