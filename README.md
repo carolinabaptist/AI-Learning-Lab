@@ -18,6 +18,7 @@ The goal of this session is to introduce children to generative AI through virtu
 <strong>Key concepts:</strong> Generative AI, AI limitations<br>
 <strong>Material:</strong> Computer with Internet
 </div>
+<br>
 You can talk directly to ChatGPT using the voice version available at  (https://chat.openai.com)
 
 # Activity 2: Privacy and AI
@@ -30,7 +31,7 @@ This activity is designed to help children identify different spheres of privacy
 <strong>Material:</strong> Paper, Coloured pencils, Glue, Scissors, Computer with Internet, AI Learning Lab platform
 </div>
 <div align="justify">
-All materials used and full alternative script are available in the folder <code>Materials\Privacy-and-AI</code>.
+All materials used and full alternative script are available in the folder <code>materials\privacy-and-ai</code>.
 </div>
 <br>
 <div align="justify">
@@ -59,7 +60,7 @@ To update the scoreboard, press 1 to give a point to team/player 1 and press 2 t
 <strong>Material:</strong> Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
 </div>
 <div align="justify">
-All materials used and full alternative script are available in the folder <code>Materials\robot-race</code>.
+All materials used and full alternative script are available in the folder <code>materials\robot-race</code>.
 </div>
 <br>
 <div align="justify">
