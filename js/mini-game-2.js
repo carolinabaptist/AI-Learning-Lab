@@ -32,8 +32,9 @@ function tocarSomChegada() {
 
 function falar(texto) {
     const voz = new SpeechSynthesisUtterance(texto);
-    voz.lang = "pt-PT";
-    voz.volume = 1.1;
+    voz.lang = "en-US";
+    voz.volume = 1;
+    voz.rate = 1.2;
     speechSynthesis.speak(voz);
 }
 
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 score1++;
                 score1Display.textContent = score1;
                 tocarSomChegada();
-                falar(`Ponto para ${jogador1}!`);
+                falar(`${jogador1} scores a point!`);
                 round++;
                 if (round > maxRounds) {
                     setTimeout(() => {
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 score2++;
                 score2Display.textContent = score2;
                 tocarSomChegada();
-                falar(`Ponto para ${jogador2}!`);
+                falar(`${jogador2} scores a point!`);
                 round++;
                 if (round > maxRounds) {
                     setTimeout(() => {
@@ -88,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-const waitTimeCharacter = 60;
+const waitTimeCharacter = 50;
 const waitTimeParagraph = 200;
  
 let currentPage = null;
@@ -115,7 +116,7 @@ function speakText(originalText) {
     let speech = new SpeechSynthesisUtterance(text);
  
     speech.lang = "en-US";
-    speech.rate = 0.5;
+    speech.rate = 0.7;
     
     if (shouldSpeak()) {
         speech.volume = 1;

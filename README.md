@@ -34,6 +34,8 @@ To update the scoreboard, press 1 to give a point to team/player 1 and press 2 t
 Key concepts: Reinforcement Learning, Feedback, Reward, Penalty, Agent, Ambient, Algorithm <br>
 Material: Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
 
+The activity is available in Portuguese and English.
+
 ⚠️ Voice Disclaimer: The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system.
 
 # Activity 4 Teach, Mário!
