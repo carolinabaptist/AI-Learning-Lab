@@ -6,7 +6,6 @@
 <br>
 <div align="justify">
 A series of activities for teaching first year students aged 6 to 7 about Artificial Intelligence. <br> 
-<br>
 It consists of a digital activity, <i>Talking to Machines</i>, and four tangible activities in the lab: <i>Privacy and AI</i>, <i>Robot Race</i>, <i>Teach Mário</i> and <i>Sort It Out</i>.
 </div>
 
