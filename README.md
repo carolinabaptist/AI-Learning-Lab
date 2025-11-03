@@ -52,16 +52,12 @@ As children place different puzzle pieces on the track, the robot responds with 
 </div>
 <br>
 <div align="justify">
-To update the scoreboard, press 1 to give a point to team/player 1 and press 2 to give a point to player 2. There are currently 3 rounds. In addition, to proceed to the final explanation, press the End button and then click Continue until you reach the end.
+To play, you should prepare the tracks in advance and place the question marks in empty spaces between two puzzle pieces, so that the children can fit the pieces and discover which one is the fastest. A photo showing an example of the track setup can be found in the <code>materials\robot-race</code> folder. To update the scoreboard, press 1 to give a point to team/player 1 and press 2 to give a point to player 2. There are currently 3 rounds. In addition, to proceed to the final explanation, press the End button and then click Continue until you reach the end.
 </div>
 <br>
 <div align="justify">
 <strong>Key concepts:</strong> Reinforcement Learning, Feedback, Reward, Penalty, Agent, Ambient, Algorithm<br>
 <strong>Material:</strong> Race Track, Puzzles, Ozobots, Computer with internet, AI learning Lab, paper question marks
-</div>
-<div align="justify">
-All materials used, track configuration and full alternative script are available in the folder <code>materials\robot-race</code>. To play, you should prepare the tracks in advance and place the question marks in empty spaces between two puzzle pieces, so that the children can fit the pieces and discover which one is the fastest.
-A photo showing an example of the track setup can be found in the <code>materials\robot-race</code> folder.
 </div>
 <br>
 <div align="justify">
@@ -74,6 +70,10 @@ The activity is available in Portuguese, Hindi and English.
 <br>
 <div align="justify">
 <strong>⚠️ Voice Disclaimer:</strong> The voice used in Activity 2 depends on your browser and computer settings. It may vary depending on the available voices and speech synthesis support in your system. As an alternative, the teacher can read the text aloud. This approach was chosen so that the activity can also be carried out offline, without depending on an internet connection.
+</div>
+<br>
+<div align="justify">
+All materials used, track configuration and full alternative script are available in the folder <code>materials\robot-race</code>. 
 </div>
 
 # Activity 4: Teach, Mário!
