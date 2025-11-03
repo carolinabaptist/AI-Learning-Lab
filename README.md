@@ -1,5 +1,6 @@
 # AI-Learning-Lab
-
+<br>
+<br>
 <div align="center">
 🔗 <a href="https://carolinabaptist.github.io/AI-Learning-Lab">Laboratório de Inteligênica Artificial</a>
 </div>
@@ -7,7 +8,7 @@
 <div align="justify">
 A game for teaching first year students aged 6 to 7 about Artificial Intelligence. <br> 
 
-It consists of one digital activity and four tangible activities in the lab: <i>Privacy and AI</i>, <i>Robot Race</i>, <i>Teach Mário</i> and <i>Sort It Out</i>.
+It consists of a digital activity, <i>Talking to Machines</i>, and four tangible activities in the lab: <i>Privacy and AI</i>, <i>Robot Race</i>, <i>Teach Mário</i> and <i>Sort It Out</i>.
 </div>
 
 # Activity 1: Talking to Machines
@@ -20,7 +21,7 @@ The goal of this session is to introduce children to generative AI through virtu
 <strong>Material:</strong> Computer with Internet
 </div>
 
-# Activity 2 Privacy and AI
+# Activity 2: Privacy and AI
 <div align="justify">
 This activity is designed to help children identify different spheres of privacy and reflect on the type of information they share with AI tools and the world. At the beginning of the session, we revisit the concept of AI and give examples of how it appears in everyday life. We also briefly introduce the idea of supervised learning. The main focus of this session is privacy, encouraging children to think critically about personal data, consent, and the implications of sharing information with intelligent systems.
 </div>
