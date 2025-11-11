@@ -1,7 +1,7 @@
 # AI-Learning-Lab
 <br>
 <div align="center">
-    <a href="https://interactive-technologies-institute.github.io/AI-Learning-Lab/scenes/intro.html">Laboratório de Inteligênica Artificial</a>
+    <a href="[https://ai-lab-interactive.netlify.app/scenes/intro.html]">Laboratório de Inteligênica Artificial</a>
 </div>
 <br>
 <div align="justify">
