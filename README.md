@@ -1,7 +1,9 @@
 # AI-Learning-Lab
 <br>
 <div align="center">
-    [Laboratório de Inteligência Artificial](https://ai-lab-interactive.netlify.app/scenes/intro.html)
+    <a href="https://ai-lab-interactive.netlify.app/scenes/intro.html" target="_blank">
+          Laboratório de Inteligência Artificial
+    </a>
 </div>
 <br>
 <div align="justify">
